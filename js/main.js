@@ -6,6 +6,9 @@ const createWindow = () => {
       height: 648,
       minWidth: 960,
       minheight: 540,
+      webPreferences: {
+        //   devTools: false,
+      },
       resizable: true,
       autoHideMenuBar: true
     })
