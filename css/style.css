@@ -1,0 +1,159 @@
+@font-face {
+    font-family: bahnschrift;
+    src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
+}
+input {
+    box-sizing: border-box;
+    font-family: "Bahnschrift";
+}
+body {
+    margin: 0;
+    top: 0;
+    font-family: "bahnschrift";
+    overflow-x: hidden;
+    background-image: url(../img/background.png);
+    background-position: center;
+}
+.mainContent {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    align-items: left;
+}
+.navBar {
+    flex: 1;
+    background-color: #006eff;
+    box-shadow: 0 0 3.125em 0 #006eff;
+}
+.buttonContent {
+    flex: 13;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.mainButtonSection {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trackLobby {
+    width: 70%;
+    height: 80%;
+    background-color: rgb(63, 180, 219);
+    display: flex;
+    flex-direction: column;
+    border-radius: 6em;
+    box-shadow: 0 0 1.5em 0 rgb(0, 238, 255);
+}
+.tlText {
+    text-align: center;
+    flex: 2.2;
+    padding: 2em;
+}
+.mainTitle {
+    font-size: 6vw;
+    text-shadow: 0em 0em 0.2em white;
+}
+.mainDesc {
+    font-size: 3vw;
+    color: white;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+.tlButton {
+    background-image: linear-gradient(to right, rgb(71, 117, 243), aquamarine);
+    border-radius: 2em;
+    flex: 1;
+    width: 70%;
+    margin: 0 auto;
+    border: 0.15625vw solid black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottomSpacing {
+    flex: 0.35;
+}
+.subBottom {
+    flex: 0.5;
+}
+.tlButtonText {
+    font-size: 2.5vw;
+}
+.subButton {
+    flex: 1;
+    height: 80%;
+    background-color: rgb(63, 180, 219);
+    display: flex;
+    flex-direction: column;
+    border-radius: 3em;
+    box-shadow: 0 0 0.5em 0 rgb(0, 238, 255);
+}
+.subSpace {
+    flex: 0.1;
+}
+.subButtonSection {
+    flex: 1.1;
+    display: flex;
+    flex-direction: row;
+}
+.subText {
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 0.5em;
+    flex: 2;
+}
+.subTitle {
+    font-size: 2.5vw;
+    text-shadow: 0em 0em 0.2em white;
+}
+.subDesc {
+    font-size: 1.3vw;
+    color: white;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+.actionButton {
+    background-image: linear-gradient(to right, rgb(71, 117, 243), aquamarine);
+    border-radius: 2em;
+    flex: 1;
+    width: 70%;
+    margin: 0 auto;
+    border: 0.15625vw solid black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subButtonText {
+    font-size: 1.7vw;
+}
+.searchDiv {
+    width: 80%;
+    margin: auto;
+    height: 5vh;
+    display: flex;
+}
+.searchBar {
+    height: 100%;
+    flex: 5;
+    padding-left: 1vw;
+    font-size: 1.3vw;
+}
+
+.searchImage {
+    max-width: 1.5vw;
+    width: 100%;
+    display: block;
+    padding-top: calc(calc(5vh - 1.8vw) / 2);
+    margin: auto;
+}
+
+.searchButton {
+    flex: 2;
+    height: calc(100%-0.15625vw);
+    background-image: linear-gradient(to right, rgb(71, 117, 243), aquamarine);
+    border: 0.15625vw solid black;
+    vertical-align: middle;
+}
