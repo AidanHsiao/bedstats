@@ -1,38 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'">
-    <link rel="stylesheet" type="text/css" href="../css/stats.css">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/stats.css" />
     <title>Stats Screen</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="mainContent">
-        <div class="loadingDiv" id="loader"></div>
-        <div class="loadingText"><span id="loaderText">Fetching player UUID...</span></div>
-        <div class="navBar" id="navigation">
-            <div class="logoDiv">
-                <img src="../img/logo.png" class="logo" />
-            </div>
-            <div class="iconDiv" id="homeIcon">
-                <img src="../img/homeicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <img src="../img/friendsicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <img src="../img/settingsicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <span class="navIcon navText">?</span>
-            </div>
+      <div class="loadingDiv" id="loader"></div>
+      <div class="loadingText">
+        <span id="loaderText">Fetching player UUID...</span>
+      </div>
+      <div class="navBar" id="navigation">
+        <div class="logoDiv">
+          <img src="../img/logo.png" class="logo" />
         </div>
-        <div class="statsSection">
-
+        <div class="iconDiv" id="homeIcon">
+          <img src="../img/homeicon.png" class="navIcon" />
         </div>
+        <div class="iconDiv">
+          <img src="../img/friendsicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv">
+          <img src="../img/settingsicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="statsSection" id="sSec">
+        <div class="statsBar"></div>
+        <div class="mainStats">
+          <div class="mainSidebar" id="finalsMain">
+            <span class="statTitle">Final Kills</span><br /><span
+              class="statNumber"
+              id="finalsNumber"
+            ></span
+            ><br />
+          </div>
+          <div class="mainLevel" id="levelMain">
+            <span class="statTitle">Level</span><br /><span
+              class="statNumber"
+              id="levelNumber"
+            ></span
+            ><br />
+          </div>
+          <div class="mainSidebar" id="winsMain">
+            <span class="statTitle">Wins</span><br /><span
+              class="statNumber"
+              id="winsNumber"
+            ></span
+            ><br />
+          </div>
+        </div>
+        <div class="secondaryStats" id="sss">
+          <div class="secondarySpacing"></div>
+          <div class="statsDiv">
+            <div class="winPercentDiv" id="wpd">
+              <div id="animWinP">
+                <span id="winPercentText">Win %<br /></span
+                ><span id="winPercent"></span>
+              </div>
+            </div>
+            <div class="sepDiv">
+              <div class="statDiv" id="KDR"></div>
+              <div class="statDiv" id="FKDR"></div>
+              <div class="statDiv" id="BBLR"></div>
+            </div>
+          </div>
+          <div class="secondarySpacing"></div>
+          <div class="scoreDiv">
+            <span id="scoreText">Score</span><br /><span id="scoreNum"></span>
+          </div>
+          <div class="secondarySpacing"></div>
+        </div>
+      </div>
     </div>
     <script src="../js/stats.js"></script>
-</body>
+  </body>
 </html>
