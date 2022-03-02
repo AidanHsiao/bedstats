@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+    />
+    <link rel="stylesheet" type="text/css" href="../css/leaderboards.css" />
+    <title>Leaderboards</title>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1">
+  </head>
+  <body>
+    <div class="mainContent">
+    <div id="cover"></div>
+      <div class="loadingDiv" id="loader"></div>
+      <div class="loadingText">
+        <span id="loaderText">Fetching player UUID...</span>
+      </div>
+      <div class="exitButton" id="eb">Exit</div>
+      <div class="navBar" id="navigation">
+        <div class="logoDiv">
+          <img draggable="false" src="../img/logo.png" class="logo" />
+        </div>
+        <div class="iconDiv" id="homeIcon">
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv">
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
+        </div>
+        
+        <div class="iconDiv">
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
+        </div>
+        <div class="iconDiv">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="leaderboardSection" id="leaderboardSection">
+        <div class="leaderboardHeader" id="header">
+            <div class="statsBar">
+                <div class="barText">
+                    Leaderboard Viewer
+                </div>
+                <div class="filter">
+                    <div class="filterText">Current Filter:</div>
+                    <select id="filter" name="filter">
+                        <option>Global</option>
+                        <option>Friends</option>
+                    </select>
+                <div class="filterSpacing"></div>
+                </div>
+            </div>
+            <div class="leaderboardTitle">
+                <div class="titleDiv">
+                Global Leaderboard, Sorted By Stars
+                </div>
+            </div>
+        </div>
+        <div class="leaderboards" id="leaderboards">
+            <div class="leaderboardItem" style="color:white; background-image:linear-gradient(to right, black, black);"><div class="leaderboardSpacing"></div><div class="leaderboardName" style="color:white">Player</div><div class="leaderboardStars" style="color:white">Stars</div><div class="leaderboardFKDR" style="color:white">FKDR</div><div class="leaderboardBBLR" style="color:white">BBLR</div><div class="leaderboardWinP" style="color:white">Win %</div>
+        </div>
+      </div>
+    </div>
+</div>
+    
+    <script src="../js/leaderboards.js"></script>
+    <script src="../js/util.js"></script>
+  </body>
+</html>

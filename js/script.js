@@ -5,6 +5,17 @@ document.getElementById("searchButton").addEventListener("click", async () => {
     document.getElementById("cover").style.height = "100vh";
     setTimeout(() => {
       window.location.href = "../html/stats.html";
-    }, 600);
+    }, 760);
   }
 });
+
+document.getElementById("leaderboardButton").addEventListener("click", async () => {
+    document.getElementById("cover").style.height = "100vh";
+    setTimeout(() => {
+    window.location.href = "../html/leaderboards.html";
+    }, 760);
+})
+
+window.onload = async function uncover() {
+    document.getElementById("cover").style.height = "0vh"
+}

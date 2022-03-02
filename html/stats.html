@@ -5,17 +5,18 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../css/stats.css" />
     <title>Stats Screen</title>
   </head>
   <body>
     <div class="mainContent">
+    <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
       <div class="loadingText">
         <span id="loaderText">Fetching player UUID...</span>
@@ -109,5 +110,6 @@
       </div>
     </div>
     <script src="../js/stats.js"></script>
+    <script src="../js/util.js"></script>
   </body>
 </html>
