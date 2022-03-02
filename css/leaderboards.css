@@ -1,268 +1,276 @@
 @font-face {
-    font-family: bahnschrift;
-    src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
+  font-family: bahnschrift;
+  src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
 }
 input {
-    box-sizing: border-box;
-    font-family: "Bahnschrift";
+  box-sizing: border-box;
+  font-family: "Bahnschrift";
 }
 #cover {
-    width: 105%;
-    height: 0%;
-    background-color: #e8e8e8;
-    position: absolute;
-    transition: height 0.75s;
-    z-index: 10000;
+  width: 105%;
+  height: 0%;
+  background-color: #e8e8e8;
+  position: absolute;
+  transition: height 0.75s;
+  z-index: 10000;
 }
 body {
-    margin: 0;
-    top: 0;
-    font-family: "bahnschrift";
-    overflow-x: hidden;
-    background-color: #e8e8e8;
-    user-select: none;
-    opacity: 1;
+  margin: 0;
+  top: 0;
+  font-family: "bahnschrift";
+  overflow-x: hidden;
+  background-color: #e8e8e8;
+  user-select: none;
+  opacity: 1;
 }
 .mainContent {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex: 1;
-    align-items: left;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  align-items: left;
 }
 .logoDiv {
-    flex: 3;
+  flex: 3;
 }
 .iconDiv {
-    flex: 1;
-    transition: all 0.2s ease-in-out;
+  flex: 1;
+  transition: all 0.2s ease-in-out;
 }
 .logo {
-    max-width: 5.5vw;
-    padding-top: 3vh;
-    display: block;
-    margin: auto;
+  max-width: 5.5vw;
+  padding-top: 3vh;
+  display: block;
+  margin: auto;
 }
 
 .navIcon {
-    max-width: 4vw;
-    display: block;
-    margin: auto;
-    filter: drop-shadow(2px 2px 5px white) invert(1);
-    padding-top: 3vh;
-    font-size: 5.5vw;
-    text-align: center;
+  max-width: 4vw;
+  display: block;
+  margin: auto;
+  filter: drop-shadow(2px 2px 5px white) invert(1);
+  padding-top: 3vh;
+  font-size: 5.5vw;
+  text-align: center;
 }
 
 .navBar {
-    height: 100%;
-    width: 7.1428%;
-    background-color: #006eff;
-    box-shadow: 0 0 3.125em 0 #006eff;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1;
-    position: fixed;
+  height: 100%;
+  width: 7.1428%;
+  background-color: #006eff;
+  box-shadow: 0 0 3.125em 0 #006eff;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+  position: fixed;
 }
 
 .iconDiv:hover {
-    background-color: rgb(0, 153, 255);
-    cursor: pointer;
+  background-color: rgb(0, 153, 255);
+  cursor: pointer;
 }
 
 .iconDivError:hover {
-    background-color: rgb(255, 0, 0);
-    cursor: not-allowed;
+  background-color: rgb(255, 0, 0);
+  cursor: not-allowed;
 }
 
 .navText {
-    transform: scale(1.2, 1);
+  transform: scale(1.2, 1);
 }
 
 .loadingDiv {
-    position: absolute;
-    left: calc(50% - 6vw - 1vw);
-    top: calc(43% - 6vw - 1vw);
-    border: 1vw solid white;
-    border-top: 1vw solid rgb(0, 174, 255);
-    border-radius: 50%;
-    width: 12vw;
-    height: 12vw;
-    opacity: 0;
-    animation: spin 1s linear infinite;
-    position: fixed;
+  position: absolute;
+  left: calc(50% - 6vw - 1vw);
+  top: calc(43% - 6vw - 1vw);
+  border: 1vw solid white;
+  border-top: 1vw solid rgb(0, 174, 255);
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  opacity: 0;
+  animation: spin 1s linear infinite;
+  position: fixed;
 }
 
 #loader {
-    transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 #loader {
-    transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loadingText {
-    position: absolute;
-    width: 100%;
-    top: 63%;
-    text-align: center;
-    margin: auto;
-    font-size: 3vw;
-    position: fixed;
+  position: absolute;
+  width: 100%;
+  top: 63%;
+  text-align: center;
+  margin: auto;
+  font-size: 3vw;
+  position: fixed;
 }
 #loaderText {
-    opacity: 0;
-    transition: opacity 0.2s;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .exitButton {
-    position: absolute;
-    background-color: red;
-    width: 30%;
-    height: 15%;
-    left: 35%;
-    bottom: 40%;
-    margin: auto;
-    text-align: center;
-    padding-top: 5vh;
-    font-size: 9vh;
-    border-radius: 3vh;
-    opacity: 0;
-    z-index: 100;
+  position: absolute;
+  background-color: red;
+  width: 30%;
+  height: 15%;
+  left: 35%;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  padding-top: 5vh;
+  font-size: 9vh;
+  border-radius: 3vh;
+  opacity: 0;
+  z-index: 100;
 }
 
 #eb {
-    transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .leaderboardSection {
-    flex: 13;
-    display: flex;
-    height: 0%;
-    flex-direction: column;
-    overflow: hidden;
+  flex: 13;
+  display: flex;
+  height: 0%;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .leaderboardHeader {
-    display: flex;
-    flex-direction: column;
-    flex: 0.5;
-    transition: opacity 0.5s;
-    opacity: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 .statsBar {
-    width: 93.5%;
-    margin-left: 7vw;
-    background-color: rgb(59, 160, 243);
-    flex: 1;
-    padding: 1.75vh 0;
-    font-size: 2.5vw;
-    display: flex;
-    position: fixed;
+  width: 93.5%;
+  margin-left: 7vw;
+  background-color: rgb(59, 160, 243);
+  flex: 1;
+  padding: 1.75vh 0;
+  font-size: 2.5vw;
+  display: flex;
+  position: fixed;
 }
 .leaderboardTitle {
-    width: 93.1428%;
-    margin-left: 7vw;
-    background-color: "#E8E8E8";
-    flex: 3.5;
-    display: flex;
+  width: 93.1428%;
+  margin-left: 7vw;
+  background-color: "#E8E8E8";
+  flex: 3.5;
+  display: flex;
 }
 
 .leaderboards {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.4s;
-    margin-left: 7vw;
-    width: 93.5vw;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.4s;
+  margin-left: 7vw;
+  width: 93.5vw;
 }
 ::-webkit-scrollbar {
-    width: 0;
-    display: none;
+  width: 0;
+  display: none;
 }
 .leaderboardItem {
-    flex: 1;
-    display: flex;
-    background-image: linear-gradient(to right, rgb(165, 163, 255), rgb(190, 245, 255));
-    text-shadow: 0px 0px 5px gray;
-    padding-top: 1.2vh;
-    font-size: 1.5vw;
-    border: 0.2vh solid black;
+  flex: 1;
+  display: flex;
+  background-image: linear-gradient(
+    to right,
+    rgb(165, 163, 255),
+    rgb(190, 245, 255)
+  );
+  text-shadow: 0px 0px 5px gray;
+  padding-top: 1.2vh;
+  font-size: 1.5vw;
+  border: 0.2vh solid black;
 }
 .leaderboardSpacing {
-    flex: 0.5;
+  flex: 0.5;
+}
+.leaderboardRank {
+  flex: 0.5;
+  color: white;
 }
 .leaderboardName {
-    flex: 2;
+  flex: 2;
 }
 .leaderboardStars {
-    flex: 0.8;
-    color: black;
+  flex: 0.8;
+  color: black;
 }
 .leaderboardFKDR {
-    flex: 0.8;
-    color: black;
+  flex: 0.8;
+  color: black;
 }
 .leaderboardBBLR {
-    flex: 0.8;
-    color: black;
+  flex: 0.8;
+  color: black;
 }
 .leaderboardWinP {
-    flex: 0.8;
-    color: black;
+  flex: 0.8;
+  color: black;
 }
 .leaderboardScore {
-    flex: 1;
-    color: black;
+  flex: 1;
+  color: black;
 }
 .barText {
-    margin-left: 7vw;
-    margin-top: 1vh;
-    font-size: 3vw;
-    flex: 1;
+  margin-left: 7vw;
+  margin-top: 1vh;
+  font-size: 3vw;
+  flex: 1;
 }
 .filter {
-    flex: 1;
-    display: flex;
+  flex: 1;
+  display: flex;
 }
 .filterText {
-    padding-top: 1.5vh;
-    font-size: 2.7vw;
-    flex: 1;
-    margin-right: 1vw;
+  padding-top: 1.5vh;
+  font-size: 2.7vw;
+  flex: 1;
+  margin-right: 1vw;
 }
 #filter {
-    width: 17vw;
-    height: 6.5vh;
-    background-color: white;
-    border: 0px;
-    border-radius: 1vw;
-    font-size: 2.5vw;
-    margin-top: 1vh;
-    padding-top: 0.2vh;
-    padding-left: 0.8vw;
+  width: 17vw;
+  height: 6.5vh;
+  background-color: white;
+  border: 0px;
+  border-radius: 1vw;
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  padding-top: 0.2vh;
+  padding-left: 0.8vw;
 }
 .filterSpacing {
-    flex: 0.5;
+  flex: 0.5;
 }
 select {
-    font-family: "Bahnschrift";
+  font-family: "Bahnschrift";
 }
 .titleDiv {
-    margin: auto;
-    margin-top: 22vh;
-    font-size: 4vw;
+  margin: auto;
+  margin-top: 22vh;
+  font-size: 4vw;
 }

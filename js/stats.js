@@ -11,9 +11,7 @@ window.onload = async function getPlayerStats() {
   document.getElementById("loader").style.opacity = 1;
   document.getElementById("loaderText").style.opacity = 1;
   try {
-    resp = await fetch(
-      `https://api.ashcon.app/mojang/v2/user/${username}`
-    );
+    resp = await fetch(`https://api.ashcon.app/mojang/v2/user/${username}`);
     data = await resp.json();
     uuid = data.uuid;
     name = data.username;
@@ -26,9 +24,8 @@ window.onload = async function getPlayerStats() {
     document.getElementById("eb").style.cursor = "pointer";
 
     document.getElementById("eb").addEventListener("click", () => {
-      homeScreen()
+      homeScreen();
     });
-
     console.log(e);
     return;
   }
@@ -41,7 +38,7 @@ window.onload = async function getPlayerStats() {
     playerData = data;
     bwData = playerData.player.stats.Bedwars;
     if (!bwData) {
-        throw "Bedwars never played"
+      throw "Bedwars never played";
     }
   } catch (e) {
     document.getElementById("loader").style.opacity = 0;
@@ -50,7 +47,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("eb").style.opacity = 1;
 
     document.getElementById("eb").addEventListener("click", () => {
-      homeScreen()
+      homeScreen();
     });
     document.getElementById("eb").style.cursor = "pointer";
 
@@ -241,13 +238,11 @@ window.onload = async function getPlayerStats() {
   document.getElementById("scoreNum").innerHTML = rating.toFixed(1);
   const hsl = scoreToColor(rating);
   document.getElementById("scoreNum").style.textShadow = `0 0 0.92592vh ${hsl}`;
-  }
+};
 
-
-  document.getElementById("homeIcon").addEventListener("click", () => {
-    homeScreen()
-  });
-  
+document.getElementById("homeIcon").addEventListener("click", () => {
+  homeScreen();
+});
 
 document.getElementById("filter").onchange = () => {
   const value = document.getElementById("filter").value;
@@ -649,7 +644,7 @@ function sigmoidValue(x) {
 }
 
 async function homeScreen() {
-    document.getElementById("cover").style.height = "100%"
-    await sleep(760)
-    window.location.href = "../html/index.html"
+  document.getElementById("cover").style.height = "100%";
+  await sleep(760);
+  window.location.href = "../html/index.html";
 }
