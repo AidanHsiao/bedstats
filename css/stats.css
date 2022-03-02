@@ -86,8 +86,11 @@ body {
   width: 12vw;
   height: 12vw;
   opacity: 0;
-  transition: opacity 0.4s;
   animation: spin 1s linear infinite;
+}
+
+#loader {
+  transition: opacity 0.2s;
 }
 
 @keyframes spin {
@@ -106,7 +109,9 @@ body {
   text-align: center;
   margin: auto;
   font-size: 3vw;
-  transition: opacity 0.4s;
+}
+#loaderText {
+  transition: opacity 0.2s;
 }
 .mainStats {
   flex: 1;
@@ -151,11 +156,19 @@ body {
 .statsBar {
   width: 100%;
   background-color: rgb(59, 160, 243);
-  flex: 0.15;
+  flex: 0.2;
+  padding-top: 3.5vh;
+  font-size: 2.5vw;
+  display: flex;
 }
 
 .statsDiv {
-  flex: 2;
+  flex: 1.95;
+  background-image: linear-gradient(
+    to right,
+    rgb(129, 129, 248),
+    rgb(127, 209, 235)
+  );
   align-items: center;
   border-radius: 4vw;
   height: 80%;
@@ -169,17 +182,19 @@ body {
     rgb(129, 129, 248),
     rgb(127, 209, 235)
   );
-  height: 60%;
-  padding-top: 7.5vh;
+  height: 65%;
+  padding-top: 8.5vh;
   border-radius: 4vw;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .winPercentDiv {
   flex: 1;
   text-align: center;
-  height: calc(100% - 10vh);
-  padding-top: 10vh;
+  height: calc(100% - 7.5vh);
+  padding-top: 7.5vh;
   border-right: 0.3vw solid black;
 }
 #animWinP {
@@ -193,23 +208,29 @@ body {
   display: flex;
   flex-direction: column;
 }
+#animSepDiv {
+  width: 70%;
+  margin-top: 1vh;
+  transition: margin-left 0.5s ease-in-out;
+  text-align: center;
+}
 .secondarySpacing {
   flex: 0.3;
 }
 
 #winPercentText {
-  font-size: 5vw;
+  font-size: 5.5vw;
 }
 
 #winPercent {
-  font-size: 6vw;
+  font-size: 6.3vw;
 }
 
 .statDiv {
   flex: 1;
   transition: padding-left 0.5s ease-in-out;
   font-size: 3vw;
-  padding-top: 2vh;
+  padding-top: 2.8vh;
 }
 
 #scoreText {
@@ -218,4 +239,61 @@ body {
 
 #scoreNum {
   font-size: 5vw;
+}
+
+#rank {
+  margin-left: 4vw;
+  text-shadow: 0.2vw 0.2vw 0.5vw black;
+}
+#name {
+  text-shadow: 0.2vw 0.2vw 0.5vw black;
+}
+
+.barName {
+  flex: 3;
+  height: 100%;
+}
+
+.barFilter {
+  flex: 2;
+  display: flex;
+}
+.filterText {
+  flex: 0.75;
+}
+#filter {
+  width: 15vw;
+  height: 5.15vh;
+  background-color: white;
+  border: 0px;
+  border-radius: 1vw;
+  font-size: 2vw;
+  padding-top: 0.2vh;
+  padding-left: 0.8vw;
+}
+select {
+  font-family: "Bahnschrift";
+}
+.filterSpacing {
+  flex: 0.2;
+}
+
+.exitButton {
+  position: absolute;
+  background-color: red;
+  width: 30%;
+  height: 15%;
+  left: 35%;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  padding-top: 5vh;
+  font-size: 9vh;
+  border-radius: 3vh;
+  opacity: 0;
+  z-index: 100;
+}
+
+#eb {
+  transition: opacity 0.4s;
 }

@@ -9,9 +9,13 @@ const createWindow = () => {
     webPreferences: {
       //   devTools: false,
     },
+    fullscreenable: false,
+    fullscreen: false,
+    maximizable: false,
     resizable: true,
     autoHideMenuBar: true,
   });
+  win.setMenu(null);
   win.setAspectRatio(16 / 9);
   win.loadFile("html/index.html");
 };

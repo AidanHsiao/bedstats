@@ -1,76 +1,117 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <title>Main Screen</title>
-</head>
+  </head>
   <body>
     <div class="mainContent">
-        <div class="navBar">
-            <div class="logoDiv">
-                <img src="../img/logo.png" class="logo" />
-            </div>
-            <div class="iconDiv iconDivError">
-                <img src="../img/homeicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <img src="../img/friendsicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <img src="../img/settingsicon.png" class="navIcon" />
-            </div>
-            <div class="iconDiv">
-                <span class="navIcon navText">?</span>
-            </div>
+      <div class="navBar">
+        <div class="logoDiv">
+          <img draggable="false" src="../img/logo.png" class="logo" />
         </div>
-        <div class="cover" id="cover"></div>
-        <div class="buttonContent">
-            <div class="mainButtonSection">
-                <div class="trackLobby">
-                    <div class="tlText">
-                        <span class="mainTitle">Track Lobby Stats</span><br /><span class="mainDesc">Get the stats of all players <br />entering your lobby, live.</span>
-                    </div>
-                    <div class="tlButton"><span class="tlButtonText">Start Tracking</span></div>
-                    <div class="bottomSpacing"></div>
-                </div>
-            </div>
-            <div class="subButtonSection">
-                <div class="subSpace"></div>
-                <div class="subButton">
-                    <div class="subText">
-                        <span class="subTitle">View Specific Stats</span><br /><span class="subDesc">Track the stats of a specific player, or graph their previous stats.</span>
-                    </div>
-                    <div class="searchDiv">
-                        <input type="text" placeholder="Enter Username" class="searchBar" id="usernameInput" spellcheck="false"/>
-                        <div class="searchButton" id="searchButton">
-                            <img src="../img/searchicon.png" class="searchImage">
-                        </div>
-                    </div>
-                    <div class="subBottom"></div>
-                </div>
-                <div class="subSpace"></div>
-                <div class="subButton">
-                    <div class="subText">
-                        <span class="subTitle">View Leaderboards</span><br /><span class="subDesc">View the top players in bedwars, or compare between your friends.</span>
-                    </div>
-                    <div class="actionButton"><span class="subButtonText">View Leaderboards</span></div>
-                    <div class="subBottom"></div>
-                </div>
-                <div class="subSpace"></div>
-                <div class="subButton">
-                    <div class="subText">
-                        <span class="subTitle">Lobby Alert</span><br /><span class="subDesc">Play a sound notification when you should dodge.</span>
-                    </div>
-                    <div class="actionButton"><span class="subButtonText">Notify for Dodges</span></div>
-                    <div class="subBottom"></div>
-                </div>
-                <div class="subSpace"></div>
-            </div>
+        <div class="iconDiv iconDivError">
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
         </div>
+        <div class="iconDiv">
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv">
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
+        </div>
+        <div class="iconDiv">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="cover" id="cover"></div>
+      <div class="buttonContent">
+        <div class="mainButtonSection">
+          <div class="trackLobby">
+            <div class="tlText">
+              <span class="mainTitle">Track Lobby Stats</span><br /><span
+                class="mainDesc"
+                >Get the stats of all players <br />entering your lobby,
+                live.</span
+              >
+            </div>
+            <div class="tlButton">
+              <span class="tlButtonText">Start Tracking</span>
+            </div>
+            <div class="bottomSpacing"></div>
+          </div>
+        </div>
+        <div class="subButtonSection">
+          <div class="subSpace"></div>
+          <div class="subButton">
+            <div class="subText">
+              <span class="subTitle">View Specific Stats</span><br /><span
+                class="subDesc"
+                >Track the stats of a specific player, or graph their previous
+                stats.</span
+              >
+            </div>
+            <div class="searchDiv">
+              <input
+                type="text"
+                placeholder="Enter Username"
+                class="searchBar"
+                id="usernameInput"
+                spellcheck="false"
+              />
+              <div class="searchButton" id="searchButton">
+                <img
+                  draggable="false"
+                  src="../img/searchicon.png"
+                  class="searchImage"
+                />
+              </div>
+            </div>
+            <div class="subBottom"></div>
+          </div>
+          <div class="subSpace"></div>
+          <div class="subButton">
+            <div class="subText">
+              <span class="subTitle">View Leaderboards</span><br /><span
+                class="subDesc"
+                >View the top players in bedwars, or compare between your
+                friends.</span
+              >
+            </div>
+            <div class="actionButton">
+              <span class="subButtonText">View Leaderboards</span>
+            </div>
+            <div class="subBottom"></div>
+          </div>
+          <div class="subSpace"></div>
+          <div class="subButton">
+            <div class="subText">
+              <span class="subTitle">Lobby Alert</span><br /><span
+                class="subDesc"
+                >Play a sound notification when you should dodge.</span
+              >
+            </div>
+            <div class="actionButton">
+              <span class="subButtonText">Notify for Dodges</span>
+            </div>
+            <div class="subBottom"></div>
+          </div>
+          <div class="subSpace"></div>
+        </div>
+      </div>
     </div>
     <script src="../js/script.js"></script>
   </body>

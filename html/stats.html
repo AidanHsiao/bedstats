@@ -20,25 +20,46 @@
       <div class="loadingText">
         <span id="loaderText">Fetching player UUID...</span>
       </div>
+      <div class="exitButton" id="eb">Exit</div>
       <div class="navBar" id="navigation">
         <div class="logoDiv">
-          <img src="../img/logo.png" class="logo" />
+          <img draggable="false" src="../img/logo.png" class="logo" />
         </div>
         <div class="iconDiv" id="homeIcon">
-          <img src="../img/homeicon.png" class="navIcon" />
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
         </div>
         <div class="iconDiv">
-          <img src="../img/friendsicon.png" class="navIcon" />
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
         </div>
         <div class="iconDiv">
-          <img src="../img/settingsicon.png" class="navIcon" />
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
         </div>
         <div class="iconDiv">
           <span class="navIcon navText">?</span>
         </div>
       </div>
       <div class="statsSection" id="sSec">
-        <div class="statsBar"></div>
+        <div class="statsBar">
+          <div class="barName">
+            <span id="rank"></span>
+            <span id="name">SweetPlum</span>
+          </div>
+          <div class="barFilter">
+            <div class="filterText">Current Filter:</div>
+            <select id="filter" name="filter">
+              <option>All</option>
+              <option>Solo</option>
+              <option>Doubles</option>
+              <option>Triples</option>
+              <option>Squads</option>
+            </select>
+            <div class="filterSpacing"></div>
+          </div>
+        </div>
         <div class="mainStats">
           <div class="mainSidebar" id="finalsMain">
             <span class="statTitle">Final Kills</span><br /><span
@@ -72,13 +93,15 @@
               </div>
             </div>
             <div class="sepDiv">
-              <div class="statDiv" id="KDR"></div>
-              <div class="statDiv" id="FKDR"></div>
-              <div class="statDiv" id="BBLR"></div>
+              <div id="animSepDiv">
+                <div class="statDiv">KDR: <span id="KDR"></span></div>
+                <div class="statDiv">FKDR: <span id="FKDR"></span></div>
+                <div class="statDiv">BBLR: <span id="BBLR"></span></div>
+              </div>
             </div>
           </div>
           <div class="secondarySpacing"></div>
-          <div class="scoreDiv">
+          <div class="scoreDiv" id="scoreDiv">
             <span id="scoreText">Score</span><br /><span id="scoreNum"></span>
           </div>
           <div class="secondarySpacing"></div>
