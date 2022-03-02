@@ -169,8 +169,16 @@ async function apiLoadingFinished(totalLeaderboards) {
         plusColor = "#FFFFFF";
         break;
     }
-    const stars = calculateStars(totalLeaderboards[i].stats.Bedwars.Experience)
-      document.getElementById("leaderboards").innerHTML = `${document.getElementById("leaderboards").innerHTML}<div class="leaderboardItem${i} leaderboardItem"><div class="leaderboardSpacing"></div><div class="leaderboardName">${rank} ${name}</div><div class="leaderboardStars">${stars}</div><div class="leaderboardFKDR">${(totalLeaderboards[i].stats.Bedwars.final_kills_bedwars / totalLeaderboards[i].stats.Bedwars.final_deaths_bedwars).toFixed(2)}</div><div class="leaderboardBBLR">${(totalLeaderboards[i].stats.Bedwars.beds_broken_bedwars / totalLeaderboards[i].stats.Bedwars.beds_lost_bedwars).toFixed(2)}</div><div class="leaderboardWinP">${(100 * (totalLeaderboards[i].stats.Bedwars.wins_bedwars / (totalLeaderboards[i].stats.Bedwars.wins_bedwars + totalLeaderboards[i].stats.Bedwars.losses_bedwars))).toFixed(1)}</div>`
+    const bwData = totalLeaderboards[i].stats.Bedwars
+    const stars = calculateStars(bwData.Experience)
+      document.getElementById("leaderboards").innerHTML = `${document.getElementById("leaderboards").innerHTML}<div class="leaderboardItem${i} leaderboardItem"><div class="leaderboardSpacing"></div><div class="leaderboardName">${rank} ${name}</div><div class="leaderboardStars">${stars}</div><div class="leaderboardFKDR">${(bwData.final_kills_bedwars / bwData.final_deaths_bedwars).toFixed(2)}</div><div class="leaderboardBBLR">${(bwData.beds_broken_bedwars / bwData.beds_lost_bedwars).toFixed(2)}</div><div class="leaderboardWinP">${(100 * (bwData.wins_bedwars / (bwData.wins_bedwars + bwData.losses_bedwars))).toFixed(1)}</div><div class="leaderboardScore">${(calculateScore({
+        stars: stars,
+        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+        finals: bwData.final_kills_bedwars,
+        beds: bwData.beds_broken_bedwars,
+        wins: bwData.wins_bedwars})).toFixed(1)}</div>`
       document.getElementsByClassName(`leaderboardItem${i}`)[0].style.color = color
       if (document.getElementById(`rankPlus${i}`)) {
         document.getElementById(`rankPlus${i}`).style.color = plusColor

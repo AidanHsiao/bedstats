@@ -206,7 +206,7 @@ body {
     flex: 0.5;
 }
 .leaderboardName {
-    flex: 5;
+    flex: 2;
 }
 .leaderboardStars {
     flex: 0.8;
@@ -221,6 +221,10 @@ body {
     color: black;
 }
 .leaderboardWinP {
+    flex: 0.8;
+    color: black;
+}
+.leaderboardScore {
     flex: 1;
     color: black;
 }
