@@ -1,0 +1,182 @@
+@font-face {
+  font-family: bahnschrift;
+  src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
+}
+input {
+  box-sizing: border-box;
+  font-family: "Bahnschrift";
+  width: 90%;
+  height: calc(50% + 2vh);
+  font-size: 2vw;
+  padding-left: 1vw;
+}
+body {
+  margin: 0;
+  top: 0;
+  font-family: "bahnschrift";
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    rgb(232, 253, 255),
+    rgb(255, 231, 233)
+  );
+  background-position: center;
+  user-select: none;
+}
+.mainContent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  align-items: left;
+}
+.cover {
+  background-color: #e8e8e8;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  transition: width 0.75s ease-in-out, opacity 0.5s;
+  z-index: 10000;
+}
+.navBar {
+  flex: 1;
+  background-color: #006eff;
+  box-shadow: 0 0 3.125em 0 #006eff;
+  display: flex;
+  flex-direction: column;
+}
+.settingsContent {
+  flex: 13;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.logoDiv {
+  flex: 3;
+}
+.iconDiv {
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+.logo {
+  max-width: 5.5vw;
+  padding-top: 3vh;
+  display: block;
+  margin: auto;
+}
+
+.navIcon {
+  max-width: 4vw;
+  display: block;
+  margin: auto;
+  filter: drop-shadow(2px 2px 5px white) invert(1);
+  padding-top: 3vh;
+  font-size: 5.5vw;
+  text-align: center;
+}
+
+.iconDiv:hover {
+  background-color: rgb(0, 153, 255);
+  cursor: pointer;
+}
+
+.iconDivError:hover {
+  background-color: rgb(255, 0, 0);
+  cursor: not-allowed;
+}
+
+.navText {
+  transform: scale(1.2, 1);
+}
+
+.settingsItem {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid gray;
+}
+
+.settingsSpace {
+  height: 15vh;
+  width: 100%;
+}
+.settingsHeader {
+  height: 9vh;
+  margin-top: 3vh;
+  font-size: 8vh;
+  padding-left: 5vw;
+  width: 100%;
+  border-bottom: 2px solid gray;
+}
+
+.settingsText {
+  flex: 1;
+  font-size: 2.5vw;
+  margin: auto;
+  padding-left: 10vw;
+  text-decoration: underline dotted;
+}
+
+.settingsEntry {
+  flex: 1;
+  padding-left: 25vw;
+  padding-top: 2vh;
+}
+
+.buttonDiv {
+  height: 5vh;
+  width: 100%;
+  margin-top: 5vh;
+  display: flex;
+}
+.cancelButton {
+  flex: 1;
+  background-color: rgb(196, 196, 196);
+  border-radius: 1vh;
+  color: black;
+  text-shadow: 0px 0px 5px white;
+  text-align: center;
+  padding-top: 2vh;
+  font-size: 3vw;
+  height: 8vh;
+  cursor: pointer;
+}
+
+.saveButton {
+  flex: 1;
+  background-color: rgb(95, 233, 137);
+  border-radius: 1vh;
+  color: black;
+  text-shadow: 0px 0px 5px white;
+  text-align: center;
+  padding-top: 2vh;
+  font-size: 3vw;
+  height: 8vh;
+  cursor: pointer;
+}
+.buttonSpacing {
+  flex: 0.5;
+}
+.buttonBegSpacing {
+  flex: 2;
+}
+#settingsHelp {
+  right: -50vw;
+  top: 5vh;
+  width: 35%;
+  font-size: 1.5vw;
+  padding: 3vw;
+  height: 9%;
+  position: absolute;
+  background-color: rgb(255, 182, 182);
+  color: rgba(0, 0, 0, 1);
+  border-radius: 2vw;
+  transition: right 0.3s ease-in-out, color 0.3s;
+}
+
+.bold {
+  font-weight: 900;
+  text-shadow: 0px 0px 5px black;
+  color: white;
+}

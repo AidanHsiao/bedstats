@@ -2,8 +2,11 @@ async function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+let settingsData;
+let normalCutoff;
+
 document.getElementById("homeIcon").addEventListener("click", () => {
-  homeScreen()
+  homeScreen();
 });
 
 const xpPerPrestige = 487000;
@@ -47,31 +50,40 @@ function calculateColor(stars) {
     case 0:
       baseColor = "gray";
       break;
-    case 1 || 11:
+    case 1:
+    case 11:
       baseColor = "white";
       break;
-    case 2 || 12:
+    case 2:
+    case 12:
       baseColor = "orange";
       break;
-    case 3 || 13:
+    case 3:
+    case 13:
       baseColor = "aqua";
       break;
-    case 4 || 14:
+    case 4:
+    case 14:
       baseColor = "green";
       break;
-    case 5 || 15:
+    case 5:
+    case 15:
       baseColor = "royalblue";
       break;
-    case 6 || 16:
+    case 6:
+    case 16:
       baseColor = "crimson";
       break;
-    case 7 || 17:
+    case 7:
+    case 17:
       baseColor = "salmon";
       break;
-    case 8 || 18:
+    case 8:
+    case 18:
       baseColor = "mediumblue";
       break;
-    case 9 || 19:
+    case 9:
+    case 19:
       baseColor = "purple";
       break;
     case 10:
@@ -102,7 +114,8 @@ function calculateColor(stars) {
   return `linear-gradient(to right, ${baseColor}, ${baseColor})`;
 }
 
-function calculateScore(stats) {
+async function calculateScore(stats) {
+  settingsData = await window.electronAPI.readFile("settings.json");
   let fkdrPts = -1 * (1000 / (stats.fkdr + 10)) + 2 * stats.fkdr + 100;
   const starPts = Math.pow(stats.stars, 0.65);
   let wlrPts = Math.pow(stats.wlr, 1.5) * 10;
@@ -121,10 +134,9 @@ function calculateScore(stats) {
   }
   const score =
     fkdrPts + starPts + wlrPts + bblrPts + finalPts + bedPts + winPts;
-  return score * 10;
+  normalCutoff = settingsData.scoreCutoff;
+  return score * settingsData.scoreConstant * 10;
 }
-
-const normalCutoff = 2500;
 
 function scoreToColor(score) {
   const cutoff = 82.5 * normalCutoff;

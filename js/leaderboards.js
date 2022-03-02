@@ -1,5 +1,3 @@
-let settingsData;
-
 window.onload = async function getLeaderboard() {
   if (sessionStorage.getItem("leaderboards")) {
     document.getElementById("loaderText").innerHTML =
@@ -10,6 +8,7 @@ window.onload = async function getLeaderboard() {
     parsedData = JSON.parse(sessionStorage.getItem("leaderboards"));
     apiLoadingFinished(parsedData);
   } else {
+    settingsData = await window.electronAPI.readFile("settings.json");
     document.getElementById("loaderText").innerHTML =
       "Fetching leaderboards...";
     document.getElementById("loader").style.opacity = 1;
@@ -17,7 +16,7 @@ window.onload = async function getLeaderboard() {
     let leaders;
     try {
       resp = await fetch(
-        `https://api.hypixel.net/leaderboards?key=f31e0dc1-30e8-4ec8-84cb-3060b60c56bc`
+        `https://api.hypixel.net/leaderboards?key=${settingsData.hypixelAPIKey}`
       );
       data = await resp.json();
       data = data.leaderboards.BEDWARS[0];
@@ -25,7 +24,7 @@ window.onload = async function getLeaderboard() {
     } catch (e) {
       document.getElementById("loader").style.opacity = 0;
       document.getElementById("loaderText").innerHTML =
-        "Leaderboards fetch error. Make sure that <br> you are connected to the internet.";
+        "Leaderboards fetch error. Make sure that <br> you are connected to the internet, and your API key is correct.";
       document.getElementById("eb").style.opacity = 1;
 
       document.getElementById("eb").addEventListener("click", () => {
@@ -177,6 +176,15 @@ window.onload = async function getLeaderboard() {
       }
       const bwData = totalLeaderboards[i].stats.Bedwars;
       const stars = calculateStars(bwData.Experience);
+      const score = await calculateScore({
+        stars: stars,
+        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+        finals: bwData.final_kills_bedwars,
+        beds: bwData.beds_broken_bedwars,
+        wins: bwData.wins_bedwars,
+      });
       document.getElementById("leaderboards").innerHTML = `${
         document.getElementById("leaderboards").innerHTML
       }<div class="leaderboardItem${i} leaderboardItem"><div class="leaderboardSpacing"></div><div class="leaderboardRank">${
@@ -188,15 +196,9 @@ window.onload = async function getLeaderboard() {
       ).toFixed(2)}</div><div class="leaderboardWinP">${(
         100 *
         (bwData.wins_bedwars / (bwData.wins_bedwars + bwData.losses_bedwars))
-      ).toFixed(1)}</div><div class="leaderboardScore">${calculateScore({
-        stars: stars,
-        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
-        finals: bwData.final_kills_bedwars,
-        beds: bwData.beds_broken_bedwars,
-        wins: bwData.wins_bedwars,
-      }).toFixed(1)}</div>`;
+      ).toFixed(1)}</div><div class="leaderboardScore">${score.toFixed(
+        1
+      )}</div>`;
       document.getElementsByClassName(`leaderboardItem${i}`)[0].style.color =
         color;
       if (document.getElementById(`rankPlus${i}`)) {
@@ -219,6 +221,13 @@ async function homeScreen() {
 
 document.getElementById("homeIcon").addEventListener("click", () => {
   homeScreen();
+});
+
+document.getElementById("settingsIcon").addEventListener("click", () => {
+  document.getElementById("cover").style.height = "100%";
+  setTimeout(() => {
+    window.location.href = "../html/settings.html";
+  }, 760);
 });
 
 async function homeScreen() {

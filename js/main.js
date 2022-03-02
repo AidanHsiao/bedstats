@@ -44,7 +44,7 @@ async function writeToFile(file, data) {
     await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
   }
   dataPath = `${app.getPath("appData")}/bedwars-electron/${file}`;
-  fs.writeFileSync(dataPath, data, (e) => {
+  fs.writeFileSync(dataPath, JSON.stringify(data), (e) => {
     if (e) {
       console.log(e);
     }
@@ -53,10 +53,33 @@ async function writeToFile(file, data) {
 
 async function readFile(file) {
   let dataPath = `${app.getPath("appData")}/bedwars-electron/${file}`;
+  try {
+    if (!fs.existsSync(dataPath)) {
+      await fs.writeFileSync(dataPath, {}, (e) => {
+        if (e) {
+          console.log(e);
+        }
+      });
+    }
+  } catch (e) {
+    if (file === "settings.json") {
+      await fs.writeFileSync(
+        dataPath,
+        JSON.stringify({
+          theme: "sky",
+          hypixelAPIKey: "",
+          scoreCutoff: 2500,
+          scoreConstant: 1,
+        })
+      ); // Default Settings
+    } else {
+      await fs.writeFileSync(dataPath, JSON.stringify({}));
+    }
+  }
   const data = await fs.readFileSync(dataPath, "utf-8", (e) => {
     if (e) {
       console.log(e);
     }
   });
-  return data;
+  return JSON.parse(data);
 }

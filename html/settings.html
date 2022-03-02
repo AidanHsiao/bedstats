@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net https://api.mojang.com; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/settings.css" />
+    <title>Settings</title>
+  </head>
+  <body>
+    <div class="mainContent">
+      <div class="navBar">
+        <div class="logoDiv">
+          <img draggable="false" src="../img/logo.png" class="logo" />
+        </div>
+        <div class="iconDiv" id="homeIcon">
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv">
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv iconDivError">
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
+        </div>
+        <div class="iconDiv">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="cover" id="cover"></div>
+      <div id="settingsHelp"></div>
+      <div class="settingsContent">
+        <div class="settingsSpace"></div>
+        <div class="settingsHeader">Global Settings</div>
+        <div class="settingsItem">
+          <div class="settingsText">Hypixel API Key</div>
+          <div class="settingsEntry">
+            <input type="text" placeholder="Enter API Key" id="apiInput" />
+          </div>
+        </div>
+        <div class="settingsHeader">Stats Settings</div>
+        <div class="settingsItem">
+          <div class="settingsText">Score Cutoff</div>
+          <div class="settingsEntry">
+            <input
+              type="text"
+              placeholder="Enter Score Cutoff"
+              id="scoreInput"
+            />
+          </div>
+        </div>
+        <div class="settingsItem">
+          <div class="settingsText">Score Constant</div>
+          <div class="settingsEntry">
+            <input
+              type="text"
+              placeholder="Enter Score Constant"
+              id="cScoreInput"
+            />
+          </div>
+        </div>
+        <div class="buttonDiv">
+          <div class="buttonBegSpacing"></div>
+          <div class="cancelButton" id="cancelButton">Cancel</div>
+          <div class="buttonSpacing"></div>
+          <div class="saveButton" id="saveButton">Save</div>
+          <div class="buttonSpacing"></div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/settings.js"></script>
+  </body>
+</html>

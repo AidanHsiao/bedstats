@@ -7,12 +7,16 @@ window.onload = async function getPlayerStats() {
   let name;
   let resp;
   let data;
+  const settingsData = await window.electronAPI.readFile("settings.json");
   document.getElementById("loaderText").innerHTML = "Fetching player UUID...";
   document.getElementById("loader").style.opacity = 1;
   document.getElementById("loaderText").style.opacity = 1;
   try {
     resp = await fetch(`https://api.ashcon.app/mojang/v2/user/${username}`);
     data = await resp.json();
+    if (data.code === 404) {
+      throw "Username Not Found";
+    }
     uuid = data.uuid;
     name = data.username;
   } catch (e) {
@@ -32,7 +36,7 @@ window.onload = async function getPlayerStats() {
   document.getElementById("loaderText").innerHTML = "Fetching player stats...";
   try {
     resp = await fetch(
-      `https://api.hypixel.net/player?key=f31e0dc1-30e8-4ec8-84cb-3060b60c56bc&uuid=${uuid}`
+      `https://api.hypixel.net/player?key=${settingsData.hypixelAPIKey}&uuid=${uuid}`
     );
     data = await resp.json();
     playerData = data;
@@ -43,7 +47,7 @@ window.onload = async function getPlayerStats() {
   } catch (e) {
     document.getElementById("loader").style.opacity = 0;
     document.getElementById("loaderText").innerHTML =
-      "Stats fetch error. This player may not<br>have played bedwars before.";
+      "Stats fetch error. Make sure your API key is correct. <br> If it is, this player may not have played bedwars before.";
     document.getElementById("eb").style.opacity = 1;
 
     document.getElementById("eb").addEventListener("click", () => {
@@ -111,8 +115,9 @@ window.onload = async function getPlayerStats() {
   const rank = calculateRank(playerData.player);
   let plusColor;
   document.getElementById("name").innerHTML = name;
+  console.log(rank);
   switch (rank) {
-    case "NON" || "NORMAL":
+    default:
       document.getElementById("rank").innerHTML = "";
       document.getElementById("name").style.color = "#AAAAAA";
       break;
@@ -189,6 +194,12 @@ window.onload = async function getPlayerStats() {
       document.getElementById("name").style.color = "#FF5555";
       document.getElementById("rankPlus").style.color = "#FFFFFF";
       break;
+    case "§d[PIG§b+++§d]":
+      document.getElementById("rank").innerHTML =
+        '[PIG<span id="rankPlus">+++</span>]';
+      document.getElementById("rank").style.color = "#ff55ff";
+      document.getElementById("name").style.color = "#ff55ff";
+      document.getElementById("rankPlus").style.color = "#55ffff";
   }
   document.getElementById("loader").style.opacity = 0;
   document.getElementById("loaderText").style.opacity = 0;
@@ -223,7 +234,7 @@ window.onload = async function getPlayerStats() {
   document.getElementById("sss").style.opacity = 1;
   document.getElementById("animWinP").style.marginRight = "5.866666vh";
   document.getElementById("animSepDiv").style.marginLeft = "5.866666vh";
-  const rating = calculateScore({
+  const rating = await calculateScore({
     stars: stars,
     fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
     bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
@@ -244,7 +255,7 @@ document.getElementById("homeIcon").addEventListener("click", () => {
   homeScreen();
 });
 
-document.getElementById("filter").onchange = () => {
+document.getElementById("filter").onchange = async () => {
   const value = document.getElementById("filter").value;
   switch (value) {
     case "Solo": {
@@ -296,7 +307,7 @@ document.getElementById("filter").onchange = () => {
         ).toFixed(2),
         2
       );
-      const rating = calculateScore({
+      const rating = await calculateScore({
         stars: stars,
         fkdr:
           bwData.eight_one_final_kills_bedwars /
@@ -368,7 +379,7 @@ document.getElementById("filter").onchange = () => {
         ).toFixed(2),
         2
       );
-      const rating = calculateScore({
+      const rating = await calculateScore({
         stars: stars,
         fkdr:
           bwData.eight_two_final_kills_bedwars /
@@ -442,7 +453,7 @@ document.getElementById("filter").onchange = () => {
         ).toFixed(2),
         2
       );
-      const rating = calculateScore({
+      const rating = await calculateScore({
         stars: stars,
         fkdr:
           bwData.four_three_final_kills_bedwars /
@@ -516,7 +527,7 @@ document.getElementById("filter").onchange = () => {
         ).toFixed(2),
         2
       );
-      const rating = calculateScore({
+      const rating = await calculateScore({
         stars: stars,
         fkdr:
           bwData.four_four_final_kills_bedwars /
@@ -581,7 +592,7 @@ document.getElementById("filter").onchange = () => {
         (bwData.beds_broken_bedwars / bwData.beds_lost_bedwars).toFixed(2),
         2
       );
-      const rating = calculateScore({
+      const rating = await calculateScore({
         stars: stars,
         fkdr: bwData.final_deaths_bedwars
           ? bwData.final_kills_bedwars / bwData.final_deaths_bedwars
@@ -648,3 +659,10 @@ async function homeScreen() {
   await sleep(760);
   window.location.href = "../html/index.html";
 }
+
+document.getElementById("settingsIcon").addEventListener("click", () => {
+  document.getElementById("cover").style.height = "100%";
+  setTimeout(() => {
+    window.location.href = "../html/settings.html";
+  }, 760);
+});
