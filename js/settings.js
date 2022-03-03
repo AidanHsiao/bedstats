@@ -41,7 +41,7 @@ const htmlArr = [
   'The <span class="bold">score constant</span> is the number at which the base score is multiplied by. This number is purely cosmetic, but it does affect score cutoff.',
 ];
 
-document.querySelectorAll(".settingsText").forEach(async (text, idx) => {
+document.querySelectorAll(".hoverDetect").forEach(async (text, idx) => {
   text.addEventListener("mouseover", async () => {
     document.getElementById("settingsHelp").style.right = "3vw";
     document.getElementById("settingsHelp").style.color = "rgba(0, 0, 0, 1)";

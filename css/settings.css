@@ -45,6 +45,7 @@ body {
   box-shadow: 0 0 3.125em 0 #006eff;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 .settingsContent {
   flex: 13;
@@ -114,14 +115,22 @@ body {
   flex: 1;
   font-size: 2.5vw;
   margin: auto;
+  padding-top: 2.5vh;
   padding-left: 10vw;
+  height: 75%;
   text-decoration: underline dotted;
+  background-color: rgb(255, 231, 233);
 }
 
 .settingsEntry {
   flex: 1;
   padding-left: 25vw;
   padding-top: 2vh;
+  background-image: linear-gradient(
+    to left,
+    rgb(232, 253, 255),
+    rgb(255, 231, 233)
+  );
 }
 
 .buttonDiv {
@@ -169,7 +178,11 @@ body {
   padding: 3vw;
   height: 9%;
   position: absolute;
-  background-color: rgb(255, 182, 182);
+  background-image: linear-gradient(
+    to right,
+    rgb(182, 229, 255),
+    rgb(182, 193, 255)
+  );
   color: rgba(0, 0, 0, 1);
   border-radius: 2vw;
   transition: right 0.3s ease-in-out, color 0.3s;
@@ -177,6 +190,6 @@ body {
 
 .bold {
   font-weight: 900;
-  text-shadow: 0px 0px 5px black;
-  color: white;
+  text-shadow: 0px 0px 5px white;
+  color: red;
 }
