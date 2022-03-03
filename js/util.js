@@ -114,8 +114,7 @@ function calculateColor(stars) {
   return `linear-gradient(to right, ${baseColor}, ${baseColor})`;
 }
 
-async function calculateScore(stats) {
-  settingsData = await window.electronAPI.readFile("settings.json");
+async function calculateScore(stats, settingsData) {
   let fkdrPts = -1 * (1000 / (stats.fkdr + 10)) + 2 * stats.fkdr + 100;
   const starPts = Math.pow(stats.stars, 0.65);
   let wlrPts = Math.pow(stats.wlr, 1.5) * 10;

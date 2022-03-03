@@ -24,7 +24,7 @@ document
 window.onload = async function uncover() {
   const opened = sessionStorage.getItem("opened");
   if (!opened) {
-    document.getElementById("welcomeParent").style.height = "100%";
+    document.getElementById("welcomeParent").style.height = "60%";
     await sleep(500);
     document.getElementById("welcomeParent").style.opacity = 1;
     document.getElementById("welcomeParent").style.letterSpacing = "1vw";
@@ -46,6 +46,14 @@ window.onload = async function uncover() {
       document.getElementById("cover").style.height = "100vh";
       setTimeout(() => {
         window.location.href = "../html/settings.html";
+      }, 760);
+    });
+    document
+    .getElementById("friendsIcon")
+    .addEventListener("click", async () => {
+      document.getElementById("cover").style.height = "100vh";
+      setTimeout(() => {
+        window.location.href = "../html/friends.html";
       }, 760);
     });
   sessionStorage.setItem("opened", true);

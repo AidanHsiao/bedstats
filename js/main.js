@@ -43,7 +43,7 @@ async function writeToFile(file, data) {
   if (!fs.existsSync(path.join(dataPath, "bedwars-electron"))) {
     await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
   }
-  dataPath = `${app.getPath("appData")}/bedwars-electron/${file}`;
+  dataPath = path.join(`${app.getPath("appData")}`,'bedwars-electron',file);
   fs.writeFileSync(dataPath, JSON.stringify(data), (e) => {
     if (e) {
       console.log(e);
@@ -52,8 +52,12 @@ async function writeToFile(file, data) {
 }
 
 async function readFile(file) {
-  let dataPath = `${app.getPath("appData")}/bedwars-electron/${file}`;
-  try {
+    let dataPath = app.getPath("appData");
+    if (!fs.existsSync(path.join(dataPath, "bedwars-electron"))) {
+      await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
+    }
+    dataPath = path.join(`${app.getPath("appData")}`,'bedwars-electron',file);
+    try {
     if (!fs.existsSync(dataPath)) {
       await fs.writeFileSync(dataPath, {}, (e) => {
         if (e) {

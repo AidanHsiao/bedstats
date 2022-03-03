@@ -242,7 +242,7 @@ window.onload = async function getPlayerStats() {
     finals: bwData.final_kills_bedwars,
     beds: bwData.beds_broken_bedwars,
     wins: bwData.wins_bedwars,
-  });
+  }, settingsData);
 
   await sleep(500);
   document.getElementById("scoreDiv").style.opacity = 1;
@@ -319,7 +319,7 @@ document.getElementById("filter").onchange = async () => {
         finals: bwData.eight_one_final_kills_bedwars,
         beds: bwData.eight_one_beds_broken_bedwars,
         wins: bwData.eight_one_wins_bedwars,
-      });
+      }, settingsData);
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -391,7 +391,7 @@ document.getElementById("filter").onchange = async () => {
         finals: bwData.eight_two_final_kills_bedwars,
         beds: bwData.eight_two_beds_broken_bedwars,
         wins: bwData.eight_two_wins_bedwars,
-      });
+      }, settingsData);
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -465,7 +465,7 @@ document.getElementById("filter").onchange = async () => {
         finals: bwData.four_three_final_kills_bedwars,
         beds: bwData.four_three_beds_broken_bedwars,
         wins: bwData.four_three_wins_bedwars,
-      });
+      }, settingsData);
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -539,7 +539,7 @@ document.getElementById("filter").onchange = async () => {
         finals: bwData.four_four_final_kills_bedwars,
         beds: bwData.four_four_beds_broken_bedwars,
         wins: bwData.four_four_wins_bedwars,
-      });
+      }, settingsData);
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -594,19 +594,13 @@ document.getElementById("filter").onchange = async () => {
       );
       const rating = await calculateScore({
         stars: stars,
-        fkdr: bwData.final_deaths_bedwars
-          ? bwData.final_kills_bedwars / bwData.final_deaths_bedwars
-          : bwData.final_kills_bedwars,
-        bblr: bwData.beds_lost_bedwars
-          ? bwData.beds_broken_bedwars / bwData.beds_lost_bedwars
-          : bwData.beds_broken_bedwars,
-        wlr: bwData.losses_bedwars
-          ? bwData.wins_bedwars / bwData.losses_bedwars
-          : bwData.wins_bedwars,
+        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
         finals: bwData.final_kills_bedwars,
         beds: bwData.beds_broken_bedwars,
         wins: bwData.wins_bedwars,
-      });
+      }, settingsData);
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),

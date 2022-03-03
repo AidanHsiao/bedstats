@@ -1,4 +1,6 @@
 window.onload = async function getLeaderboard() {
+const settingsData = await window.electronAPI.readFile("settings.json");
+
   if (sessionStorage.getItem("leaderboards")) {
     document.getElementById("loaderText").innerHTML =
       "Fetching cached leaderboard data...";
@@ -6,9 +8,8 @@ window.onload = async function getLeaderboard() {
     document.getElementById("loaderText").style.opacity = 1;
     await sleep(0);
     parsedData = JSON.parse(sessionStorage.getItem("leaderboards"));
-    apiLoadingFinished(parsedData);
+    apiLoadingFinished(parsedData, settingsData);
   } else {
-    settingsData = await window.electronAPI.readFile("settings.json");
     document.getElementById("loaderText").innerHTML =
       "Fetching leaderboards...";
     document.getElementById("loader").style.opacity = 1;
@@ -57,7 +58,7 @@ window.onload = async function getLeaderboard() {
           });
           await sleep(500);
           totalLeaderboards = bubbleSort(baseArray, totalLeaderboards);
-          apiLoadingFinished(totalLeaderboards);
+          apiLoadingFinished(totalLeaderboards, settingsData);
         }
       } catch (e) {
         document.getElementById("loader").style.opacity = 0;
@@ -95,7 +96,7 @@ window.onload = async function getLeaderboard() {
     return arr;
   }
 
-  async function apiLoadingFinished(totalLeaderboards) {
+  async function apiLoadingFinished(totalLeaderboards, settingsData) {
     document.getElementById("loader").style.opacity = 0;
     document.getElementById("loaderText").style.opacity = 0;
     document.getElementById("navigation").style.opacity = 1;
@@ -184,7 +185,7 @@ window.onload = async function getLeaderboard() {
         finals: bwData.final_kills_bedwars,
         beds: bwData.beds_broken_bedwars,
         wins: bwData.wins_bedwars,
-      });
+      }, settingsData);
       document.getElementById("leaderboards").innerHTML = `${
         document.getElementById("leaderboards").innerHTML
       }<div class="leaderboardItem${i} leaderboardItem"><div class="leaderboardSpacing"></div><div class="leaderboardRank">${
