@@ -24,6 +24,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "UUID fetch error. Make sure you are connected to the internet, <br>and that the username is spelt correctly.";
     document.getElementById("eb").style.opacity = 1;
+    document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
 
     document.getElementById("eb").style.cursor = "pointer";
 
@@ -49,6 +50,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "Stats fetch error. Make sure your API key is correct. <br> If it is, this player may not have played bedwars before.";
     document.getElementById("eb").style.opacity = 1;
+    document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
 
     document.getElementById("eb").addEventListener("click", () => {
       homeScreen();
@@ -234,15 +236,18 @@ window.onload = async function getPlayerStats() {
   document.getElementById("sss").style.opacity = 1;
   document.getElementById("animWinP").style.marginRight = "5.866666vh";
   document.getElementById("animSepDiv").style.marginLeft = "5.866666vh";
-  const rating = await calculateScore({
-    stars: stars,
-    fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-    bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-    wlr: bwData.wins_bedwars / bwData.losses_bedwars,
-    finals: bwData.final_kills_bedwars,
-    beds: bwData.beds_broken_bedwars,
-    wins: bwData.wins_bedwars,
-  }, settingsData);
+  const rating = await calculateScore(
+    {
+      stars: stars,
+      fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+      bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+      wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+      finals: bwData.final_kills_bedwars,
+      beds: bwData.beds_broken_bedwars,
+      wins: bwData.wins_bedwars,
+    },
+    settingsData
+  );
 
   await sleep(500);
   document.getElementById("scoreDiv").style.opacity = 1;
@@ -307,19 +312,22 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore({
-        stars: stars,
-        fkdr:
-          bwData.eight_one_final_kills_bedwars /
-          bwData.eight_one_final_deaths_bedwars,
-        bblr:
-          bwData.eight_one_beds_broken_bedwars /
-          bwData.eight_one_beds_lost_bedwars,
-        wlr: bwData.eight_one_wins_bedwars / bwData.eight_one_losses_bedwars,
-        finals: bwData.eight_one_final_kills_bedwars,
-        beds: bwData.eight_one_beds_broken_bedwars,
-        wins: bwData.eight_one_wins_bedwars,
-      }, settingsData);
+      const rating = await calculateScore(
+        {
+          stars: stars,
+          fkdr:
+            bwData.eight_one_final_kills_bedwars /
+            bwData.eight_one_final_deaths_bedwars,
+          bblr:
+            bwData.eight_one_beds_broken_bedwars /
+            bwData.eight_one_beds_lost_bedwars,
+          wlr: bwData.eight_one_wins_bedwars / bwData.eight_one_losses_bedwars,
+          finals: bwData.eight_one_final_kills_bedwars,
+          beds: bwData.eight_one_beds_broken_bedwars,
+          wins: bwData.eight_one_wins_bedwars,
+        },
+        settingsData
+      );
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -379,19 +387,22 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore({
-        stars: stars,
-        fkdr:
-          bwData.eight_two_final_kills_bedwars /
-          bwData.eight_two_final_deaths_bedwars,
-        bblr:
-          bwData.eight_two_beds_broken_bedwars /
-          bwData.eight_two_beds_lost_bedwars,
-        wlr: bwData.eight_two_wins_bedwars / bwData.eight_two_losses_bedwars,
-        finals: bwData.eight_two_final_kills_bedwars,
-        beds: bwData.eight_two_beds_broken_bedwars,
-        wins: bwData.eight_two_wins_bedwars,
-      }, settingsData);
+      const rating = await calculateScore(
+        {
+          stars: stars,
+          fkdr:
+            bwData.eight_two_final_kills_bedwars /
+            bwData.eight_two_final_deaths_bedwars,
+          bblr:
+            bwData.eight_two_beds_broken_bedwars /
+            bwData.eight_two_beds_lost_bedwars,
+          wlr: bwData.eight_two_wins_bedwars / bwData.eight_two_losses_bedwars,
+          finals: bwData.eight_two_final_kills_bedwars,
+          beds: bwData.eight_two_beds_broken_bedwars,
+          wins: bwData.eight_two_wins_bedwars,
+        },
+        settingsData
+      );
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -453,19 +464,23 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore({
-        stars: stars,
-        fkdr:
-          bwData.four_three_final_kills_bedwars /
-          bwData.four_three_final_deaths_bedwars,
-        bblr:
-          bwData.four_three_beds_broken_bedwars /
-          bwData.four_three_beds_lost_bedwars,
-        wlr: bwData.four_three_wins_bedwars / bwData.four_three_losses_bedwars,
-        finals: bwData.four_three_final_kills_bedwars,
-        beds: bwData.four_three_beds_broken_bedwars,
-        wins: bwData.four_three_wins_bedwars,
-      }, settingsData);
+      const rating = await calculateScore(
+        {
+          stars: stars,
+          fkdr:
+            bwData.four_three_final_kills_bedwars /
+            bwData.four_three_final_deaths_bedwars,
+          bblr:
+            bwData.four_three_beds_broken_bedwars /
+            bwData.four_three_beds_lost_bedwars,
+          wlr:
+            bwData.four_three_wins_bedwars / bwData.four_three_losses_bedwars,
+          finals: bwData.four_three_final_kills_bedwars,
+          beds: bwData.four_three_beds_broken_bedwars,
+          wins: bwData.four_three_wins_bedwars,
+        },
+        settingsData
+      );
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -527,19 +542,22 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore({
-        stars: stars,
-        fkdr:
-          bwData.four_four_final_kills_bedwars /
-          bwData.four_four_final_deaths_bedwars,
-        bblr:
-          bwData.four_four_beds_broken_bedwars /
-          bwData.four_four_beds_lost_bedwars,
-        wlr: bwData.four_four_wins_bedwars / bwData.four_four_losses_bedwars,
-        finals: bwData.four_four_final_kills_bedwars,
-        beds: bwData.four_four_beds_broken_bedwars,
-        wins: bwData.four_four_wins_bedwars,
-      }, settingsData);
+      const rating = await calculateScore(
+        {
+          stars: stars,
+          fkdr:
+            bwData.four_four_final_kills_bedwars /
+            bwData.four_four_final_deaths_bedwars,
+          bblr:
+            bwData.four_four_beds_broken_bedwars /
+            bwData.four_four_beds_lost_bedwars,
+          wlr: bwData.four_four_wins_bedwars / bwData.four_four_losses_bedwars,
+          finals: bwData.four_four_final_kills_bedwars,
+          beds: bwData.four_four_beds_broken_bedwars,
+          wins: bwData.four_four_wins_bedwars,
+        },
+        settingsData
+      );
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -592,15 +610,18 @@ document.getElementById("filter").onchange = async () => {
         (bwData.beds_broken_bedwars / bwData.beds_lost_bedwars).toFixed(2),
         2
       );
-      const rating = await calculateScore({
-        stars: stars,
-        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
-        finals: bwData.final_kills_bedwars,
-        beds: bwData.beds_broken_bedwars,
-        wins: bwData.wins_bedwars,
-      }, settingsData);
+      const rating = await calculateScore(
+        {
+          stars: stars,
+          fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+          bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+          wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+          finals: bwData.final_kills_bedwars,
+          beds: bwData.beds_broken_bedwars,
+          wins: bwData.wins_bedwars,
+        },
+        settingsData
+      );
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
@@ -658,5 +679,12 @@ document.getElementById("settingsIcon").addEventListener("click", () => {
   document.getElementById("cover").style.height = "100%";
   setTimeout(() => {
     window.location.href = "../html/settings.html";
+  }, 760);
+});
+
+document.getElementById("friendsIcon").addEventListener("click", () => {
+  document.getElementById("cover").style.height = "100%";
+  setTimeout(() => {
+    window.location.href = "../html/friends.html";
   }, 760);
 });

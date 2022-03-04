@@ -14,6 +14,13 @@ document.getElementById("homeIcon").addEventListener("click", () => {
   }, 760);
 });
 
+document.getElementById("friendsIcon").addEventListener("click", () => {
+  document.getElementById("cover").style.width = "100%";
+  setTimeout(() => {
+    window.location.href = "../html/friends.html";
+  }, 760);
+});
+
 document.getElementById("saveButton").addEventListener("click", () => {
   const settings = {
     theme: "sky",

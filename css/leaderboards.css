@@ -20,6 +20,7 @@ body {
   font-family: "bahnschrift";
   overflow-x: hidden;
   background-color: #e8e8e8;
+  transition: background-color 0.5s;
   user-select: none;
   opacity: 1;
 }
@@ -28,6 +29,7 @@ body {
   height: 100vh;
   display: flex;
   flex: 1;
+  transition: background-color 0.5s;
   align-items: left;
 }
 .logoDiv {

@@ -43,7 +43,7 @@ async function writeToFile(file, data) {
   if (!fs.existsSync(path.join(dataPath, "bedwars-electron"))) {
     await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
   }
-  dataPath = path.join(`${app.getPath("appData")}`,'bedwars-electron',file);
+  dataPath = path.join(`${app.getPath("appData")}`, "bedwars-electron", file);
   fs.writeFileSync(dataPath, JSON.stringify(data), (e) => {
     if (e) {
       console.log(e);
@@ -52,12 +52,12 @@ async function writeToFile(file, data) {
 }
 
 async function readFile(file) {
-    let dataPath = app.getPath("appData");
-    if (!fs.existsSync(path.join(dataPath, "bedwars-electron"))) {
-      await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
-    }
-    dataPath = path.join(`${app.getPath("appData")}`,'bedwars-electron',file);
-    try {
+  let dataPath = app.getPath("appData");
+  if (!fs.existsSync(path.join(dataPath, "bedwars-electron"))) {
+    await fs.mkdirSync(path.join(dataPath, "bedwars-electron"));
+  }
+  dataPath = path.join(`${app.getPath("appData")}`, "bedwars-electron", file);
+  try {
     if (!fs.existsSync(dataPath)) {
       await fs.writeFileSync(dataPath, {}, (e) => {
         if (e) {
@@ -86,4 +86,26 @@ async function readFile(file) {
     }
   });
   return JSON.parse(data);
+}
+
+async function watchLogs() {
+  const logPath = path.join(
+    app.getPath("appData"),
+    "minecraft",
+    "logs",
+    "latest.log"
+  );
+  const watcher = fs.watch(logPath, async (event, file) => {
+    const data = await fs.readFileSync(logPath, "utf-8", (e) => {
+      if (e) {
+        console.log(e);
+      }
+    });
+    const lines = data.toString().replace(/\r\n/g, "\n").split("\n");
+    const lastLine = lines[lines.length - 2];
+    if (lastLine.includes("[Server thread/INFO]:")) {
+      const lineData = lastLine.split("[Server thread/INFO]: ")[1];
+      console.log(lineData);
+    }
+  });
 }

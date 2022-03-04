@@ -29,6 +29,7 @@ body {
   display: flex;
   flex: 1;
   align-items: left;
+  transition: background-color 0.5s;
 }
 .logoDiv {
   flex: 3;

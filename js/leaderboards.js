@@ -1,5 +1,5 @@
 window.onload = async function getLeaderboard() {
-const settingsData = await window.electronAPI.readFile("settings.json");
+  const settingsData = await window.electronAPI.readFile("settings.json");
 
   if (sessionStorage.getItem("leaderboards")) {
     document.getElementById("loaderText").innerHTML =
@@ -27,7 +27,7 @@ const settingsData = await window.electronAPI.readFile("settings.json");
       document.getElementById("loaderText").innerHTML =
         "Leaderboards fetch error. Make sure that <br> you are connected to the internet, and your API key is correct.";
       document.getElementById("eb").style.opacity = 1;
-
+      document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
       document.getElementById("eb").addEventListener("click", () => {
         homeScreen();
       });
@@ -63,8 +63,10 @@ const settingsData = await window.electronAPI.readFile("settings.json");
       } catch (e) {
         document.getElementById("loader").style.opacity = 0;
         document.getElementById("loaderText").innerHTML =
-          "Stats fetch error. This player may not<br>have played on Hypixel before.";
+          "Stats fetch error. An unknown error occurred; please try again.";
         document.getElementById("eb").style.opacity = 1;
+        document.querySelector(".mainContent").style.backgroundColor =
+          "#ffd8d8";
 
         document.getElementById("eb").addEventListener("click", () => {
           homeScreen();
@@ -177,15 +179,18 @@ const settingsData = await window.electronAPI.readFile("settings.json");
       }
       const bwData = totalLeaderboards[i].stats.Bedwars;
       const stars = calculateStars(bwData.Experience);
-      const score = await calculateScore({
-        stars: stars,
-        fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-        bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-        wlr: bwData.wins_bedwars / bwData.losses_bedwars,
-        finals: bwData.final_kills_bedwars,
-        beds: bwData.beds_broken_bedwars,
-        wins: bwData.wins_bedwars,
-      }, settingsData);
+      const score = await calculateScore(
+        {
+          stars: stars,
+          fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+          bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+          wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+          finals: bwData.final_kills_bedwars,
+          beds: bwData.beds_broken_bedwars,
+          wins: bwData.wins_bedwars,
+        },
+        settingsData
+      );
       document.getElementById("leaderboards").innerHTML = `${
         document.getElementById("leaderboards").innerHTML
       }<div class="leaderboardItem${i} leaderboardItem"><div class="leaderboardSpacing"></div><div class="leaderboardRank">${
@@ -236,3 +241,10 @@ async function homeScreen() {
   await sleep(760);
   window.location.href = "../html/index.html";
 }
+
+document.getElementById("friendsIcon").addEventListener("click", () => {
+  document.getElementById("cover").style.height = "100%";
+  setTimeout(() => {
+    window.location.href = "../html/friends.html";
+  }, 760);
+});
