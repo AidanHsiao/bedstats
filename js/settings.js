@@ -3,6 +3,7 @@ window.onload = async function loadSettings() {
   document.getElementById("apiInput").value = data.hypixelAPIKey;
   document.getElementById("scoreInput").value = data.scoreCutoff;
   document.getElementById("cScoreInput").value = data.scoreConstant;
+  document.getElementById("logPathInput").value = data.logPath;
   document.getElementById("cover").style.width = "0%";
   console.log(data);
 };
@@ -21,12 +22,14 @@ document.getElementById("friendsIcon").addEventListener("click", () => {
   }, 760);
 });
 
-document.getElementById("saveButton").addEventListener("click", () => {
+document.getElementById("saveButton").addEventListener("click", async () => {
+  const initData = await window.electronAPI.readFile("settings.json");
   const settings = {
     theme: "sky",
     hypixelAPIKey: document.getElementById("apiInput").value,
     scoreCutoff: document.getElementById("scoreInput").value,
     scoreConstant: document.getElementById("cScoreInput").value,
+    logPath: document.getElementById("logPathInput").value,
   };
   window.electronAPI.writeFile("settings.json", settings);
   document.getElementById("cover").style.width = "100%";
@@ -44,6 +47,7 @@ document.getElementById("cancelButton").addEventListener("click", () => {
 
 const htmlArr = [
   'The <span class="bold">Hypixel API Key</span> is obtained through running "/api new" on Hypixel. This field is required for all functions that pull Hypixel Stats.',
+  'Because third-party clients store log files in a different directory, you may need to set the <span class="bold">Logging Configuration</span> to match your client.',
   '<span class="bold">Score cutoff</span> is defined as the score value at which enemies start becoming considered dangerous. Lower this if you don\'t play at a decently high level.',
   'The <span class="bold">score constant</span> is the number at which the base score is multiplied by. This number is purely cosmetic, but it does affect score cutoff.',
 ];

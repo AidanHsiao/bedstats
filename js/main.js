@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const fs = require("fs");
 const path = require("path");
+let window;
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -19,6 +20,7 @@ const createWindow = () => {
   //   win.setMenu(null)
   win.setAspectRatio(16 / 9);
   win.loadFile("html/index.html");
+  window = win;
 };
 
 app.on("ready", () => {
@@ -66,18 +68,24 @@ async function readFile(file) {
       });
     }
   } catch (e) {
-    if (file === "settings.json") {
-      await fs.writeFileSync(
-        dataPath,
-        JSON.stringify({
-          theme: "sky",
-          hypixelAPIKey: "",
-          scoreCutoff: 2500,
-          scoreConstant: 1,
-        })
-      ); // Default Settings
-    } else {
-      await fs.writeFileSync(dataPath, JSON.stringify({}));
+    switch (file) {
+      case "settings.json": {
+        await fs.writeFileSync(
+          dataPath,
+          JSON.stringify({
+            logPath: "Vanilla",
+            theme: "sky",
+            hypixelAPIKey: "",
+            scoreCutoff: 2500,
+            scoreConstant: 1,
+          })
+        ); // Default Settings
+        break;
+      }
+      default: {
+        await fs.writeFileSync(dataPath, JSON.stringify({}));
+        break;
+      }
     }
   }
   const data = await fs.readFileSync(dataPath, "utf-8", (e) => {
@@ -89,12 +97,35 @@ async function readFile(file) {
 }
 
 async function watchLogs() {
-  const logPath = path.join(
-    app.getPath("appData"),
-    "minecraft",
-    "logs",
-    "latest.log"
-  );
+  let logPath;
+  const settingsData = await readFile("settings.json");
+  const mcPath = process.platform === "darwin" ? "minecraft" : ".minecraft";
+  switch (settingsData.logPath) {
+    case "Vanilla": {
+      logPath = path.join(app.getPath("appData"), mcPath, "logs", "latest.log");
+      break;
+    }
+    case "Lunar": {
+      logPath = path.join(
+        app.getPath("home"),
+        "lunarclient",
+        "logs",
+        "latest.log"
+      );
+      break;
+    }
+    case "Badlion": {
+      logPath = path.join(
+        app.getPath("appData"),
+        mcData,
+        "logs",
+        "blclient",
+        "minecraft",
+        "latest.log"
+      );
+      break;
+    }
+  }
   const watcher = fs.watch(logPath, async (event, file) => {
     const data = await fs.readFileSync(logPath, "utf-8", (e) => {
       if (e) {
