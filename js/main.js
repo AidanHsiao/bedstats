@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const fs = require("fs");
 const path = require("path");
-const axios = require("axios")
+const axios = require("axios");
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -96,20 +96,19 @@ async function readFile(file) {
 }
 
 let watcher;
-let playerInfo = []
-let playerNames = []
-let playerScores = []
+let playerInfo = [];
+let playerNames = [];
+let playerScores = [];
 
 async function watchLogs() {
   const settingsData = await readFile("settings.json");
-  const mcPath = process.platform === "darwin" ? "minecraft" : ".minecraft";
-      logPath = path.join(
-        app.getPath("home"),
-        ".lunarclient",
-        "logs",
-        "launcher",
-        "renderer.log"
-      );
+  logPath = path.join(
+    app.getPath("home"),
+    ".lunarclient",
+    "logs",
+    "launcher",
+    "renderer.log"
+  );
   watcher = fs.watch(logPath, async (event, file) => {
     const data = await fs.readFileSync(logPath, "utf-8", (e) => {
       if (e) {
@@ -118,71 +117,77 @@ async function watchLogs() {
     });
     const lines = data.toString().replace(/\r\n/g, "\n").split("\n");
     let lineData;
-      const lastLine = lines[lines.length - 3]
-      if (lastLine.includes("[Client thread/INFO]: [CHAT] ")) {
-        lineData = lastLine.split("[Client thread/INFO]: [CHAT] ")[1].replaceAll("????? ", "").replaceAll("?", "")
-      }
-  if (lineData) {
-  const splitData = lineData.split("")
-        splitData.forEach((l, idx) => {
-          if (l === "�") {
-            splitData[idx] = ""
-            splitData[idx + 1] = ""
-          }
-        })
-        lineData = splitData.join("")
-        const lastLog = lineData
-        const username = lineData.split("has joined (").length >= 2 ? lineData.split("has joined (")[0].replaceAll(" ","") : ""
-        if (username) {
-          addData(username)
+    const lastLine = lines[lines.length - 3];
+    if (lastLine.includes("[Client thread/INFO]: [CHAT] ")) {
+      lineData = lastLine
+        .split("[Client thread/INFO]: [CHAT] ")[1]
+        .replaceAll("????? ", "")
+        .replaceAll("?", "");
+    }
+    if (lineData) {
+      const splitData = lineData.split("");
+      splitData.forEach((l, idx) => {
+        if (l === "�") {
+          splitData[idx] = "";
+          splitData[idx + 1] = "";
         }
+      });
+      lineData = splitData.join("");
+      const lastLog = lineData;
+      const username =
+        lineData.split("has joined (").length >= 2
+          ? lineData.split("has joined (")[0].replaceAll(" ", "")
+          : "";
+      if (username) {
+        addData(username);
       }
+    }
   });
 }
 
 async function addData(u) {
-  const settingsData = await readFile("settings.json")
-  const playerData = await getPlayerData(settingsData.hypixelAPIKey, u)
-  const bwData = playerData.player.stats.Bedwars
-  const stars = await calculateStars(bwData.Experience)
+  const settingsData = await readFile("settings.json");
+  const playerData = await getPlayerData(settingsData.hypixelAPIKey, u);
+  const bwData = playerData.player.stats.Bedwars;
+  const stars = await calculateStars(bwData.Experience);
   const score = await calculateScore(
-        {
-          stars: stars,
-          fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-          bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-          wlr: bwData.wins_bedwars / bwData.losses_bedwars,
-          finals: bwData.final_kills_bedwars,
-          beds: bwData.beds_broken_bedwars,
-          wins: bwData.wins_bedwars,
-        },
-        settingsData
-      );
-      if (!playerNames.includes(u)) {
-  playerInfo.push({
-    name: u,
-    stars: stars,
-    kdr: bwData.kills_bedwars / bwData.deaths_bedwars,
-    fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-    bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
-    winP: 100 * bwData.wins_bedwars / (bwData.losses_bedwars + bwData.wins_bedwars),
-    score: score
-  })
-  playerNames.push(u)
-  playerScores.push(score)
-}
-  console.log(playerInfo)
+    {
+      stars: stars,
+      fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+      bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+      wlr: bwData.wins_bedwars / bwData.losses_bedwars,
+      finals: bwData.final_kills_bedwars,
+      beds: bwData.beds_broken_bedwars,
+      wins: bwData.wins_bedwars,
+    },
+    settingsData
+  );
+  if (!playerNames.includes(u)) {
+    playerInfo.push({
+      name: u,
+      stars: stars,
+      kdr: bwData.kills_bedwars / bwData.deaths_bedwars,
+      fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
+      bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+      winP:
+        (100 * bwData.wins_bedwars) /
+        (bwData.losses_bedwars + bwData.wins_bedwars),
+      score: score,
+    });
+    playerNames.push(u);
+    playerScores.push(score);
+  }
+  console.log(playerInfo);
 }
 
 async function getPlayerData(key, name) {
   let uuid;
   let playerData;
   try {
-    resp = await axios.get(
-     `https://api.ashcon.app/mojang/v2/user/${name}`
-    );
-    uuid = resp.data.uuid
+    resp = await axios.get(`https://api.ashcon.app/mojang/v2/user/${name}`);
+    uuid = resp.data.uuid;
   } catch (e) {
-    console.log(e.response.status)
+    console.log(e.response.status);
   }
   try {
     const resp = await axios.get(
@@ -190,7 +195,7 @@ async function getPlayerData(key, name) {
     );
     playerData = resp.data;
   } catch (e) {
-    console.log(e.response.status)
+    console.log(e.response.status);
   }
   const dataArrayNone = [
     "wins_bedwars",
@@ -240,12 +245,12 @@ async function getPlayerData(key, name) {
     if (!playerData.player.stats.Bedwars[item]) {
       playerData.player.stats.Bedwars[item] = 0;
     }
-  };
+  }
   for (let item of dataArrayOne) {
     if (!playerData.player.stats.Bedwars[item]) {
       playerData.player.stats.Bedwars[item] = 1;
     }
-  };
+  }
   return playerData;
 }
 

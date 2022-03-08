@@ -275,13 +275,11 @@ function rankToColor(tempRank, totalLeaderboards, i) {
       plusColor = "#FFFFFF";
       break;
   }
-  return {rank: rank, color: color, plusColor: plusColor}
+  return { rank: rank, color: color, plusColor: plusColor };
 }
 
 async function getPlayerData(key, uuid) {
-  resp = await fetch(
-    `https://api.hypixel.net/player?key=${key}&uuid=${uuid}`
-  );
+  resp = await fetch(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`);
   playerData = await resp.json();
   const dataArrayNone = [
     "wins_bedwars",
@@ -331,11 +329,11 @@ async function getPlayerData(key, uuid) {
     if (!playerData.player.stats.Bedwars[item]) {
       playerData.player.stats.Bedwars[item] = 0;
     }
-  };
+  }
   for (let item of dataArrayOne) {
     if (!playerData.player.stats.Bedwars[item]) {
       playerData.player.stats.Bedwars[item] = 1;
     }
-  };
+  }
   return playerData;
 }

@@ -35,7 +35,7 @@ window.onload = async function getPlayerStats() {
   }
   document.getElementById("loaderText").innerHTML = "Fetching player stats...";
   try {
-    playerData = await getPlayerData(settingsData.hypixelAPIKey, uuid)
+    playerData = await getPlayerData(settingsData.hypixelAPIKey, uuid);
     bwData = playerData.player.stats.Bedwars;
     if (!bwData) {
       throw "Bedwars never played";
@@ -57,12 +57,12 @@ window.onload = async function getPlayerStats() {
   }
   const rank = calculateRank(playerData.player);
   document.getElementById("name").innerHTML = name;
-  const rankData = rankToColor(rank, [playerData], 0)  
-  document.getElementById("rank").innerHTML = rankData.rank
-  document.getElementById("rank").style.color = rankData.color
-  document.getElementById("name").style.color = rankData.color
+  const rankData = rankToColor(rank, [playerData], 0);
+  document.getElementById("rank").innerHTML = rankData.rank;
+  document.getElementById("rank").style.color = rankData.color;
+  document.getElementById("name").style.color = rankData.color;
   if (rankData.plusColor) {
-    document.getElementById("rankPlus0").style.color = rankData.plusColor
+    document.getElementById("rankPlus0").style.color = rankData.plusColor;
   }
   document.getElementById("loader").style.opacity = 0;
   document.getElementById("loaderText").style.opacity = 0;
