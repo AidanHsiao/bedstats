@@ -2,6 +2,10 @@
   font-family: bahnschrift;
   src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
 }
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
 input {
   box-sizing: border-box;
   font-family: "Bahnschrift";

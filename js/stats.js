@@ -1,13 +1,12 @@
 let bwData;
 let stars;
-
 window.onload = async function getPlayerStats() {
   let username = sessionStorage.getItem("username");
   let uuid;
   let name;
   let resp;
   let data;
-  const settingsData = await window.electronAPI.readFile("settings.json");
+  settingsData = await window.electronAPI.readFile("settings.json");
   document.getElementById("loaderText").innerHTML = "Fetching player UUID...";
   document.getElementById("loader").style.opacity = 1;
   document.getElementById("loaderText").style.opacity = 1;
@@ -36,11 +35,7 @@ window.onload = async function getPlayerStats() {
   }
   document.getElementById("loaderText").innerHTML = "Fetching player stats...";
   try {
-    resp = await fetch(
-      `https://api.hypixel.net/player?key=${settingsData.hypixelAPIKey}&uuid=${uuid}`
-    );
-    data = await resp.json();
-    playerData = data;
+    playerData = await getPlayerData(settingsData.hypixelAPIKey, uuid)
     bwData = playerData.player.stats.Bedwars;
     if (!bwData) {
       throw "Bedwars never played";
@@ -60,148 +55,14 @@ window.onload = async function getPlayerStats() {
     console.log(e);
     return;
   }
-  const dataArrayNone = [
-    "wins_bedwars",
-    "kills_bedwars",
-    "final_kills_bedwars",
-    "beds_broken_bedwars",
-    "eight_one_wins_bedwars",
-    "eight_one_kills_bedwars",
-    "eight_one_final_kills_bedwars",
-    "eight_one_beds_broken_bedwars",
-    "eight_two_wins_bedwars",
-    "eight_two_kills_bedwars",
-    "eight_two_final_kills_bedwars",
-    "eight_two_beds_broken_bedwars",
-    "four_three_wins_bedwars",
-    "four_three_kills_bedwars",
-    "four_three_final_kills_bedwars",
-    "four_three_beds_broken_bedwars",
-    "four_four_wins_bedwars",
-    "four_four_kills_bedwars",
-    "four_four_final_kills_bedwars",
-    "four_four_beds_broken_bedwars",
-  ];
-  const dataArrayOne = [
-    "losses_bedwars",
-    "deaths_bedwars",
-    "final_deaths_bedwars",
-    "beds_lost_bedwars",
-    "eight_one_losses_bedwars",
-    "eight_one_deaths_bedwars",
-    "eight_one_final_deaths_bedwars",
-    "eight_one_beds_lost_bedwars",
-    "eight_two_losses_bedwars",
-    "eight_two_deaths_bedwars",
-    "eight_two_final_deaths_bedwars",
-    "eight_two_beds_lost_bedwars",
-    "four_three_losses_bedwars",
-    "four_three_deaths_bedwars",
-    "four_three_final_deaths_bedwars",
-    "four_three_beds_lost_bedwars",
-    "four_four_losses_bedwars",
-    "four_four_deaths_bedwars",
-    "four_four_final_deaths_bedwars",
-    "four_four_beds_lost_bedwars",
-  ];
-  dataArrayNone.forEach((item) => {
-    if (!bwData[item]) {
-      bwData[item] = 0;
-    }
-  });
-  dataArrayOne.forEach((item) => {
-    if (!bwData[item]) {
-      bwData[item] = 1;
-    }
-  });
   const rank = calculateRank(playerData.player);
-  let plusColor;
   document.getElementById("name").innerHTML = name;
-  console.log(rank);
-  switch (rank) {
-    default:
-      document.getElementById("rank").innerHTML = "";
-      document.getElementById("name").style.color = "#AAAAAA";
-      break;
-    case "VIP":
-      document.getElementById("rank").innerHTML = "[VIP]";
-      document.getElementById("rank").style.color = "#55FF55";
-      document.getElementById("name").style.color = "#55FF55";
-      break;
-    case "VIP+":
-      document.getElementById("rank").innerHTML =
-        '[VIP<span id="rankPlus">+</span>]';
-      document.getElementById("rank").style.color = "#55FF55";
-      document.getElementById("name").style.color = "#55FF55";
-      document.getElementById("rankPlus").style.color = "#FFAA00";
-      break;
-    case "MVP":
-      document.getElementById("rank").innerHTML = "[MVP]";
-      document.getElementById("rank").style.color = "#55FFFF";
-      document.getElementById("name").style.color = "#55FFFF";
-      break;
-    case "MVP+":
-      document.getElementById("rank").innerHTML =
-        '[MVP<span id="rankPlus">+</span>]';
-      document.getElementById("rank").style.color = "#55FFFF";
-      document.getElementById("name").style.color = "#55FFFF";
-      if (playerData.player.rankPlusColor) {
-        plusColor = colorCodes(playerData.player.rankPlusColor.toLowerCase());
-      } else {
-        plusColor = "#FF5555";
-      }
-      document.getElementById("rankPlus").style.color = plusColor;
-      break;
-    case "MVP++":
-      document.getElementById("rank").innerHTML =
-        '[MVP<span id="rankPlus">++</span>]';
-      if (playerData.player.monthlyRankColor === "AQUA") {
-        document.getElementById("rank").style.color = "#55FFFF";
-        document.getElementById("name").style.color = "#55FFFF";
-      } else {
-        document.getElementById("rank").style.color = "#FFAA00";
-        document.getElementById("name").style.color = "#FFAA00";
-      }
-      if (playerData.player.rankPlusColor) {
-        plusColor = colorCodes(playerData.player.rankPlusColor.toLowerCase());
-      } else {
-        plusColor = "#FF5555";
-      }
-      document.getElementById("rankPlus").style.color = plusColor;
-      break;
-    case "HELPER":
-      document.getElementById("rank").innerHTML = "[HELPER]";
-      document.getElementById("rank").style.color = "#5555FF";
-      document.getElementById("name").style.color = "#5555FF";
-      break;
-    case "MODERATOR":
-      document.getElementById("rank").innerHTML = "[MOD]";
-      document.getElementById("rank").style.color = "#5555FF";
-      document.getElementById("name").style.color = "#5555FF";
-      break;
-    case "ADMIN":
-      document.getElementById("rank").innerHTML = "[ADMIN]";
-      document.getElementById("rank").style.color = "#FF5555";
-      document.getElementById("name").style.color = "#FF5555";
-      break;
-    case "§c[OWNER]":
-      document.getElementById("rank").innerHTML = "[OWNER]";
-      document.getElementById("rank").style.color = "#FF5555";
-      document.getElementById("name").style.color = "#FF5555";
-      break;
-    case "YOUTUBER":
-      document.getElementById("rank").innerHTML =
-        '[<span id="rankPlus">YOUTUBE</span>]';
-      document.getElementById("rank").style.color = "#FF5555";
-      document.getElementById("name").style.color = "#FF5555";
-      document.getElementById("rankPlus").style.color = "#FFFFFF";
-      break;
-    case "§d[PIG§b+++§d]":
-      document.getElementById("rank").innerHTML =
-        '[PIG<span id="rankPlus">+++</span>]';
-      document.getElementById("rank").style.color = "#ff55ff";
-      document.getElementById("name").style.color = "#ff55ff";
-      document.getElementById("rankPlus").style.color = "#55ffff";
+  const rankData = rankToColor(rank, [playerData], 0)  
+  document.getElementById("rank").innerHTML = rankData.rank
+  document.getElementById("rank").style.color = rankData.color
+  document.getElementById("name").style.color = rankData.color
+  if (rankData.plusColor) {
+    document.getElementById("rankPlus0").style.color = rankData.plusColor
   }
   document.getElementById("loader").style.opacity = 0;
   document.getElementById("loaderText").style.opacity = 0;
@@ -236,7 +97,7 @@ window.onload = async function getPlayerStats() {
   document.getElementById("sss").style.opacity = 1;
   document.getElementById("animWinP").style.marginRight = "5.866666vh";
   document.getElementById("animSepDiv").style.marginLeft = "5.866666vh";
-  const rating = await calculateScore(
+  const score = await calculateScore(
     {
       stars: stars,
       fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
@@ -251,8 +112,8 @@ window.onload = async function getPlayerStats() {
 
   await sleep(500);
   document.getElementById("scoreDiv").style.opacity = 1;
-  document.getElementById("scoreNum").innerHTML = rating.toFixed(1);
-  const hsl = scoreToColor(rating);
+  document.getElementById("scoreNum").innerHTML = score.toFixed(1);
+  const hsl = scoreToColor(score);
   document.getElementById("scoreNum").style.textShadow = `0 0 0.92592vh ${hsl}`;
 };
 
@@ -312,7 +173,7 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore(
+      const score = await calculateScore(
         {
           stars: stars,
           fkdr:
@@ -331,10 +192,10 @@ document.getElementById("filter").onchange = async () => {
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
-        rating.toFixed(1),
+        score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(rating * 3);
+      const hsl = scoreToColor(score * 3);
       document.getElementById().style.textShadow = `0 0 0.92592vh ${hsl}`;
       break;
     }
@@ -387,7 +248,7 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore(
+      const score = await calculateScore(
         {
           stars: stars,
           fkdr:
@@ -406,10 +267,10 @@ document.getElementById("filter").onchange = async () => {
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
-        rating.toFixed(1),
+        score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(rating * 3);
+      const hsl = scoreToColor(score * 3);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -464,7 +325,7 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore(
+      const score = await calculateScore(
         {
           stars: stars,
           fkdr:
@@ -484,10 +345,10 @@ document.getElementById("filter").onchange = async () => {
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
-        rating.toFixed(1),
+        score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(rating * 3);
+      const hsl = scoreToColor(score * 3);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -542,7 +403,7 @@ document.getElementById("filter").onchange = async () => {
         ).toFixed(2),
         2
       );
-      const rating = await calculateScore(
+      const score = await calculateScore(
         {
           stars: stars,
           fkdr:
@@ -561,10 +422,10 @@ document.getElementById("filter").onchange = async () => {
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
-        rating.toFixed(1),
+        score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(rating * 3);
+      const hsl = scoreToColor(score * 3);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -610,7 +471,7 @@ document.getElementById("filter").onchange = async () => {
         (bwData.beds_broken_bedwars / bwData.beds_lost_bedwars).toFixed(2),
         2
       );
-      const rating = await calculateScore(
+      const score = await calculateScore(
         {
           stars: stars,
           fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
@@ -625,10 +486,10 @@ document.getElementById("filter").onchange = async () => {
       smoothTransition(
         "scoreNum",
         parseFloat(document.getElementById("scoreNum").innerHTML),
-        rating.toFixed(1),
+        score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(rating * 3);
+      const hsl = scoreToColor(score * 3);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;

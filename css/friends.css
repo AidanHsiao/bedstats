@@ -2,6 +2,10 @@
   font-family: bahnschrift;
   src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
 }
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
 input {
   box-sizing: border-box;
   font-family: "Bahnschrift";
@@ -11,7 +15,8 @@ input {
   height: 100%;
   bottom: 0;
   background-color: #e8e8e8;
-  position: absolute;
+  position: fixed;
+
   transition: height 0.75s;
   z-index: 10000;
 }
@@ -20,13 +25,10 @@ body {
   top: 0;
   font-family: "bahnschrift";
   overflow-x: hidden;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(255, 252, 161),
-    rgb(255, 239, 149)
-  );
+  background-color: rgb(255, 252, 161);
   user-select: none;
   opacity: 1;
+  transition: opacity 0.5s;
 }
 .mainContent {
   width: 100%;
@@ -89,7 +91,7 @@ body {
 .loadingDiv {
   position: absolute;
   left: calc(50% - 6vw - 1vw);
-  top: calc(43% - 6vw - 1vw);
+  top: calc(50% - 6vw - 1vw);
   border: 1vw solid white;
   border-top: 1vw solid rgb(0, 174, 255);
   border-radius: 50%;
@@ -157,12 +159,11 @@ body {
   flex-direction: column;
 }
 .friendsBar {
-  flex: 1;
-  background-color: rgb(145, 216, 255);
+  height: 10%;
+  position: fixed;
+  width: 92.8571429%;
   display: flex;
-}
-.friendsDiv {
-  flex: 9;
+  background-color: rgb(145, 216, 255);
 }
 .friendsBarText {
   flex: 1;
@@ -170,17 +171,32 @@ body {
   padding-top: 2.25vh;
   padding-left: 5vw;
 }
+.friendsBarSave {
+  flex: 1;
+}
 .friendsBarRemove {
   flex: 1;
 }
-.removeFriendsButton {
+#removeFriendsButton {
   width: 18.5vw;
   height: 55%;
   background-color: red;
   border-radius: 1vw;
   margin-top: 1.5vh;
   padding-top: 1.5vh;
-  margin-left: 20vw;
+  margin-left: 5vw;
+  font-size: 2vw;
+  padding-left: 1.5vw;
+  cursor: pointer;
+}
+#saveFriendsButton {
+  width: 17vw;
+  height: 55%;
+  background-color: rgb(0, 255, 0);
+  border-radius: 1vw;
+  margin-top: 1.5vh;
+  padding-top: 1.5vh;
+  margin-left: 10vw;
   font-size: 2vw;
   padding-left: 1.5vw;
   cursor: pointer;
@@ -244,5 +260,8 @@ body {
 }
 .friendUUID {
   color: gray;
-  font-size: 4vh;
+  font-size: 3vh;
+}
+.addFriendWrapper {
+  margin-top: 15vh;
 }

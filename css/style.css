@@ -247,3 +247,8 @@ body {
     rgb(28, 65, 157)
   );
 }
+
+.exclusive {
+  color: red;
+  font-weight: 900;
+}

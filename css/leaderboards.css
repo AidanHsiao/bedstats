@@ -10,7 +10,7 @@ input {
   width: 105%;
   height: 0%;
   background-color: #e8e8e8;
-  position: absolute;
+  position: fixed;
   transition: height 0.75s;
   z-index: 10000;
 }
@@ -150,18 +150,15 @@ body {
 
 .leaderboardSection {
   flex: 13;
-  display: flex;
-  height: 0%;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .leaderboardHeader {
   display: flex;
   flex-direction: column;
-  flex: 0.5;
   transition: opacity 0.5s;
   opacity: 0;
+  height: 40vh;
 }
 
 .statsBar {
@@ -173,6 +170,7 @@ body {
   font-size: 2.5vw;
   display: flex;
   position: fixed;
+  z-index: 2;
 }
 .leaderboardTitle {
   width: 93.1428%;
@@ -196,14 +194,14 @@ body {
   display: none;
 }
 .leaderboardItem {
-  flex: 1;
+  height: 4.5vh;
   display: flex;
   background-image: linear-gradient(
     to right,
     rgb(165, 163, 255),
     rgb(190, 245, 255)
   );
-  text-shadow: 0px 0px 5px gray;
+  text-shadow: 0px 0px 5px black;
   padding-top: 1.2vh;
   font-size: 1.5vw;
   border: 0.2vh solid black;
@@ -221,22 +219,27 @@ body {
 .leaderboardStars {
   flex: 0.8;
   color: black;
+  text-shadow: 0px 0px 5px gray;
 }
 .leaderboardFKDR {
   flex: 0.8;
   color: black;
+  text-shadow: 0px 0px 5px gray;
 }
 .leaderboardBBLR {
   flex: 0.8;
   color: black;
+  text-shadow: 0px 0px 5px gray;
 }
 .leaderboardWinP {
   flex: 0.8;
   color: black;
+  text-shadow: 0px 0px 5px gray;
 }
 .leaderboardScore {
   flex: 1;
   color: black;
+  text-shadow: 0px 0px 5px gray;
 }
 .barText {
   margin-left: 7vw;
@@ -265,14 +268,27 @@ body {
   padding-top: 0.2vh;
   padding-left: 0.8vw;
 }
+option {
+  font-size: 2vw;
+}
 .filterSpacing {
   flex: 0.5;
 }
 select {
   font-family: "Bahnschrift";
 }
-.titleDiv {
+#titleDiv {
   margin: auto;
   margin-top: 22vh;
   font-size: 4vw;
+}
+#sortType {
+  width: 15vw;
+  height: 4vw;
+  position: relative;
+  border: none;
+  top: -0.5vh;
+  padding-left: 1vw;
+  font-size: 3vw;
+  z-index: 1;
 }

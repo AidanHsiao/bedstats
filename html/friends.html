@@ -5,11 +5,11 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.mojang.com https://minotar.net; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app https://minotar.net; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.mojang.com https://minotar.net; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app https://minotar.net; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../css/friends.css" />
     <title>Friends</title>
@@ -17,6 +17,7 @@
   <body>
     <div class="mainContent">
       <div id="cover"></div>
+      <div class="loadingDiv" id="loader"></div>
       <div class="navBar" id="navigation">
         <div class="logoDiv">
           <img draggable="false" src="../img/logo.png" class="logo" />
@@ -41,11 +42,13 @@
       <div class="friendsSection">
         <div class="friendsBar">
           <div class="friendsBarText">Your Friends</div>
+          <div class="friendsBarSave">
+            <div id="saveFriendsButton">Save Friends List</div>
+          </div>
           <div class="friendsBarRemove">
-            <div class="removeFriendsButton">Remove All Friends</div>
+            <div id="removeFriendsButton">Remove All Friends</div>
           </div>
         </div>
-        <div class="friendsDiv">
           <div class="addFriendWrapper">
             <input
               type="text"
@@ -55,20 +58,7 @@
             <div id="addFriend">+</div>
           </div>
           <div id="friendsListWrapper">
-            <div class="friend">
-              <img
-                src="https://minotar.net/helm/__eggo__/180.png"
-                alt="face"
-                class="friendImage"
-              />
-              <div class="friendText">
-                __eggo__
-                <span class="friendUUID">(4980y0ts0dj9smc0m23m-r)</span>
-              </div>
-              <div class="friendRemoveButton">-</div>
-            </div>
           </div>
-        </div>
       </div>
     </div>
     <script src="../js/friends.js"></script>

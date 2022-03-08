@@ -282,6 +282,9 @@ body {
   padding-top: 0.2vh;
   padding-left: 0.8vw;
 }
+option {
+  font-size: 1.6vw;
+}
 select {
   font-family: "Bahnschrift";
 }

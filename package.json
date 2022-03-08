@@ -1,17 +1,49 @@
 {
-  "name": "electronapp",
+  "name": "bedstats",
   "version": "1.0.0",
-  "description": "",
+  "description": "An multi-purpose electron-based app designed for Bedwars players.",
   "main": "js/main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aidan Hsiao",
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
-    "electron": "^17.1.0"
+    "electron": "^17.1.0",
+    "electron-builder": "^22.14.13"
+  },
+  "build": {
+    "appId": "BedStats",
+    "productName": "BedStats",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
   },
   "dependencies": {
     "axios": "^0.26.0",
