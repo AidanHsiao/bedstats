@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+    />
+    <link rel="stylesheet" type="text/css" href="../css/tracker.css" />
+    <title>Tracker</title>
+  </head>
+  <body>
+    <div class="mainContent">
+      <div id="cover"></div>
+      <div class="loadingDiv" id="loader"></div>
+      <div class="loadingText">
+        <span id="loaderText">Fetching player UUID...</span>
+      </div>
+      <div class="exitButton" id="eb">Exit</div>
+      <div class="navBar" id="navigation">
+        <div class="logoDiv">
+          <img draggable="false" src="../img/logo.png" class="logo" />
+        </div>
+        <div class="iconDiv" id="homeIcon">
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv" id="friendsIcon">
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
+        </div>
+
+        <div class="iconDiv" id="settingsIcon">
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
+        </div>
+        <div class="iconDiv">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="trackerSection" id="trackerSection">
+        <div id="bottomBar">
+          <div id="lastChatMessageDiv"></div>
+        </div>
+        <div id="topBar">
+          <div id="manualInputText">Manual Entry:</div>
+          <div id="inputDiv">
+            <input type="text" placeholder="Enter Username" id="inputBox" />
+            <div id="confirmButton">+</div>
+          </div>
+          <div id="audioDiv">
+            <div id="audioText">Enable Audio:</div>
+            <input id="audioCheckmark" type="checkbox" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/tracker.js"></script>
+    <script src="../js/util.js"></script>
+  </body>
+</html>

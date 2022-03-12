@@ -1,0 +1,237 @@
+@font-face {
+  font-family: bahnschrift;
+  src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
+}
+input {
+  box-sizing: border-box;
+  font-family: "Bahnschrift";
+}
+#cover {
+  width: 105%;
+  height: 0%;
+  background-color: #e8e8e8;
+  position: fixed;
+  transition: height 0.75s;
+  z-index: 10000;
+}
+body {
+  margin: 0;
+  top: 0;
+  font-family: "bahnschrift";
+  overflow-x: hidden;
+  background-color: #e8e8e8;
+  transition: background-color 0.5s;
+  user-select: none;
+  opacity: 1;
+}
+.mainContent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  transition: background-color 0.5s;
+  align-items: left;
+}
+.logoDiv {
+  flex: 3;
+}
+.iconDiv {
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+.logo {
+  max-width: 5.5vw;
+  padding-top: 3vh;
+  display: block;
+  margin: auto;
+}
+
+.navIcon {
+  max-width: 4vw;
+  display: block;
+  margin: auto;
+  filter: drop-shadow(2px 2px 5px white) invert(1);
+  padding-top: 3vh;
+  font-size: 5.5vw;
+  text-align: center;
+}
+
+.navBar {
+  height: 100%;
+  width: 7.1428%;
+  background-color: #006eff;
+  box-shadow: 0 0 3.125em 0 #006eff;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+  position: fixed;
+}
+
+.iconDiv:hover {
+  background-color: rgb(0, 153, 255);
+  cursor: pointer;
+}
+
+.iconDivError:hover {
+  background-color: rgb(255, 0, 0);
+  cursor: not-allowed;
+}
+
+.navText {
+  transform: scale(1.2, 1);
+}
+
+.loadingDiv {
+  position: absolute;
+  left: calc(50% - 6vw - 1vw);
+  top: calc(43% - 6vw - 1vw);
+  border: 1vw solid white;
+  border-top: 1vw solid rgb(0, 174, 255);
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  opacity: 0;
+  animation: spin 1s linear infinite;
+  position: fixed;
+}
+
+#loader {
+  transition: opacity 0.2s;
+}
+
+#loader {
+  transition: opacity 0.2s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  position: absolute;
+  width: 100%;
+  top: 63%;
+  text-align: center;
+  margin: auto;
+  font-size: 3vw;
+  position: fixed;
+}
+#loaderText {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.exitButton {
+  position: absolute;
+  background-color: red;
+  width: 30%;
+  height: 15%;
+  left: 35%;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  padding-top: 5vh;
+  font-size: 9vh;
+  border-radius: 3vh;
+  opacity: 0;
+  z-index: 100;
+}
+
+#eb {
+  transition: opacity 0.4s;
+}
+
+.trackerSection {
+  width: 92.8571429%;
+  margin-left: 7.142857%;
+}
+
+#bottomBar {
+  position: fixed;
+  bottom: 0;
+  height: 8vh;
+  background-color: rgb(97, 168, 222);
+  box-shadow: 0 0 3em 0 rgb(97, 155, 255);
+  width: 92.8571429%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#lastChatMessageDiv {
+  width: 80%;
+  border: 2px solid black;
+  height: 80%;
+}
+#topBar {
+  position: fixed;
+  top: 0;
+  height: 8vh;
+  background-color: rgb(97, 168, 222);
+  box-shadow: 0 0 3em 0 rgb(97, 155, 255);
+  width: 92.8571429%;
+  display: flex;
+  flex: 1;
+}
+#manualInputText {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 5vw;
+  font-size: 2vw;
+}
+#inputDiv {
+  flex: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#inputBox {
+  width: 30vw;
+  padding-left: 1vw;
+  font-size: 1.5vw;
+  height: 70%;
+}
+#confirmButton {
+  background-color: rgb(45, 165, 45);
+  width: 7vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5vw;
+  padding-top: 0.3vh;
+  height: 64%;
+  transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+#confirmButton:hover {
+  background-color: rgb(0, 255, 0);
+  color: white;
+}
+
+#audioDiv {
+  flex: 2;
+  display: flex;
+}
+#audioText {
+  flex: 5;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 2vw;
+  margin-right: 1vw;
+}
+#audioCheckmark {
+  flex: 4;
+  display: flex;
+  justify-content: left;
+}
