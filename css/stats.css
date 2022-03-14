@@ -11,7 +11,7 @@ input {
   height: 0px;
   background-color: #e8e8e8;
   position: absolute;
-  transition: height 0.75s;
+  transition: height 0.5s ease-in-out;
   z-index: 10000;
 }
 body {

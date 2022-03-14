@@ -8,7 +8,7 @@ async function migrateStats() {
     document.getElementById("cover").style.height = "100vh";
     setTimeout(() => {
       window.location.href = "../html/stats.html";
-    }, 760);
+    }, 505);
   }
 }
 
@@ -18,7 +18,7 @@ document
     document.getElementById("cover").style.height = "100vh";
     setTimeout(() => {
       window.location.href = "../html/leaderboards.html";
-    }, 760);
+    }, 505);
   });
 
 window.onload = async function uncover() {
@@ -35,24 +35,26 @@ window.onload = async function uncover() {
     document.getElementById("cover").style.opacity = "0";
     await sleep(500);
     document.getElementById("cover").style.height = "0vh";
-    await sleep(760);
+    await sleep(505);
     document.getElementById("cover").style.opacity = "1";
   } else {
     document.getElementById("cover").style.height = "0vh";
   }
+  document.getElementById("welcomeParent").style.backgroundSize = 0;
+  document.getElementById("welcomeParent").style.paddingTop = 0;
   document
     .getElementById("settingsIcon")
     .addEventListener("click", async () => {
       document.getElementById("cover").style.height = "100vh";
       setTimeout(() => {
         window.location.href = "../html/settings.html";
-      }, 760);
+      }, 505);
     });
   document.getElementById("friendsIcon").addEventListener("click", async () => {
     document.getElementById("cover").style.height = "100vh";
     setTimeout(() => {
       window.location.href = "../html/friends.html";
-    }, 760);
+    }, 505);
   });
   sessionStorage.setItem("opened", true);
 };
@@ -74,4 +76,11 @@ document
     if (document.getElementById("usernameInput").value.length >= 16) {
       key.preventDefault();
     }
+  });
+
+document.getElementById("trackerButton").addEventListener("click", async () => {
+    document.getElementById("cover").style.height = "100vh";
+    setTimeout(() => {
+      window.location.href = "../html/tracker.html";
+    }, 505);
   });

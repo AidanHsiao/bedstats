@@ -137,7 +137,7 @@ async function calculateScore(stats, settingsData) {
   return score * settingsData.scoreConstant * 10;
 }
 
-function scoreToColor(score) {
+function scoreToColor(score, normalCutoff = settingsData.scoreCutoff) {
   const cutoff = 82.5 * normalCutoff;
   let hue = cutoff / (score + cutoff / 220) - 60;
   if (hue < -60) {

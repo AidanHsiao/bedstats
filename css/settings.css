@@ -44,7 +44,7 @@ body {
 }
 .cover {
   background-color: #e8e8e8;
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 100%;
   height: 100vh;
@@ -64,9 +64,6 @@ body {
 .settingsContent {
   width: 92.8571429%;
   margin-left: 7.142857%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 .logoDiv {
   flex: 3;
@@ -114,7 +111,7 @@ body {
 }
 
 .settingsSpace {
-  height: 15vh;
+  height: 10vh;
   width: 100%;
 }
 .settingsHeader {
@@ -192,7 +189,7 @@ body {
   font-size: 1.5vw;
   padding: 2.3vw;
   height: 10%;
-  position: absolute;
+  position: fixed;
   background-image: linear-gradient(
     to right,
     rgb(182, 229, 255),

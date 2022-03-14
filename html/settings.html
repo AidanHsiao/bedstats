@@ -51,6 +51,31 @@
             <input type="text" placeholder="Enter API Key" id="apiInput" />
           </div>
         </div>
+        <div class="settingsHeader">Tracker Settings</div>
+        <div class="settingsItem">
+          <div class="settingsText">
+            <span class="hoverDetect">Polling Rate</span>
+          </div>
+          <div class="settingsEntry">
+            <select type="text" id="pollingInput">
+              <option>0.2s</option>
+              <option>0.5s</option>
+              <option>1s</option>
+            </select>
+          </div>
+        </div>
+        <div class="settingsItem">
+          <div class="settingsText">
+            <span class="hoverDetect">Log File Configuration</span>
+          </div>
+          <div class="settingsEntry">
+            <select type="text" id="loggingInput">
+              <option>Vanilla</option>
+              <option>Badlion</option>
+              <option>Lunar</option>
+            </select>
+          </div>
+        </div>
         <div class="settingsHeader">Stats Settings</div>
         <div class="settingsItem">
           <div class="settingsText">
@@ -88,7 +113,6 @@
               />
             </div>
           </div> -->
-        <!-- TEMPLATE -->
         <div class="buttonDiv">
           <div class="buttonBegSpacing"></div>
           <div class="cancelButton" id="cancelButton">Cancel</div>
@@ -96,6 +120,7 @@
           <div class="saveButton" id="saveButton">Save</div>
           <div class="buttonSpacing"></div>
         </div>
+        <div class="settingsSpace"></div>
       </div>
     </div>
     <script src="../js/settings.js"></script>

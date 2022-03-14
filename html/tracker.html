@@ -20,7 +20,7 @@
       <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
       <div class="loadingText">
-        <span id="loaderText">Fetching player UUID...</span>
+        <span id="loaderText">Initializing Watcher...</span>
       </div>
       <div class="exitButton" id="eb">Exit</div>
       <div class="navBar" id="navigation">
@@ -47,7 +47,7 @@
       </div>
       <div class="trackerSection" id="trackerSection">
         <div id="bottomBar">
-          <div id="lastChatMessageDiv"></div>
+          <div id="lastChatMessageDiv">The last chat message will show up here.</div>
         </div>
         <div id="topBar">
           <div id="manualInputText">Manual Entry:</div>
@@ -57,8 +57,24 @@
           </div>
           <div id="audioDiv">
             <div id="audioText">Enable Audio:</div>
-            <input id="audioCheckmark" type="checkbox" />
+            <div id="checkmarkDiv">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
           </div>
+        </div>
+        <div id="statsDisplayDiv">
+          <div class="listingSpacing"></div>
+          <div id="pendingText" class="listingText">Pending Users</div>
+          <div id="pendingDiv" class="listingDiv"></div>
+          <div class="listingSpacing"></div>
+          <div id="collectedText" class="listingText">Collected User Data</div>
+          <div id="collectedDiv" class="listingDiv">
+          </div>
+          <div class="listingSpacing"></div>
+          <div class="listingBottomSpacing"></div>
         </div>
       </div>
     </div>

@@ -6,12 +6,16 @@ input {
   box-sizing: border-box;
   font-family: "Bahnschrift";
 }
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
 #cover {
   width: 105%;
-  height: 0%;
+  height: 100%;
   background-color: #e8e8e8;
   position: fixed;
-  transition: height 0.75s;
+  transition: height 0.5s ease-in-out;
   z-index: 10000;
 }
 body {
@@ -63,7 +67,7 @@ body {
   box-shadow: 0 0 3.125em 0 #006eff;
   display: flex;
   flex-direction: column;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-in-out;
   z-index: 1;
   position: fixed;
@@ -166,8 +170,17 @@ body {
 }
 #lastChatMessageDiv {
   width: 80%;
-  border: 2px solid black;
+  font-size: 2.5vw;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  white-space: nowrap;
+  background-color: rgb(125, 159, 214);
+  border: 2px solid rgb(100, 127, 172);
+  border-radius: 2vw;
+  padding-left: 1vw;
   height: 80%;
+  justify-content: center;
 }
 #topBar {
   position: fixed;
@@ -230,8 +243,115 @@ body {
   font-size: 2vw;
   margin-right: 1vw;
 }
-#audioCheckmark {
+#checkmarkDiv {
   flex: 4;
   display: flex;
   justify-content: left;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 5vw;
+  height: 4.3vh;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 1.7vw;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.7vw;
+  width: 1.7vw;
+  left: 0.3vw;
+  bottom: 0.33vw;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(2.5vw);
+}
+
+#statsDisplayDiv {
+  min-height: 75vh;
+  margin: auto;
+  margin-top: 12vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.listingSpacing {
+  height: 5vh;
+}
+.listingBottomSpacing {
+  height: 12vh;
+}
+.listingText {
+  height: 8vh;
+  font-size: 3vw;
+  display: flex;
+  align-items: center;
+}
+.listingDiv {
+  min-height: 32vh;
+  border: 2px solid gray;
+  background-color: rgb(161, 161, 161);
+  border-radius: 1vw;
+}
+#pendingDiv {
+  min-height: 7vh;
+  padding-left: 1.5vw;
+  max-height: 7vh;
+  font-size: 4.5vh;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.collectedItem {
+  height: 7.5vh;
+  width: 90%;
+  margin: auto;
+  border-bottom: 2px solid gray;
+  display: flex;
+}
+.itemName {
+  flex: 1;
+  padding-left: 2vw;
+  display: flex;
+  align-items: center;
+  font-size: 2.5vw;
+}
+.itemScore {
+  flex: 1;
+  padding-right: 2vw;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 2.5vw;
 }

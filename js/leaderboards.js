@@ -202,7 +202,7 @@ async function homeScreen() {
   document.getElementById("cover").style.height = "100%";
   setTimeout(() => {
     window.location.href = "../html/index.html";
-  }, 760);
+  }, 505);
 }
 
 document.getElementById("homeIcon").addEventListener("click", () => {
@@ -213,12 +213,12 @@ document.getElementById("settingsIcon").addEventListener("click", () => {
   document.getElementById("cover").style.height = "100%";
   setTimeout(() => {
     window.location.href = "../html/settings.html";
-  }, 760);
+  }, 505);
 });
 
 async function homeScreen() {
   document.getElementById("cover").style.height = "100%";
-  await sleep(760);
+  await sleep(505);
   window.location.href = "../html/index.html";
 }
 
@@ -226,7 +226,7 @@ document.getElementById("friendsIcon").addEventListener("click", () => {
   document.getElementById("cover").style.height = "100%";
   setTimeout(() => {
     window.location.href = "../html/friends.html";
-  }, 760);
+  }, 505);
 });
 
 document.getElementById("filter").onchange = () => changeLeaderboards()

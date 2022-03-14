@@ -24,7 +24,6 @@ const createWindow = () => {
 
 app.on("ready", () => {
   createWindow();
-  watchLogs();
 });
 
 app.on("window-all-closed", () => {
@@ -75,6 +74,8 @@ async function readFile(file) {
           JSON.stringify({
             theme: "sky",
             hypixelAPIKey: "",
+            pollingRate: "1s",
+            loggingConfig: "Vanilla",
             scoreCutoff: 2500,
             scoreConstant: 1,
           })
@@ -100,16 +101,30 @@ let playerInfo = [];
 let playerNames = [];
 let playerScores = [];
 
-async function watchLogs() {
+ipcMain.handle("startWatcher", async (event) => {
+  watchLogs(event);
+})
+
+ipcMain.handle("clearWatcher", async (event) => {
+  clearInterval(watcher)
+})
+
+async function watchLogs(ev) {
+  playerInfo = []
+  playerNames = []
+  playerScores = []
   const settingsData = await readFile("settings.json");
   logPath = path.join(
     app.getPath("home"),
     ".lunarclient",
+    "offline",
+    "1.8",
     "logs",
-    "launcher",
-    "renderer.log"
+    "latest.log"
   );
-  watcher = fs.watch(logPath, async (event, file) => {
+  clearInterval(watcher)
+  let previousLineLength = 0;
+  watcher = setInterval(async () => {
     const data = await fs.readFileSync(logPath, "utf-8", (e) => {
       if (e) {
         console.log(e);
@@ -117,10 +132,17 @@ async function watchLogs() {
     });
     const lines = data.toString().replace(/\r\n/g, "\n").split("\n");
     let lineData;
-    const lastLine = lines[lines.length - 3];
+    if (!previousLineLength) {
+      previousLineLength = lines.length
+    }
+    const lineDifference = lines.length - previousLineLength
+    previousLineLength = lines.length
+    const lastLines = lines.slice(lines.length - 2 - lineDifference, lines.length - 1);
+    lastLines.forEach((lastLine) => {
     if (lastLine.includes("[Client thread/INFO]: [CHAT] ")) {
       lineData = lastLine
         .split("[Client thread/INFO]: [CHAT] ")[1]
+        .replaceAll("?????  ", "")
         .replaceAll("????? ", "")
         .replaceAll("?", "");
     }
@@ -134,20 +156,36 @@ async function watchLogs() {
       });
       lineData = splitData.join("");
       const lastLog = lineData;
+      if (lastLog.includes("joined the lobby!")) {
+        playerInfo = []
+        playerNames = []
+        playerScores = []
+        ev.sender.send('dataClear')
+      }
+      ev.sender.send('chatData', lastLog)
       const username =
         lineData.split("has joined (").length >= 2
           ? lineData.split("has joined (")[0].replaceAll(" ", "")
           : "";
-      if (username) {
-        addData(username);
+      if (username && !playerNames.includes(username)) {
+        playerNames.push(username);
+        addData(username, ev);
       }
     }
-  });
+  })
+  }, parseFloat(settingsData.pollingRate.replace("s", "")) * 1000)
 }
 
-async function addData(u) {
+ipcMain.handle("manualInput", (event, username) => {
+  if (playerNames.includes(username)) return;
+  addData(username, event)
+})
+
+async function addData(u, ev) {
+  ev.sender.send('pendingData', u)
   const settingsData = await readFile("settings.json");
   const playerData = await getPlayerData(settingsData.hypixelAPIKey, u);
+  if (!playerData) return;
   const bwData = playerData.player.stats.Bedwars;
   const stars = await calculateStars(bwData.Experience);
   const score = await calculateScore(
@@ -162,22 +200,40 @@ async function addData(u) {
     },
     settingsData
   );
-  if (!playerNames.includes(u)) {
     playerInfo.push({
-      name: u,
+      name: playerData.player.displayname,
       stars: stars,
-      kdr: bwData.kills_bedwars / bwData.deaths_bedwars,
-      fkdr: bwData.final_kills_bedwars / bwData.final_deaths_bedwars,
-      bblr: bwData.beds_broken_bedwars / bwData.beds_lost_bedwars,
+      kdr: (bwData.kills_bedwars / bwData.deaths_bedwars).toFixed(2),
+      fkdr: (bwData.final_kills_bedwars / bwData.final_deaths_bedwars).toFixed(2),
+      bblr: (bwData.beds_broken_bedwars / bwData.beds_lost_bedwars).toFixed(2),
       winP:
-        (100 * bwData.wins_bedwars) /
-        (bwData.losses_bedwars + bwData.wins_bedwars),
-      score: score,
+        ((100 * bwData.wins_bedwars) /
+        (bwData.losses_bedwars + bwData.wins_bedwars)).toFixed(1),
+      score: score.toFixed(1),
     });
-    playerNames.push(u);
-    playerScores.push(score);
+    playerScores.push(Math.round(score * 10) / 10);
+  playerInfo = bubbleSort(playerScores, playerInfo)
+  ev.sender.send('playerData', playerInfo)
+  ev.sender.send('collectedData', u, playerInfo)
+}
+
+function bubbleSort(bArr, arr) {
+  let loopCompleted = false;
+  while (!loopCompleted) {
+    loopCompleted = true
+    bArr.forEach((num, idx) => {
+      if (num < bArr[idx + 1]) {
+        const bTemp = bArr[idx + 1]
+        bArr[idx + 1] = num
+        bArr[idx] = bTemp
+        const temp = arr[idx + 1]
+        arr[idx + 1] = arr[idx]
+        arr[idx] = temp
+        loopCompleted = false
+      }
+    })
   }
-  console.log(playerInfo);
+  return arr
 }
 
 async function getPlayerData(key, name) {
@@ -187,7 +243,8 @@ async function getPlayerData(key, name) {
     resp = await axios.get(`https://api.ashcon.app/mojang/v2/user/${name}`);
     uuid = resp.data.uuid;
   } catch (e) {
-    console.log(e.response.status);
+    console.log(e);
+    return false;
   }
   try {
     const resp = await axios.get(
@@ -195,8 +252,10 @@ async function getPlayerData(key, name) {
     );
     playerData = resp.data;
   } catch (e) {
-    console.log(e.response.status);
+    console.log(e);
+    return false;
   }
+  try {
   const dataArrayNone = [
     "wins_bedwars",
     "kills_bedwars",
@@ -252,6 +311,9 @@ async function getPlayerData(key, name) {
     }
   }
   return playerData;
+} catch (e) {
+  return false;
+}
 }
 
 const xpPerPrestige = 487000;
