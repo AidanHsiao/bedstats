@@ -57,7 +57,7 @@ window.onload = async function getPlayerStats() {
   }
   const rank = calculateRank(playerData.player);
   document.getElementById("name").innerHTML = name;
-  const rankData = rankToColor(rank, [playerData], 0);
+  const rankData = rankToColor(rank, [playerData.player], 0);
   document.getElementById("rank").innerHTML = rankData.rank;
   document.getElementById("rank").style.color = rankData.color;
   document.getElementById("name").style.color = rankData.color;
@@ -270,7 +270,7 @@ document.getElementById("filter").onchange = async () => {
         score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(score * 3);
+      const hsl = scoreToColor(score * 2);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -348,7 +348,7 @@ document.getElementById("filter").onchange = async () => {
         score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(score * 3);
+      const hsl = scoreToColor(score * 1.5);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -425,7 +425,7 @@ document.getElementById("filter").onchange = async () => {
         score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(score * 3);
+      const hsl = scoreToColor(score * 1.5);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;
@@ -489,7 +489,7 @@ document.getElementById("filter").onchange = async () => {
         score.toFixed(1),
         1
       );
-      const hsl = scoreToColor(score * 3);
+      const hsl = scoreToColor(score);
       document.getElementById(
         "scoreNum"
       ).style.textShadow = `0 0 0.92592vh ${hsl}`;

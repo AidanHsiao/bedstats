@@ -59,8 +59,8 @@ body {
 .navBar {
   height: 100%;
   width: 7.1428%;
-  background-color: #006eff;
-  box-shadow: 0 0 3.125em 0 #006eff;
+  background-color: var(--navBar);
+  box-shadow: 0 0 3.125em 0 var(--navBar);
   display: flex;
   flex-direction: column;
   opacity: 0;

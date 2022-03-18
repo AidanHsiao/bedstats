@@ -24,7 +24,7 @@ body {
   top: 0;
   font-family: "bahnschrift";
   overflow-x: hidden;
-  background-color: rgb(255, 252, 161);
+  background-size: 100%;
   user-select: none;
   opacity: 1;
   transition: opacity 0.5s;
@@ -63,8 +63,8 @@ body {
 .navBar {
   height: 100%;
   width: 7.1428%;
-  background-color: #006eff;
-  box-shadow: 0 0 3.125em 0 #006eff;
+  background-color: var(--navBar);
+  box-shadow: 0 0 3.125em 0 var(--navBar);
   display: flex;
   flex-direction: column;
   opacity: 1;
@@ -162,7 +162,8 @@ body {
   position: fixed;
   width: 92.8571429%;
   display: flex;
-  background-color: rgb(145, 216, 255);
+  background-color: var(--color2Dimmed);
+  box-shadow: 0 0 2vw var(--color2Dimmed);
 }
 .friendsBarText {
   flex: 1;
@@ -177,27 +178,29 @@ body {
   flex: 1;
 }
 #removeFriendsButton {
-  width: 18.5vw;
-  height: 55%;
-  background-color: red;
+  width: 20vw;
+  height: 70%;
+  background-color: var(--color5);
   border-radius: 1vw;
   margin-top: 1.5vh;
-  padding-top: 1.5vh;
   margin-left: 5vw;
   font-size: 2vw;
-  padding-left: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 #saveFriendsButton {
-  width: 17vw;
-  height: 55%;
-  background-color: rgb(0, 255, 0);
+  width: 20vw;
+  height: 70%;
+  background-color: var(--color1);
   border-radius: 1vw;
   margin-top: 1.5vh;
-  padding-top: 1.5vh;
   margin-left: 10vw;
   font-size: 2vw;
-  padding-left: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 .addFriendWrapper {
@@ -241,6 +244,7 @@ body {
   font-size: 6vh;
   padding-top: 3.5vh;
   flex: 5;
+  text-shadow: 1px 1px 1vw var(--highlight);
 }
 .friendRemoveButton {
   flex: 0.55;
@@ -259,6 +263,7 @@ body {
 }
 .friendUUID {
   color: gray;
+  text-shadow: 1px 1px 1vw var(--lowlight);
   font-size: 3vh;
 }
 .addFriendWrapper {

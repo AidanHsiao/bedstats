@@ -79,8 +79,8 @@ document
   });
 
 document.getElementById("trackerButton").addEventListener("click", async () => {
-    document.getElementById("cover").style.height = "100vh";
-    setTimeout(() => {
-      window.location.href = "../html/tracker.html";
-    }, 505);
-  });
+  document.getElementById("cover").style.height = "100vh";
+  setTimeout(() => {
+    window.location.href = "../html/tracker.html";
+  }, 505);
+});

@@ -92,7 +92,7 @@ document
   });
 
 async function addFriend() {
-  if (/[A-Za-z\d_]{3,16}/.test(document.getElementById("friendInput").value)) {
+  if (/[A-Za-z\d_]{2,16}/.test(document.getElementById("friendInput").value)) {
     const friendsList = Object.keys(friends).map((item) => {
       return item.toLowerCase();
     });

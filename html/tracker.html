@@ -6,13 +6,14 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+      content="default-src 'self' https://api.hypixel.net; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+      content="default-src 'self' https://api.hypixel.net; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'"
     />
     <link rel="stylesheet" type="text/css" href="../css/tracker.css" />
+    <link rel="stylesheet" type="text/css" href="../css/var.css" />
     <title>Tracker</title>
   </head>
   <body>
@@ -47,7 +48,9 @@
       </div>
       <div class="trackerSection" id="trackerSection">
         <div id="bottomBar">
-          <div id="lastChatMessageDiv">The last chat message will show up here.</div>
+          <div id="lastChatMessageDiv">
+            The last chat message will show up here.
+          </div>
         </div>
         <div id="topBar">
           <div id="manualInputText">Manual Entry:</div>
@@ -59,7 +62,7 @@
             <div id="audioText">Enable Audio:</div>
             <div id="checkmarkDiv">
               <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span class="slider"></span>
               </label>
             </div>
@@ -71,8 +74,7 @@
           <div id="pendingDiv" class="listingDiv"></div>
           <div class="listingSpacing"></div>
           <div id="collectedText" class="listingText">Collected User Data</div>
-          <div id="collectedDiv" class="listingDiv">
-          </div>
+          <div id="collectedDiv" class="listingDiv"></div>
           <div class="listingSpacing"></div>
           <div class="listingBottomSpacing"></div>
         </div>
@@ -81,5 +83,7 @@
 
     <script src="../js/tracker.js"></script>
     <script src="../js/util.js"></script>
+    <script src="../js/eval.js"></script>
+    <script src="../js/theme.js"></script>
   </body>
 </html>

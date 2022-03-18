@@ -1,10 +1,24 @@
 window.onload = async function loadSettings() {
   const data = await window.electronAPI.readFile("settings.json");
   document.getElementById("apiInput").value = data.hypixelAPIKey;
+  document.getElementById("themeInput").value = data.theme;
   document.getElementById("pollingInput").value = data.pollingRate;
   document.getElementById("loggingInput").value = data.loggingConfig;
   document.getElementById("scoreInput").value = data.scoreCutoff;
   document.getElementById("cScoreInput").value = data.scoreConstant;
+  document.getElementById("starsInput").value = data.equations.stars;
+  document.getElementById("fkdrInput").value = data.equations.fkdr;
+  document.getElementById("bblrInput").value = data.equations.bblr;
+  document.getElementById("wlrInput").value = data.equations.wlr;
+  document.getElementById("finalsInput").value = data.equations.finals;
+  document.getElementById("bedsInput").value = data.equations.beds;
+  document.getElementById("winsInput").value = data.equations.wins;
+  document.getElementById("fkdrMInput").value = data.equations.fkdrMargin;
+  document.getElementById("bblrMInput").value = data.equations.bblrMargin;
+  document.getElementById("wlrMInput").value = data.equations.wlrMargin;
+  document.getElementById("fkdrSInput").value = data.equations.fkdrSecond;
+  document.getElementById("bblrSInput").value = data.equations.bblrSecond;
+  document.getElementById("wlrSInput").value = data.equations.wlrSecond;
   document.getElementById("cover").style.width = "0%";
 };
 
@@ -24,13 +38,29 @@ document.getElementById("friendsIcon").addEventListener("click", () => {
 
 document.getElementById("saveButton").addEventListener("click", async () => {
   const initData = await window.electronAPI.readFile("settings.json");
+  let theme;
   const settings = {
-    theme: "sky",
     hypixelAPIKey: document.getElementById("apiInput").value,
+    theme: document.getElementById("themeInput").value,
     pollingRate: document.getElementById("pollingInput").value,
     loggingConfig: document.getElementById("loggingInput").value,
     scoreCutoff: document.getElementById("scoreInput").value,
     scoreConstant: document.getElementById("cScoreInput").value,
+    equations: {
+      stars: document.getElementById("starsInput").value,
+      fkdr: document.getElementById("fkdrInput").value,
+      bblr: document.getElementById("bblrInput").value,
+      wlr: document.getElementById("wlrInput").value,
+      finals: document.getElementById("finalsInput").value,
+      beds: document.getElementById("bedsInput").value,
+      wins: document.getElementById("winsInput").value,
+      fkdrMargin: document.getElementById("fkdrMInput").value,
+      bblrMargin: document.getElementById("bblrMInput").value,
+      wlrMargin: document.getElementById("wlrMInput").value,
+      fkdrSecond: document.getElementById("fkdrSInput").value,
+      bblrSecond: document.getElementById("bblrSInput").value,
+      wlrSecond: document.getElementById("wlrSInput").value,
+    },
   };
   window.electronAPI.writeFile("settings.json", settings);
   document.getElementById("cover").style.width = "100%";
@@ -57,11 +87,11 @@ const htmlArr = [
 document.querySelectorAll(".hoverDetect").forEach(async (text, idx) => {
   text.addEventListener("mouseover", async () => {
     document.getElementById("settingsHelp").style.right = "3vw";
-    document.getElementById("settingsHelp").style.color = "rgba(0, 0, 0, 1)";
+    document.getElementById("settingsHelp").style.opacity = 1;
     document.getElementById("settingsHelp").innerHTML = htmlArr[idx];
   });
   text.addEventListener("mouseout", async () => {
-    document.getElementById("settingsHelp").style.color = "rgba(0, 0, 0, 0)";
+    document.getElementById("settingsHelp").style.opacity = 0;
     document.getElementById("settingsHelp").style.right = "-50vw";
   });
 });
@@ -69,3 +99,31 @@ document.querySelectorAll(".hoverDetect").forEach(async (text, idx) => {
 async function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+let collapsed = true;
+
+document.querySelector(".initItem").addEventListener("click", () => {
+  document.querySelector(".settingsCollapsible").style.height = collapsed
+    ? "calc(140vh + 28px)"
+    : "calc(10vh + 2px)";
+  document.querySelector(".initItem .settingsText").innerHTML = collapsed
+    ? "Click to retract equations"
+    : "Click to expand equations";
+  document.querySelector(".initItem .settingsEntry").innerHTML = collapsed
+    ? "-"
+    : "+";
+  collapsed = !collapsed;
+});
+
+document
+  .querySelector(".settingsCollapsible")
+  .addEventListener("keypress", (key) => {
+    let reg;
+    reg = /\d/.test(key.key);
+    if (key.target.className.includes("eqInput")) {
+      reg = /[-()\d\/*+.x^]/.test(key.key);
+    }
+    if (!reg) {
+      key.preventDefault();
+    }
+  });

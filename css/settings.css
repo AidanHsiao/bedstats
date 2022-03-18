@@ -2,6 +2,7 @@
   font-family: bahnschrift;
   src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
 }
+
 ::-webkit-scrollbar {
   width: 0;
   display: none;
@@ -27,14 +28,12 @@ body {
   top: 0;
   font-family: "bahnschrift";
   overflow-x: hidden;
-  background-image: linear-gradient(
-    to right,
-    rgb(232, 253, 255),
-    rgb(255, 231, 233)
-  );
   background-position: center;
+  background-size: 100%;
+  background-attachment: fixed;
   user-select: none;
 }
+
 .mainContent {
   width: 100%;
   height: 100vh;
@@ -54,8 +53,8 @@ body {
 .navBar {
   width: 7.1428%;
   height: 100%;
-  background-color: #006eff;
-  box-shadow: 0 0 3.125em 0 #006eff;
+  background-color: var(--navBar);
+  box-shadow: 0 0 3.125em 0 var(--navBar);
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -90,12 +89,12 @@ body {
 }
 
 .iconDiv:hover {
-  background-color: rgb(0, 153, 255);
+  background-color: #0099ff;
   cursor: pointer;
 }
 
 .iconDivError:hover {
-  background-color: rgb(255, 0, 0);
+  background-color: #ff0000;
   cursor: not-allowed;
 }
 
@@ -107,11 +106,11 @@ body {
   height: 10vh;
   width: 100%;
   display: flex;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid var(--color3Dimmed);
 }
 
 .settingsSpace {
-  height: 10vh;
+  height: 5vh;
   width: 100%;
 }
 .settingsHeader {
@@ -120,7 +119,9 @@ body {
   font-size: 8vh;
   padding-left: 5vw;
   width: 100%;
-  border-bottom: 2px solid gray;
+  color: var(--color3);
+  border-bottom: 2px solid var(--color3Dimmed);
+  text-shadow: 0 0 1vw var(--lowlight);
 }
 
 .settingsText {
@@ -130,8 +131,9 @@ body {
   padding-top: 2.5vh;
   padding-left: 10vw;
   height: 75%;
-  text-decoration: underline dotted;
-  background-color: rgb(255, 231, 233);
+  color: var(--color5);
+  text-shadow: 0 0 1vw var(--lowlight);
+  background-color: var(--color1Dimmed);
 }
 
 .settingsEntry {
@@ -139,10 +141,12 @@ body {
   padding-left: 25vw;
   padding-top: 2vh;
   background-image: linear-gradient(
-    to left,
-    rgb(232, 253, 255),
-    rgb(255, 231, 233)
+    to right,
+    var(--color1Dimmed),
+    var(--color2Dimmed)
   );
+  font-size: 2.8vw;
+  display: flex;
 }
 
 .buttonDiv {
@@ -153,10 +157,10 @@ body {
 }
 .cancelButton {
   flex: 1;
-  background-color: rgb(196, 196, 196);
+  background-color: #c4c4c4;
   border-radius: 1vh;
   color: black;
-  text-shadow: 0px 0px 5px white;
+  text-shadow: 0px 0px 5px var(--highlight);
   text-align: center;
   padding-top: 2vh;
   font-size: 3vw;
@@ -166,10 +170,10 @@ body {
 
 .saveButton {
   flex: 1;
-  background-color: rgb(95, 233, 137);
+  background-color: var(--color1);
   border-radius: 1vh;
   color: black;
-  text-shadow: 0px 0px 5px white;
+  text-shadow: 0px 0px 5px var(--highlight);
   text-align: center;
   padding-top: 2vh;
   font-size: 3vw;
@@ -189,19 +193,46 @@ body {
   font-size: 1.5vw;
   padding: 2.3vw;
   height: 10%;
+  opacity: 0;
   position: fixed;
-  background-image: linear-gradient(
-    to right,
-    rgb(182, 229, 255),
-    rgb(182, 193, 255)
-  );
-  color: rgba(0, 0, 0, 1);
+  background-image: linear-gradient(to right, #b6e5ffe6, #b6c1ffe6);
+  color: var(--lowlight);
   border-radius: 2vw;
-  transition: right 0.3s ease-in-out, color 0.3s;
+  transition: right 0.3s ease-in-out, opacity 0.3s;
 }
 
 .bold {
   font-weight: 900;
-  text-shadow: 0px 0px 5px white;
+  text-shadow: 0px 0px 5px var(--highlight);
   color: red;
+}
+.settingsCollapsible {
+  height: calc(10vh + 2px);
+  overflow-y: hidden;
+  transition: height 0.6s ease-in-out;
+}
+
+.hoverDetect {
+  text-decoration: underline dotted;
+}
+
+.settingsCollapsible .buttonEntry {
+  display: flex;
+  justify-content: right;
+  padding-left: 6vw;
+  padding-right: 11vw;
+}
+
+.settingsCollapsible .initItem {
+  cursor: pointer;
+}
+
+.initItem .settingsText {
+  background-color: var(--color1);
+}
+
+.initItem .settingsEntry {
+  background-image: linear-gradient(to right, var(--color1), var(--color2));
+  color: var(--color5);
+  text-shadow: 0 0 1vw var(--lowlight);
 }

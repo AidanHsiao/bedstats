@@ -12,9 +12,11 @@
       content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="../css/var.css" />
     <title>Settings</title>
   </head>
   <body>
+    <canvas id="c"></canvas>
     <div class="mainContent">
       <div class="navBar">
         <div class="logoDiv">
@@ -49,6 +51,18 @@
           </div>
           <div class="settingsEntry">
             <input type="text" placeholder="Enter API Key" id="apiInput" />
+          </div>
+        </div>
+        <div class="settingsItem">
+          <div class="settingsText">
+            <span class="hoverDetect">Application Theme</span>
+          </div>
+          <div class="settingsEntry">
+            <select id="themeInput">
+              <option>Snowy Sky</option>
+              <option>Midnight</option>
+              <option>Aquarium</option>
+            </select>
           </div>
         </div>
         <div class="settingsHeader">Tracker Settings</div>
@@ -101,9 +115,159 @@
             />
           </div>
         </div>
+        <div class="settingsHeader">Advanced Equation Settings</div>
+        <div class="settingsCollapsible">
+          <div class="settingsItem initItem">
+            <div class="settingsText">Click to Expand Equations</div>
+            <div class="settingsEntry buttonEntry">+</div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">Stars Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter Stars Equation"
+                id="starsInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">FKDR Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter FKDR Equation"
+                id="fkdrInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">BBLR Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter BBLR Equation"
+                id="bblrInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">WLR Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter WLR Equation"
+                id="wlrInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">Finals Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter Finals Equation"
+                id="finalsInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">Beds Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter Beds Equation"
+                id="bedsInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">Wins Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter Wins Equation"
+                id="winsInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">FKDR Secondary Margin</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter FKDR Margin"
+                id="fkdrMInput"
+                class="marginInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">BBLR Secondary Margin</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter BBLR Margin"
+                id="bblrMInput"
+                class="marginInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">WLR Secondary Margin</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter WLR Margin"
+                id="wlrMInput"
+                class="marginInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">FKDR Secondary Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter FKDR Equation"
+                id="fkdrSInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">BBLR Secondary Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter BBLR Equation"
+                id="bblrSInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+          <div class="settingsItem">
+            <div class="settingsText">WLR Secondary Equation</div>
+            <div class="settingsEntry">
+              <input
+                type="text"
+                placeholder="Enter WLR Equation"
+                id="wlrSInput"
+                class="eqInput"
+              />
+            </div>
+          </div>
+        </div>
         <!-- <div class="settingsItem">
             <div class="settingsText">
-              <span class="hoverDetect">Score Constant</span>
+              <span class="hoverDetect">Score Constant
             </div>
             <div class="settingsEntry">
               <input
@@ -121,8 +285,10 @@
           <div class="buttonSpacing"></div>
         </div>
         <div class="settingsSpace"></div>
+        <div class="settingsSpace"></div>
       </div>
     </div>
     <script src="../js/settings.js"></script>
+    <script src="../js/theme.js"></script>
   </body>
 </html>

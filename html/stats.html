@@ -5,13 +5,14 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self' 'unsafe-eval'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
+      content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self' 'unsafe-eval'"
     />
     <link rel="stylesheet" type="text/css" href="../css/stats.css" />
+    <link rel="stylesheet" type="text/css" href="../css/var.css" />
     <title>Stats Screen</title>
   </head>
   <body>
@@ -111,5 +112,7 @@
     </div>
     <script src="../js/stats.js"></script>
     <script src="../js/util.js"></script>
+    <script src="../js/eval.js"></script>
+    <script src="../js/theme.js"></script>
   </body>
 </html>

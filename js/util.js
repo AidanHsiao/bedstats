@@ -115,31 +115,31 @@ function calculateColor(stars) {
 }
 
 async function calculateScore(stats, settingsData) {
-  let fkdrPts = -1 * (1000 / (stats.fkdr + 10)) + 2 * stats.fkdr + 100;
-  const starPts = Math.pow(stats.stars, 0.65);
-  let wlrPts = Math.pow(stats.wlr, 1.5) * 10;
-  let bblrPts = Math.pow(stats.bblr, 1.5) * 10;
-  const finalPts = stats.finals / 120;
-  const bedPts = stats.beds / 60;
-  const winPts = stats.wins / 30;
-  if (stats.fkdr > 10) {
-    fkdrPts = 0.1 * Math.pow(stats.fkdr, 2) + 2.5 * stats.fkdr + 35;
-  }
-  if (stats.wlr > 10) {
-    wlrPts = 45 * stats.wlr - 134;
-  }
-  if (stats.bblr > 10) {
-    bblrPts = 45 * stats.bblr - 134;
-  }
+  let fkdrPts =
+    stats.fkdr >= parseInt(settingsData.equations.fkdrMargin)
+      ? evaluate(settingsData.equations.fkdrSecond, stats.fkdr)
+      : evaluate(settingsData.equations.fkdr, stats.fkdr);
+  const starPts = evaluate(settingsData.equations.stars, stats.stars);
+  let wlrPts =
+    stats.wlr >= parseInt(settingsData.equations.wlrMargin)
+      ? evaluate(settingsData.equations.wlrSecond, stats.wlr)
+      : evaluate(settingsData.equations.wlr, stats.wlr);
+  let bblrPts =
+    stats.bblr >= parseInt(settingsData.equations.bblrMargin)
+      ? evaluate(settingsData.equations.bblrSecond, stats.bblr)
+      : evaluate(settingsData.equations.bblr, stats.bblr);
+  const finalPts = evaluate(settingsData.equations.finals, stats.finals);
+  const bedPts = evaluate(settingsData.equations.beds, stats.beds);
+  const winPts = evaluate(settingsData.equations.wins, stats.wins);
   const score =
     fkdrPts + starPts + wlrPts + bblrPts + finalPts + bedPts + winPts;
   normalCutoff = settingsData.scoreCutoff;
-  return score * settingsData.scoreConstant * 10;
+  return score * settingsData.scoreConstant;
 }
 
-function scoreToColor(score, normalCutoff = settingsData.scoreCutoff) {
-  const cutoff = 82.5 * normalCutoff;
-  let hue = cutoff / (score + cutoff / 220) - 60;
+function scoreToColor(score, tempCutoff = normalCutoff) {
+  const cutoff = 82.5 * tempCutoff;
+  let hue = (cutoff / (score + cutoff / 220) - 60) * 1.1;
   if (hue < -60) {
     hue = -60;
   }

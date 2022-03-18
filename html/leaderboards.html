@@ -6,13 +6,14 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+      content="default-src 'self' https://api.hypixel.net; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self' https://api.hypixel.net; script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-hashes' "
+      content="default-src 'self' https://api.hypixel.net; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'"
     />
     <link rel="stylesheet" type="text/css" href="../css/leaderboards.css" />
+    <link rel="stylesheet" type="text/css" href="../css/var.css" />
     <title>Leaderboards</title>
   </head>
   <body>
@@ -85,5 +86,7 @@
 
     <script src="../js/leaderboards.js"></script>
     <script src="../js/util.js"></script>
+    <script src="../js/eval.js"></script>
+    <script src="../js/theme.js"></script>
   </body>
 </html>

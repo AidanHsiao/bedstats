@@ -1,0 +1,18 @@
+:root {
+  --color1: var(--lowlight); /* 6969bf */
+  --color2: var(--lowlight); /* a0aad0 */
+  --color3: var(--lowlight); /* c4c4c4 */
+  --color4: var(--lowlight); /* b6e5ff */
+  --color5: var(--lowlight); /* dadada */
+  --color1Dimmed: var(--lowlight); /* 6969bf80 */
+  --color2Dimmed: var(--lowlight); /* a0aad0b3 */
+  --color3Dimmed: var(--lowlight); /* a0a0a0b3 */
+  --highlight: var(--highlight);
+  --lowlight: var(--lowlight);
+  --navBar: var(--lowlight);
+}
+
+#c {
+  z-index: -1;
+  position: fixed;
+}
