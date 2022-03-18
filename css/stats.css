@@ -19,7 +19,6 @@ body {
   top: 0;
   font-family: "bahnschrift";
   overflow-x: hidden;
-  background-color: #e8e8e8;
   user-select: none;
   opacity: 1;
 }
@@ -29,7 +28,6 @@ body {
   display: flex;
   flex: 1;
   align-items: left;
-  transition: background-color 0.5s;
 }
 .logoDiv {
   flex: 3;
@@ -91,7 +89,7 @@ body {
   left: calc(50% - 6vw - 1vw);
   top: calc(43% - 6vw - 1vw);
   border: 1vw solid white;
-  border-top: 1vw solid rgb(0, 174, 255);
+  border-top: 1vw solid var(--color1);
   border-radius: 50%;
   width: 12vw;
   height: 12vw;
@@ -122,17 +120,18 @@ body {
 }
 #loaderText {
   opacity: 0;
+  text-shadow: 0 0 1vw var(--highlight);
   transition: opacity 0.2s;
 }
 .mainStats {
   flex: 1;
   display: flex;
+  text-shadow: 0 0 1vw var(--highlight);
 }
 .secondaryStats {
   flex: 1.2;
   display: flex;
   align-items: center;
-  background-image: linear-gradient(to bottom, #e8e8e8, rgb(211, 245, 255));
   transition: opacity 0.5s;
   opacity: 0;
   z-index: -1;
@@ -166,7 +165,7 @@ body {
 
 .statsBar {
   width: 100%;
-  background-color: rgb(59, 160, 243);
+  background-color: var(--color1);
   flex: 0.2;
   padding-top: 3.5vh;
   font-size: 2.5vw;
@@ -175,11 +174,8 @@ body {
 
 .statsDiv {
   flex: 1.95;
-  background-image: linear-gradient(
-    to right,
-    rgb(129, 129, 248),
-    rgb(127, 209, 235)
-  );
+  background-color: var(--color2Dimmed);
+  border: 0.5vh solid var(--color1);
   align-items: center;
   border-radius: 4vw;
   height: 80%;
@@ -188,11 +184,8 @@ body {
 
 .scoreDiv {
   flex: 1;
-  background-image: linear-gradient(
-    to right,
-    rgb(129, 129, 248),
-    rgb(127, 209, 235)
-  );
+  background-color: var(--color2Dimmed);
+  border: 0.5vh solid var(--color1);
   height: 65%;
   padding-top: 7vh;
   border-radius: 4vw;

@@ -72,7 +72,7 @@ async function readFile(file) {
         await fs.writeFileSync(
           dataPath,
           JSON.stringify({
-            theme: "sky",
+            theme: "Midnight",
             hypixelAPIKey: "",
             pollingRate: "1s",
             loggingConfig: "Vanilla",

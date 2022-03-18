@@ -92,7 +92,7 @@ body {
   left: calc(50% - 6vw - 1vw);
   top: calc(50% - 6vw - 1vw);
   border: 1vw solid white;
-  border-top: 1vw solid rgb(0, 174, 255);
+  border-top: 1vw solid var(--color1);
   border-radius: 50%;
   width: 12vw;
   height: 12vw;
@@ -162,8 +162,8 @@ body {
   position: fixed;
   width: 92.8571429%;
   display: flex;
-  background-color: var(--color2Dimmed);
-  box-shadow: 0 0 2vw var(--color2Dimmed);
+  background-color: var(--color2);
+  box-shadow: 0 0 2vw var(--color2);
 }
 .friendsBarText {
   flex: 1;

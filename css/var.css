@@ -16,3 +16,14 @@
   z-index: -1;
   position: fixed;
 }
+
+body {
+  margin: 0;
+  top: 0;
+  font-family: "bahnschrift";
+  overflow-x: hidden;
+  background-position: center;
+  background-size: 100%;
+  background-attachment: fixed;
+  user-select: none;
+}

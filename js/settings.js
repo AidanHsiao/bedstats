@@ -78,6 +78,7 @@ document.getElementById("cancelButton").addEventListener("click", () => {
 
 const htmlArr = [
   'The <span class="bold">Hypixel API Key</span> is obtained through running "/api new" on Hypixel. This field is required for all functions that pull Hypixel Stats.',
+  'The <span class="bold">application theme</span> is self-explanatory. It changes the color scheme, background and background animation present throughout the app.',
   'The <span class="bold">polling rate</span> is how often the tracker checks for changes in the log file. This value should only affect the last chat message display.',
   '<span class="bold">Logging configuration</span> needs to be changed if you\'re using a third-party client, as different clients store log files differently.',
   '<span class="bold">Score cutoff</span> is defined as the score value at which enemies start becoming considered dangerous. Lower this if you don\'t play at a decently high level.',

@@ -92,7 +92,7 @@ body {
   left: calc(50% - 6vw - 1vw);
   top: calc(43% - 6vw - 1vw);
   border: 1vw solid white;
-  border-top: 1vw solid rgb(0, 174, 255);
+  border-top: 1vw solid var(--color1);
   border-radius: 50%;
   width: 12vw;
   height: 12vw;
@@ -161,8 +161,8 @@ body {
   position: fixed;
   bottom: 0;
   height: 8vh;
-  background-color: rgb(97, 168, 222);
-  box-shadow: 0 0 3em 0 rgb(97, 155, 255);
+  background-color: var(--color1);
+  box-shadow: 0 0 3em 0 var(--color1);
   width: 92.8571429%;
   display: flex;
   justify-content: center;
@@ -175,8 +175,8 @@ body {
   align-items: center;
   overflow-x: hidden;
   white-space: nowrap;
-  background-color: rgb(125, 159, 214);
-  border: 2px solid rgb(100, 127, 172);
+  background-color: var(--color2);
+  border: 2px solid var(--color4);
   border-radius: 2vw;
   padding-left: 1vw;
   height: 80%;
@@ -186,8 +186,8 @@ body {
   position: fixed;
   top: 0;
   height: 8vh;
-  background-color: rgb(97, 168, 222);
-  box-shadow: 0 0 3em 0 rgb(97, 155, 255);
+  background-color: var(--color1);
+  box-shadow: 0 0 3em 0 var(--color1);
   width: 92.8571429%;
   display: flex;
   flex: 1;
@@ -290,11 +290,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--color4);
 }
 
 input:checked + .slider:before {
-  transform: translateX(2.5vw);
+  transform: translateX(2.65vw);
 }
 
 #statsDisplayDiv {
@@ -316,11 +316,12 @@ input:checked + .slider:before {
   font-size: 3vw;
   display: flex;
   align-items: center;
+  text-shadow: 0 0 1vw var(--highlight);
 }
 .listingDiv {
   min-height: 32vh;
-  border: 2px solid gray;
-  background-color: rgb(161, 161, 161);
+  border: 2px solid var(--color4);
+  background-color: var(--color3Dimmed);
   border-radius: 1vw;
 }
 #pendingDiv {
@@ -337,7 +338,7 @@ input:checked + .slider:before {
   height: 7.5vh;
   width: 90%;
   margin: auto;
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid var(--color3);
   display: flex;
 }
 .itemName {
