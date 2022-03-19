@@ -30,7 +30,8 @@ window.onload = async function getLeaderboard() {
       document.getElementById("loaderText").innerHTML =
         "Leaderboards fetch error. Make sure that <br> you are connected to the internet, and your API key is correct.";
       document.getElementById("eb").style.opacity = 1;
-      document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
+      document.querySelector(".screenContent").style.backgroundColor =
+        "#ffd8d8";
       document.getElementById("eb").addEventListener("click", () => {
         homeScreen();
       });
@@ -65,7 +66,7 @@ window.onload = async function getLeaderboard() {
         document.getElementById("loaderText").innerHTML =
           "Stats fetch error. Check that your API key is correct.";
         document.getElementById("eb").style.opacity = 1;
-        document.querySelector(".mainContent").style.backgroundColor =
+        document.querySelector(".screenContent").style.backgroundColor =
           "#ffd8d8";
 
         document.getElementById("eb").addEventListener("click", () => {
@@ -150,7 +151,7 @@ window.onload = async function getLeaderboard() {
           document.getElementById("loaderText").innerHTML =
             "Stats fetch error. One of your friends has never played on Hypixel before.";
           document.getElementById("eb").style.opacity = 1;
-          document.querySelector(".mainContent").style.backgroundColor =
+          document.querySelector(".screenContent").style.backgroundColor =
             "#ffd8d8";
 
           document.getElementById("eb").addEventListener("click", () => {
@@ -173,6 +174,7 @@ window.onload = async function getLeaderboard() {
     globalLeaderboards = totalLeaderboards;
     document.getElementById("loader").style.opacity = 0;
     document.getElementById("loaderText").style.opacity = 0;
+    document.getElementById("cover").style.height = 0;
     document.getElementById("navigation").style.opacity = 1;
     sessionStorage.setItem("leaderboards", JSON.stringify(totalLeaderboards));
     sessionStorage.setItem(

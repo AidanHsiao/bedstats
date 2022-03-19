@@ -20,7 +20,7 @@ const colorPalettes = {
     "#6969ef",
   ],
   aquarium: [
-    "#0d5c63",
+    "#3a939c",
     "#44a1a0",
     "#78cdd7",
     "#247b7b",
@@ -46,17 +46,17 @@ async function loadTheme() {
   root.style.setProperty("--highlight", colorPalettes[type][5]);
   root.style.setProperty("--lowlight", colorPalettes[type][6]);
   root.style.setProperty("--navBar", colorPalettes[type][7]);
-
+  const animationSpeed = settingsData.animationRate.split(" ")[0];
   document.querySelector("body").style.backgroundImage = `url(../img/${
     type.split("_")[0]
   }BG.jpeg)`;
-
+  if (!settingsData.animationEnabled) return;
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   switch (type) {
     case "snowy_sky": {
-      const canvas = document.getElementById("c");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
       const flakes = [];
       for (let i = 0; i < 200; i++) {
         flakes.push({
@@ -98,8 +98,8 @@ async function loadTheme() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         flakes.forEach((flake) => {
           draw(flake);
-          flake.y += 2 * flake.s;
-          flake.x += mouseSide * flake.s;
+          flake.y += 2 * flake.s * (50 / animationSpeed);
+          flake.x += mouseSide * flake.s * (50 / animationSpeed);
           if (flake.y > canvas.height) {
             flake.y -= canvas.height;
           }
@@ -111,28 +111,22 @@ async function loadTheme() {
           }
         });
         if (objMouseSide > prevMouseSide) {
-          mouseSide += Math.max(0.1, mouseSide - prevMouseSide);
+          mouseSide += Math.max(5 / animationSpeed, mouseSide - prevMouseSide);
         } else {
-          mouseSide -= Math.max(0.1, mouseSide - prevMouseSide);
+          mouseSide -= Math.max(5 / animationSpeed, mouseSide - prevMouseSide);
         }
         prevMouseSide = mouseSide;
       }
 
-      setInterval(animate, 20);
+      setInterval(animate, 1000 / animationSpeed);
 
       document.addEventListener("mousemove", (ev) => {
         objMouseSide = (ev.clientX - canvas.width / 2) / 200;
       });
-
       break;
     }
     case "midnight": {
-      const canvas = document.getElementById("c");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
       const stars = [];
-      let previousStarPositions = Array(5).fill([]);
       let flies = [];
       for (let i = 0; i < 100; i++) {
         stars.push({
@@ -211,7 +205,7 @@ async function loadTheme() {
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stars.forEach((star) => {
-          star.pos += star.s * mouseSide;
+          star.pos += star.s * mouseSide * (50 / animationSpeed);
           drawStars(star);
           if (star.pos >= canvas.width) {
             star.pos -= canvas.width;
@@ -221,9 +215,9 @@ async function loadTheme() {
           }
         });
         flies.forEach((fly) => {
-          fly.x += Math.cos(fly.d) * fly.s;
-          fly.y += Math.sin(fly.d) * fly.s;
-          fly.s += Math.random() * 0.1 - 0.05;
+          fly.x += Math.cos(fly.d) * fly.s * (50 / animationSpeed);
+          fly.y += Math.sin(fly.d) * fly.s * (50 / animationSpeed);
+          fly.s += (Math.random() * 0.1 - 0.05) * (50 / animationSpeed);
           fly.c++;
           drawFlies(fly, fly.c, fly.l);
           flies = flies.filter((fly) => {
@@ -237,24 +231,61 @@ async function loadTheme() {
               r: Math.random() * 4 + 4,
               d: Math.random() * 2 * Math.PI,
               s: Math.random() * 0.5 + 0.2,
-              l: Math.random() * 80 + 50,
+              l: (Math.random() * 80 + 50) * (animationSpeed / 50),
               c: 0,
             });
           }
         });
         if (objMouseSide > prevMouseSide) {
-          mouseSide += Math.max(0.1, mouseSide - prevMouseSide);
+          mouseSide += Math.max(5 / animationSpeed, mouseSide - prevMouseSide);
         } else {
-          mouseSide -= Math.max(0.1, mouseSide - prevMouseSide);
+          mouseSide -= Math.max(5 / animationSpeed, mouseSide - prevMouseSide);
         }
         prevMouseSide = mouseSide;
       }
 
-      setInterval(animate, 20);
+      setInterval(animate, 1000 / animationSpeed);
 
       document.addEventListener("mousemove", (ev) => {
         objMouseSide = (ev.clientX - canvas.width / 2) / 200;
       });
+      break;
+    }
+    case "aquarium": {
+      const bubbles = [];
+      for (let i = 0; i < 100; i++) {
+        bubbles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          w: Math.random() * 2 * Math.PI,
+          r: Math.random() * 2 + 5,
+          s: Math.random() + 1,
+        });
+      }
+      function drawBubbles(bubble) {
+        ctx.beginPath();
+        ctx.arc(bubble.x, bubble.y, bubble.r, 0, Math.PI * 2);
+        ctx.lineWidth = 0.2;
+        ctx.strokeStyle = "#e8e8e8";
+        ctx.fillStyle = "#e8e8e810";
+        ctx.stroke();
+        ctx.fill();
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        bubbles.forEach((bubble) => {
+          bubble.y -= 2 * (50 / animationSpeed);
+          bubble.x += Math.sin(bubble.w) * (35 / animationSpeed);
+          bubble.w += 0.02 * (50 / animationSpeed);
+          if (bubble.y < 0) {
+            bubble.y += canvas.height;
+          }
+          drawBubbles(bubble);
+        });
+      }
+
+      setInterval(animate, 1000 / animationSpeed);
+      break;
     }
   }
 }

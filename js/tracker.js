@@ -75,21 +75,19 @@ document.getElementById("friendsIcon").addEventListener("click", () => {
   }, 505);
 });
 
-document
-  .getElementById("inputBox")
-  .addEventListener("keypress", async (key) => {
-    const trueReg = /[A-Za-z\d_]/.test(key.key);
-    if (!trueReg) {
-      key.preventDefault();
-    }
-    if (document.getElementById("inputBox").value.length >= 16) {
-      key.preventDefault();
-    }
-    if (key.code === "Enter") {
-      window.electronAPI.manualInput(document.getElementById("inputBox").value);
-      document.getElementById("inputBox").value = "";
-    }
-  });
+document.getElementById("inputBox").addEventListener("keydown", async (key) => {
+  const trueReg = /[A-Za-z\d_]/.test(key.key);
+  if (!trueReg) {
+    key.preventDefault();
+  }
+  if (document.getElementById("inputBox").value.length >= 16) {
+    key.preventDefault();
+  }
+  if (key.code === "Enter") {
+    window.electronAPI.manualInput(document.getElementById("inputBox").value);
+    document.getElementById("inputBox").value = "";
+  }
+});
 
 document.getElementById("confirmButton").addEventListener("click", () => {
   window.electronAPI.manualInput(document.getElementById("inputBox").value);

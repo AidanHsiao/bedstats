@@ -2,6 +2,11 @@ window.onload = async function loadSettings() {
   const data = await window.electronAPI.readFile("settings.json");
   document.getElementById("apiInput").value = data.hypixelAPIKey;
   document.getElementById("themeInput").value = data.theme;
+  document.getElementById("animationInput").value = data.animationEnabled
+    ? "Enabled"
+    : "Disabled";
+  document.getElementById("fpsInput").value = data.animationRate;
+
   document.getElementById("pollingInput").value = data.pollingRate;
   document.getElementById("loggingInput").value = data.loggingConfig;
   document.getElementById("scoreInput").value = data.scoreCutoff;
@@ -40,8 +45,13 @@ document.getElementById("saveButton").addEventListener("click", async () => {
   const initData = await window.electronAPI.readFile("settings.json");
   let theme;
   const settings = {
-    hypixelAPIKey: document.getElementById("apiInput").value,
     theme: document.getElementById("themeInput").value,
+    hypixelAPIKey: document.getElementById("apiInput").value,
+    animationEnabled:
+      document.getElementById("animationInput").value === "Enabled"
+        ? true
+        : false,
+    animationRate: document.getElementById("fpsInput").value,
     pollingRate: document.getElementById("pollingInput").value,
     loggingConfig: document.getElementById("loggingInput").value,
     scoreCutoff: document.getElementById("scoreInput").value,
@@ -79,6 +89,8 @@ document.getElementById("cancelButton").addEventListener("click", () => {
 const htmlArr = [
   'The <span class="bold">Hypixel API Key</span> is obtained through running "/api new" on Hypixel. This field is required for all functions that pull Hypixel Stats.',
   'The <span class="bold">application theme</span> is self-explanatory. It changes the color scheme, background and background animation present throughout the app.',
+  'The <span class="bold">background animation</span> setting dictates whether or not to render the background animation on most themes.',
+  `The <span class="bold">animation frame rate</span> is the number of times the animation updates. Lower this if you have performance issues with the backgrounds.`,
   'The <span class="bold">polling rate</span> is how often the tracker checks for changes in the log file. This value should only affect the last chat message display.',
   '<span class="bold">Logging configuration</span> needs to be changed if you\'re using a third-party client, as different clients store log files differently.',
   '<span class="bold">Score cutoff</span> is defined as the score value at which enemies start becoming considered dangerous. Lower this if you don\'t play at a decently high level.',
@@ -118,7 +130,7 @@ document.querySelector(".initItem").addEventListener("click", () => {
 
 document
   .querySelector(".settingsCollapsible")
-  .addEventListener("keypress", (key) => {
+  .addEventListener("keydown", (key) => {
     let reg;
     reg = /\d/.test(key.key);
     if (key.target.className.includes("eqInput")) {

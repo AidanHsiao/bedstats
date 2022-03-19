@@ -1,0 +1,102 @@
+@font-face {
+  font-family: bahnschrift;
+  src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
+}
+
+:root {
+  --color1: var(--lowlight); /* 6969bf */
+  --color2: var(--lowlight); /* a0aad0 */
+  --color3: var(--lowlight); /* c4c4c4 */
+  --color4: var(--lowlight); /* b6e5ff */
+  --color5: var(--lowlight); /* dadada */
+  --color1Dimmed: var(--lowlight); /* 6969bf80 */
+  --color2Dimmed: var(--lowlight); /* a0aad0b3 */
+  --color3Dimmed: var(--lowlight); /* a0a0a0b3 */
+  --highlight: var(--highlight);
+  --lowlight: var(--lowlight);
+  --navBar: var(--lowlight);
+}
+
+#c {
+  z-index: -1;
+  position: fixed;
+}
+
+body {
+  margin: 0;
+  top: 0;
+  font-family: "bahnschrift";
+  overflow-x: hidden;
+  background-position: center;
+  background-size: 100%;
+  background-attachment: fixed;
+  user-select: none;
+}
+
+.screenContent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  align-items: left;
+}
+
+.navBar {
+  height: 100%;
+  width: 7.1428%;
+  background-color: var(--navBar);
+  box-shadow: 0 0 3.125em 0 var(--navBar);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: fixed;
+}
+
+.navIcon {
+  max-width: 4vw;
+  display: block;
+  margin: auto;
+  filter: drop-shadow(2px 2px 5px white) invert(1);
+  padding-top: 3vh;
+  font-size: 5.5vw;
+  text-align: center;
+}
+
+.iconDiv:hover {
+  background-color: var(--color2Dimmed);
+  cursor: pointer;
+}
+
+.iconDivError:hover {
+  background-color: rgb(255, 0, 0);
+  cursor: not-allowed;
+}
+
+.navText {
+  transform: scale(1.2, 1);
+}
+
+.logo {
+  max-width: 5.5vw;
+  padding-top: 3vh;
+  display: block;
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.logoDiv {
+  flex: 3;
+}
+.iconDiv {
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.mainContent {
+  width: 92.857143%;
+  margin-left: 7.142857%;
+}

@@ -73,6 +73,8 @@ async function readFile(file) {
           dataPath,
           JSON.stringify({
             theme: "Midnight",
+            animationEnabled: true,
+            animationRate: "40 FPS",
             hypixelAPIKey: "",
             pollingRate: "1s",
             loggingConfig: "Vanilla",

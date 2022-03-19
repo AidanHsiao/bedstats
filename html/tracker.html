@@ -13,12 +13,12 @@
       content="default-src 'self' https://api.hypixel.net; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-hashes'"
     />
     <link rel="stylesheet" type="text/css" href="../css/tracker.css" />
-    <link rel="stylesheet" type="text/css" href="../css/var.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <title>Tracker</title>
   </head>
   <body>
     <canvas id="c"></canvas>
-    <div class="mainContent">
+    <div class="screenContent">
       <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
       <div class="loadingText">
@@ -47,7 +47,7 @@
           <span class="navIcon navText">?</span>
         </div>
       </div>
-      <div class="trackerSection" id="trackerSection">
+      <div class="mainContent" id="trackerSection">
         <div id="bottomBar">
           <div id="lastChatMessageDiv">
             The last chat message will show up here.
@@ -86,5 +86,6 @@
     <script src="../js/util.js"></script>
     <script src="../js/eval.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/console.js"></script>
   </body>
 </html>

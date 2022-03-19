@@ -12,12 +12,12 @@
       content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self' 'unsafe-eval'"
     />
     <link rel="stylesheet" type="text/css" href="../css/stats.css" />
-    <link rel="stylesheet" type="text/css" href="../css/var.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <title>Stats Screen</title>
   </head>
   <body>
     <canvas id="c"></canvas>
-    <div class="mainContent">
+    <div class="screenContent">
       <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
       <div class="loadingText">
@@ -45,7 +45,7 @@
           <span class="navIcon navText">?</span>
         </div>
       </div>
-      <div class="statsSection" id="sSec">
+      <div class="mainContent" id="sSec">
         <div class="statsBar">
           <div class="barName">
             <span id="rank"></span>
@@ -115,5 +115,6 @@
     <script src="../js/util.js"></script>
     <script src="../js/eval.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/console.js"></script>
   </body>
 </html>

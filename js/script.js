@@ -65,7 +65,7 @@ async function sleep(time) {
 
 document
   .getElementById("usernameInput")
-  .addEventListener("keypress", async (key) => {
+  .addEventListener("keydown", async (key) => {
     if (key.code === "Enter") {
       migrateStats();
     }

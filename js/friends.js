@@ -59,7 +59,7 @@ async function sleep(time) {
 
 document
   .getElementById("friendInput")
-  .addEventListener("keypress", async (key) => {
+  .addEventListener("keydown", async (key) => {
     const trueReg = /[A-Za-z\d_]/.test(key.key);
     if (!trueReg) {
       key.preventDefault();

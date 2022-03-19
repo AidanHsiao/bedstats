@@ -12,12 +12,12 @@
       content="default-src 'self' https://api.hypixel.net https://api.ashcon.app; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../css/settings.css" />
-    <link rel="stylesheet" type="text/css" href="../css/var.css" />
+    <link rel="stylesheet" type="text/css" href="../css/general.css" />
     <title>Settings</title>
   </head>
   <body>
     <canvas id="c"></canvas>
-    <div class="mainContent">
+    <div class="screenContent">
       <div class="navBar">
         <div class="logoDiv">
           <img draggable="false" src="../img/logo.png" class="logo" />
@@ -41,7 +41,7 @@
       </div>
       <div class="cover" id="cover"></div>
       <div id="settingsHelp"></div>
-      <div class="settingsContent">
+      <div class="mainContent">
         <div class="settingsSpace"></div>
         <div class="settingsHeader">Global Settings</div>
         <!-- HEADER -->
@@ -62,6 +62,30 @@
               <option>Snowy Sky</option>
               <option>Midnight</option>
               <option>Aquarium</option>
+            </select>
+          </div>
+        </div>
+        <div class="settingsItem">
+          <div class="settingsText">
+            <span class="hoverDetect">Background Animations</span>
+          </div>
+          <div class="settingsEntry">
+            <select id="animationInput">
+              <option>Enabled</option>
+              <option>Disabled</option>
+            </select>
+          </div>
+        </div>
+        <div class="settingsItem">
+          <div class="settingsText">
+            <span class="hoverDetect">Animation Frame Rate</span>
+          </div>
+          <div class="settingsEntry">
+            <select id="fpsInput">
+              <option>20 FPS</option>
+              <option>40 FPS</option>
+              <option>50 FPS</option>
+              <option>100 FPS</option>
             </select>
           </div>
         </div>
@@ -290,5 +314,6 @@
     </div>
     <script src="../js/settings.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/console.js"></script>
   </body>
 </html>

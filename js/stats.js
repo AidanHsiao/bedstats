@@ -23,7 +23,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "UUID fetch error. Make sure you are connected to the internet, <br>and that the username is spelt correctly.";
     document.getElementById("eb").style.opacity = 1;
-    document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
+    document.querySelector(".screenContent").style.backgroundColor = "#ffd8d8";
 
     document.getElementById("eb").style.cursor = "pointer";
 
@@ -45,7 +45,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "Stats fetch error. Make sure your API key is correct. <br> If it is, this player may not have played bedwars before.";
     document.getElementById("eb").style.opacity = 1;
-    document.querySelector(".mainContent").style.backgroundColor = "#ffd8d8";
+    document.querySelector(".screenContent").style.backgroundColor = "#ffd8d8";
 
     document.getElementById("eb").addEventListener("click", () => {
       homeScreen();
@@ -66,8 +66,8 @@ window.onload = async function getPlayerStats() {
   }
   document.getElementById("loader").style.opacity = 0;
   document.getElementById("loaderText").style.opacity = 0;
-  document.getElementById("navigation").style.flex = 1;
-  document.getElementById("navigation").style.opacity = 1;
+  document.getElementById("cover").style.height = 0;
+  await sleep(500);
   document.getElementById("sSec").style.opacity = 1;
   document.getElementById("finalsMain").style.paddingTop = "16vh";
   document.getElementById("finalsNumber").innerHTML =

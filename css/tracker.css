@@ -1,15 +1,8 @@
-@font-face {
-  font-family: bahnschrift;
-  src: url(../fonts/BAHNSCHRIFT\ 1.TTF);
-}
 input {
   box-sizing: border-box;
   font-family: "Bahnschrift";
 }
-::-webkit-scrollbar {
-  width: 0;
-  display: none;
-}
+
 #cover {
   width: 105%;
   height: 100%;
@@ -17,74 +10,6 @@ input {
   position: fixed;
   transition: height 0.5s ease-in-out;
   z-index: 10000;
-}
-body {
-  margin: 0;
-  top: 0;
-  font-family: "bahnschrift";
-  overflow-x: hidden;
-  background-color: #e8e8e8;
-  transition: background-color 0.5s;
-  user-select: none;
-  opacity: 1;
-}
-.mainContent {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex: 1;
-  transition: background-color 0.5s;
-  align-items: left;
-}
-.logoDiv {
-  flex: 3;
-}
-.iconDiv {
-  flex: 1;
-  transition: all 0.2s ease-in-out;
-}
-.logo {
-  max-width: 5.5vw;
-  padding-top: 3vh;
-  display: block;
-  margin: auto;
-}
-
-.navIcon {
-  max-width: 4vw;
-  display: block;
-  margin: auto;
-  filter: drop-shadow(2px 2px 5px white) invert(1);
-  padding-top: 3vh;
-  font-size: 5.5vw;
-  text-align: center;
-}
-
-.navBar {
-  height: 100%;
-  width: 7.1428%;
-  background-color: var(--navBar);
-  box-shadow: 0 0 3.125em 0 var(--navBar);
-  display: flex;
-  flex-direction: column;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 1;
-  position: fixed;
-}
-
-.iconDiv:hover {
-  background-color: rgb(0, 153, 255);
-  cursor: pointer;
-}
-
-.iconDivError:hover {
-  background-color: rgb(255, 0, 0);
-  cursor: not-allowed;
-}
-
-.navText {
-  transform: scale(1.2, 1);
 }
 
 .loadingDiv {
@@ -152,11 +77,6 @@ body {
   transition: opacity 0.4s;
 }
 
-.trackerSection {
-  width: 92.8571429%;
-  margin-left: 7.142857%;
-}
-
 #bottomBar {
   position: fixed;
   bottom: 0;
@@ -185,7 +105,7 @@ body {
 #topBar {
   position: fixed;
   top: 0;
-  height: 8vh;
+  height: 10vh;
   background-color: var(--color1);
   box-shadow: 0 0 3em 0 var(--color1);
   width: 92.8571429%;
@@ -193,12 +113,12 @@ body {
   flex: 1;
 }
 #manualInputText {
-  flex: 1;
+  flex: 1.2;
   height: 100%;
   display: flex;
   align-items: center;
   padding-left: 5vw;
-  font-size: 2vw;
+  font-size: 2.5vw;
 }
 #inputDiv {
   flex: 3;
@@ -240,7 +160,7 @@ body {
   display: flex;
   justify-content: right;
   align-items: center;
-  font-size: 2vw;
+  font-size: 2.5vw;
   margin-right: 1vw;
 }
 #checkmarkDiv {
