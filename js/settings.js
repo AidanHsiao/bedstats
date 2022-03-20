@@ -27,19 +27,6 @@ window.onload = async function loadSettings() {
   document.getElementById("cover").style.width = "0%";
 };
 
-document.getElementById("homeIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.width = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/index.html";
-  }, 505);
-});
-
-document.getElementById("friendsIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.width = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/friends.html";
-  }, 505);
-});
 
 document.getElementById("saveButton").addEventListener("click", async () => {
   const initData = await window.electronAPI.readFile("settings.json");

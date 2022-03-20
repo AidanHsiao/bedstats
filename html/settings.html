@@ -17,6 +17,11 @@
   </head>
   <body>
     <canvas id="c"></canvas>
+<div id="console">
+      <div class="consoleTitle">Console</div>
+      <div id="loadingTime" class="consoleItem"></div>
+      <div id="pageFPS" class="consoleItem"></div>
+    </div>
     <div class="screenContent">
       <div class="navBar">
         <div class="logoDiv">
@@ -35,7 +40,7 @@
             class="navIcon"
           />
         </div>
-        <div class="iconDiv">
+        <div class="iconDiv" id="helpIcon">
           <span class="navIcon navText">?</span>
         </div>
       </div>
@@ -59,6 +64,7 @@
           </div>
           <div class="settingsEntry">
             <select id="themeInput">
+              <option>Monotone</option>
               <option>Snowy Sky</option>
               <option>Midnight</option>
               <option>Aquarium</option>
@@ -315,5 +321,6 @@
     <script src="../js/settings.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/console.js"></script>
+    <script src="../js/util.js"></script>
   </body>
 </html>

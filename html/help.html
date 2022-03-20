@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+  <title>Document</title>
+  <link href="../css/help.css" rel="stylesheet" type="text/css">
+  <link href="../css/general.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <canvas id="c"></canvas>
+<div id="console">
+      <div class="consoleTitle">Console</div>
+      <div id="loadingTime" class="consoleItem"></div>
+      <div id="pageFPS" class="consoleItem"></div>
+    </div>
+    <div class="screenContent">
+      <div class="navBar">
+        <div class="logoDiv">
+          <img draggable="false" src="../img/logo.png" class="logo" />
+        </div>
+        <div class="iconDiv" id="homeIcon">
+          <img draggable="false" src="../img/homeicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv" id="friendsIcon">
+          <img draggable="false" src="../img/friendsicon.png" class="navIcon" />
+        </div>
+        <div class="iconDiv" id="settingsIcon">
+          <img
+            draggable="false"
+            src="../img/settingsicon.png"
+            class="navIcon"
+          />
+        </div>
+        <div class="iconDiv iconDivError">
+          <span class="navIcon navText">?</span>
+        </div>
+      </div>
+      <div class="cover" id="cover"></div>
+      <div class="mainContent">
+        <div class="faqs">Help and FAQs</div>
+        <div class="inputWrapper">
+          <input type="text" placeholder="Search Question Here" id="searchBar">
+        </div>
+        <div class="questionSpacing"></div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">What is BedStats made with?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">BedStats is built on electron.js, a framework that allows for a mixture of Node.js and WebDev. The windows are displayed with HTML5/CSS/Chrome V8, while the background process is run with Node.</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">Why is BedStats so laggy?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">Since BedStats is built on electron.js, a framework that comes packaged with Chromium, this application is required to be bundled with the Chromium engine. As such, you should treat it more like a Discord tab or Chrome window, as opposed to a .NET or C application.</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">Is BedStats allowed on the Hypixel Network?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">Theoretically, since it doesn't directly hook into the client, it should be. However, like many other auto-stat trackers, developers treat apps like these as "use as your own risk". I'm not responsible for what you do with this application.</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">What is a Hypixel API Key?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">A hypixel API key is what allows the program to access the Hypixel API, or application programming interface. Calling on the Hypixel API allows the tracker to get a player's stats, and as such, a key is needed. Keep in mind that normal keys are rate-limited to 120 requests per minute, and as such may not work for large operations (e.g. simultaneously searching stats for a large group of friends).</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">Why is this program not fully functional?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">BedStats is not a fully complete application, as development only started in late February. More features are to come as monthly updates are pushed out.</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">Where can I report bugs?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">your mom's house 😏... no but just send it to me at Sweetplum123#5192</div>
+        </div>
+        <div class="questionDiv">
+          <div class="questionTitle"><div class="title">My question isn't on here, what do I do?</div><div class="questionPlus">+</div></div>
+          <div class="questionData">DM Sweetplum123#5192 and I'll help you figure it out... eventually.</div>
+        </div>
+        <div class="questionSpacing"></div>
+      </div>
+    </div>
+</body>
+<script src="../js/help.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/console.js"></script>
+</html>

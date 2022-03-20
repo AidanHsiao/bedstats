@@ -5,10 +5,6 @@ async function sleep(time) {
 let settingsData;
 let normalCutoff;
 
-// document.getElementById("homeIcon").addEventListener("click", () => {
-//   homeScreen();
-// });
-
 const xpPerPrestige = 487000;
 
 function calculateStars(exp) {
@@ -336,4 +332,38 @@ async function getPlayerData(key, uuid) {
     }
   }
   return playerData;
+}
+
+if (document.getElementById("homeIcon")) {
+document.getElementById("homeIcon").addEventListener("click", async (ev) => {
+  document.getElementById("cover").style.height = "100vh"
+  document.getElementById("cover").style.width = "100vw"
+  await sleep(505)
+  window.location.href = "../html/index.html"
+})
+}
+
+if (document.getElementById("friendsIcon")) {
+document.getElementById("friendsIcon").addEventListener("click", async (ev) => {
+  document.getElementById("cover").style.height = "100vh"
+  document.getElementById("cover").style.width = "100vw"
+  await sleep(505)
+  window.location.href = "../html/friends.html"
+})
+}
+if (document.getElementById("settingsIcon")) {
+document.getElementById("settingsIcon").addEventListener("click", async (ev) => {
+  document.getElementById("cover").style.height = "100vh"
+  document.getElementById("cover").style.width = "100vw"
+  await sleep(505)
+  window.location.href = "../html/settings.html"
+})
+}
+if (document.getElementById("helpIcon")) {
+document.getElementById("helpIcon").addEventListener("click", async (ev) => {
+  document.getElementById("cover").style.height = "100vh"
+  document.getElementById("cover").style.width = "100vw"
+  await sleep(505)
+  window.location.href = "../html/help.html"
+})
 }

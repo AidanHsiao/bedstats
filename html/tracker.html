@@ -18,11 +18,16 @@
   </head>
   <body>
     <canvas id="c"></canvas>
+<div id="console">
+      <div class="consoleTitle">Console</div>
+      <div id="loadingTime" class="consoleItem"></div>
+      <div id="pageFPS" class="consoleItem"></div>
+    </div>
     <div class="screenContent">
       <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
       <div class="loadingText">
-        <span id="loaderText">Initializing Watcher...</span>
+        <span id="loaderText">Initializing watcher...</span>
       </div>
       <div class="exitButton" id="eb">Exit</div>
       <div class="navBar" id="navigation">
@@ -43,7 +48,7 @@
             class="navIcon"
           />
         </div>
-        <div class="iconDiv">
+        <div class="iconDiv" id="helpIcon">
           <span class="navIcon navText">?</span>
         </div>
       </div>
@@ -59,14 +64,8 @@
             <input type="text" placeholder="Enter Username" id="inputBox" />
             <div id="confirmButton">+</div>
           </div>
-          <div id="audioDiv">
-            <div id="audioText">Enable Audio:</div>
-            <div id="checkmarkDiv">
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider"></span>
-              </label>
-            </div>
+          <div class="resetDiv">
+            <div id="resetButton">Reset Collected Data</div>
           </div>
         </div>
         <div id="statsDisplayDiv">

@@ -3,8 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 
+let win;
+
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1152,
     height: 648,
     minWidth: 960,
@@ -141,6 +143,17 @@ async function watchLogs(ev) {
         "logs",
         "latest.log"
       );
+      break;
+    }
+    case "Badlion": {
+      logPath = path.join(
+        app.getPath("appData"),
+        minecraftPath,
+        "logs",
+        "blclient",
+        "minecraft",
+        "latest.log"
+      )
       break;
     }
     case "Lunar": {

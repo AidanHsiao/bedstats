@@ -30,8 +30,7 @@ window.onload = async function getLeaderboard() {
       document.getElementById("loaderText").innerHTML =
         "Leaderboards fetch error. Make sure that <br> you are connected to the internet, and your API key is correct.";
       document.getElementById("eb").style.opacity = 1;
-      document.querySelector(".screenContent").style.backgroundColor =
-        "#ffd8d8";
+      document.getElementById("cover").style.backgroundColor = "#ffaaaa"
       document.getElementById("eb").addEventListener("click", () => {
         homeScreen();
       });
@@ -66,8 +65,7 @@ window.onload = async function getLeaderboard() {
         document.getElementById("loaderText").innerHTML =
           "Stats fetch error. Check that your API key is correct.";
         document.getElementById("eb").style.opacity = 1;
-        document.querySelector(".screenContent").style.backgroundColor =
-          "#ffd8d8";
+        document.getElementById("cover").style.backgroundColor = "#ffaaaa"
 
         document.getElementById("eb").addEventListener("click", () => {
           homeScreen();
@@ -171,6 +169,8 @@ window.onload = async function getLeaderboard() {
     friendLeaderboards,
     settingsData
   ) {
+    const now = Date.now()
+    document.getElementById("fetchTime").innerHTML = `Stats Fetch Time: ${now - performance.timing.navigationStart}ms`
     globalLeaderboards = totalLeaderboards;
     document.getElementById("loader").style.opacity = 0;
     document.getElementById("loaderText").style.opacity = 0;
@@ -228,37 +228,6 @@ window.onload = async function getLeaderboard() {
     document.getElementById("header").style.opacity = 1;
   }
 };
-
-async function homeScreen() {
-  document.getElementById("cover").style.height = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/index.html";
-  }, 505);
-}
-
-document.getElementById("homeIcon").addEventListener("click", () => {
-  homeScreen();
-});
-
-document.getElementById("settingsIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.height = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/settings.html";
-  }, 505);
-});
-
-async function homeScreen() {
-  document.getElementById("cover").style.height = "100%";
-  await sleep(505);
-  window.location.href = "../html/index.html";
-}
-
-document.getElementById("friendsIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.height = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/friends.html";
-  }, 505);
-});
 
 document.getElementById("filter").onchange = () => changeLeaderboards();
 
@@ -488,4 +457,12 @@ function bubbleSort(bArr, arr) {
     });
   }
   return arr;
+}
+
+async function homeScreen() {
+  document.getElementById("cover").style.backgroundColor = "#e8e8e8"
+  document.getElementById("loaderText").style.opacity = 0
+  document.getElementById("eb").style.opacity = 0
+  await sleep(205);
+  window.location.href = "../html/index.html";
 }

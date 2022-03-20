@@ -1,4 +1,14 @@
 const colorPalettes = {
+  monotone: [
+    "#dedede",
+    "#666666",
+    "#9c9c9c",
+    "#aaaaaa",
+    "#ffffff",
+    "white",
+    "black",
+    "#878787",
+  ],
   snowy_sky: [
     "#4da3cf",
     "#bdadd5",
@@ -50,6 +60,9 @@ async function loadTheme() {
   document.querySelector("body").style.backgroundImage = `url(../img/${
     type.split("_")[0]
   }BG.jpeg)`;
+  if (type === "monotone") {
+    document.querySelector("body").style.backgroundImage = `linear-gradient(to right, #c9c9c9, #c9c9c9)`
+  }
   if (!settingsData.animationEnabled) return;
   const canvas = document.getElementById("c");
   const ctx = canvas.getContext("2d");

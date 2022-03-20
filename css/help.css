@@ -1,0 +1,73 @@
+#cover {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: #e8e8e8;
+  position: fixed;
+  transition: width 0.5s ease-in-out, background-color 0.2s;
+
+  z-index: 10;
+}
+.faqs {
+  font-size: 5vw;
+  color: var(--color1);
+  text-shadow: 0 0 1vw var(--highlight);
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#searchBar {
+  width: 70vw;
+  height: 7vh;
+  font-size: 2.5vw;
+  padding-left: 1vw;
+}
+
+.questionDiv {
+  height: 10vh;
+  overflow-y: hidden;
+  width: 80vw;
+  margin: auto;
+  margin-top: 3vh;
+
+  transition: height 0.3s ease-in-out;
+}
+
+.questionTitle {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  padding-left: 3vw;
+  align-items: center;
+  font-size: 3vw;
+  cursor: pointer;
+  background-image: linear-gradient(to right, var(--color1), var(--color2));
+}
+
+.questionData {
+  background-image: linear-gradient(
+    to right,
+    var(--color1Dimmed),
+    var(--color2Dimmed)
+  );
+  height: auto;
+  padding: 2vw 3vw;
+  text-shadow: 0 0 1vh var(--highlight);
+  font-size: 2vw;
+}
+
+.questionSpacing {
+  height: 10vh;
+}
+.title {
+  flex: 10;
+}
+.questionPlus {
+  flex: 1;
+}

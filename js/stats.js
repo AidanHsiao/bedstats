@@ -23,8 +23,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "UUID fetch error. Make sure you are connected to the internet, <br>and that the username is spelt correctly.";
     document.getElementById("eb").style.opacity = 1;
-    document.querySelector(".screenContent").style.backgroundColor = "#ffd8d8";
-
+    document.getElementById("cover").style.backgroundColor = "#ffaaaa"
     document.getElementById("eb").style.cursor = "pointer";
 
     document.getElementById("eb").addEventListener("click", () => {
@@ -45,7 +44,7 @@ window.onload = async function getPlayerStats() {
     document.getElementById("loaderText").innerHTML =
       "Stats fetch error. Make sure your API key is correct. <br> If it is, this player may not have played bedwars before.";
     document.getElementById("eb").style.opacity = 1;
-    document.querySelector(".screenContent").style.backgroundColor = "#ffd8d8";
+    document.getElementById("cover").style.backgroundColor = "#ffaaaa"
 
     document.getElementById("eb").addEventListener("click", () => {
       homeScreen();
@@ -67,6 +66,8 @@ window.onload = async function getPlayerStats() {
   document.getElementById("loader").style.opacity = 0;
   document.getElementById("loaderText").style.opacity = 0;
   document.getElementById("cover").style.height = 0;
+  const now = Date.now()
+  document.getElementById("fetchTime").innerHTML = `Stats Fetch Time: ${now - performance.timing.navigationStart}ms`
   await sleep(500);
   document.getElementById("sSec").style.opacity = 1;
   document.getElementById("finalsMain").style.paddingTop = "16vh";
@@ -116,10 +117,6 @@ window.onload = async function getPlayerStats() {
   const hsl = scoreToColor(score);
   document.getElementById("scoreNum").style.textShadow = `0 0 0.92592vh ${hsl}`;
 };
-
-document.getElementById("homeIcon").addEventListener("click", () => {
-  homeScreen();
-});
 
 document.getElementById("filter").onchange = async () => {
   const value = document.getElementById("filter").value;
@@ -531,21 +528,9 @@ function sigmoidValue(x) {
 }
 
 async function homeScreen() {
-  document.getElementById("cover").style.height = "100%";
-  await sleep(505);
+  document.getElementById("cover").style.backgroundColor = "#e8e8e8"
+  document.getElementById("loaderText").style.opacity = 0
+  document.getElementById("eb").style.opacity = 0
+  await sleep(205);
   window.location.href = "../html/index.html";
 }
-
-document.getElementById("settingsIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.height = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/settings.html";
-  }, 505);
-});
-
-document.getElementById("friendsIcon").addEventListener("click", () => {
-  document.getElementById("cover").style.height = "100%";
-  setTimeout(() => {
-    window.location.href = "../html/friends.html";
-  }, 505);
-});

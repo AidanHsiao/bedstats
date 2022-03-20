@@ -17,6 +17,12 @@
   </head>
   <body>
     <canvas id="c"></canvas>
+<div id="console">
+      <div class="consoleTitle">Console</div>
+      <div id="loadingTime" class="consoleItem"></div>
+      <div id="pageFPS" class="consoleItem"></div>
+      <div id="fetchTime"></div>
+    </div>
     <div class="screenContent">
       <div id="cover"></div>
       <div class="loadingDiv" id="loader"></div>
@@ -41,7 +47,7 @@
             class="navIcon"
           />
         </div>
-        <div class="iconDiv">
+        <div class="iconDiv" id="helpIcon">
           <span class="navIcon navText">?</span>
         </div>
       </div>

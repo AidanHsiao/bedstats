@@ -13,11 +13,11 @@
   "author": "Aidan Hsiao",
   "license": "ISC",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
     "electron": "^17.1.0",
     "electron-builder": "^22.14.13"
   },
   "build": {
+    "asar": "false",
     "appId": "BedStats",
     "productName": "BedStats",
     "dmg": {
@@ -42,7 +42,7 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "build/icon.ico"
+      "icon": "img/logo.png"
     }
   },
   "dependencies": {

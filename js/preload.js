@@ -8,7 +8,9 @@ contextBridge.exposeInMainWorld("electronAPI", {
   startWatcher: () => ipcRenderer.invoke("startWatcher"),
   clearWatcher: () => ipcRenderer.invoke("clearWatcher"),
   manualInput: (username) => ipcRenderer.invoke("manualInput", username),
-  sendData: (channel, func) => {
+  on: (channel, func) => {
+    const whitelistedChannels = ["chatData", "pendingData", "removePending", "collectedData", "dataClear"]
+    if (!whitelistedChannels.includes(channel)) return;
     ipcRenderer.on(channel, func)
   }
 });

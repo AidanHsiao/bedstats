@@ -1,29 +1,11 @@
-input {
-  box-sizing: border-box;
-  font-family: "Bahnschrift";
-}
 #cover {
   width: 105%;
   height: 100vh;
   background-color: #e8e8e8;
   position: fixed;
-  transition: height 0.5s ease-in-out;
-  z-index: 10;
-}
+  transition: height 0.5s ease-in-out, background-color 0.2s;
 
-.loadingDiv {
-  position: absolute;
-  left: calc(50% - 6vw - 1vw);
-  top: calc(43% - 6vw - 1vw);
-  border: 1vw solid white;
-  border-top: 1vw solid var(--color1);
-  border-radius: 50%;
-  width: 12vw;
-  height: 12vw;
-  opacity: 0;
-  animation: spin 1s linear infinite;
-  position: fixed;
-  z-index: 11;
+  z-index: 10;
 }
 
 #loader {
@@ -37,42 +19,6 @@ input {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.loadingText {
-  position: absolute;
-  width: 100%;
-  top: 63%;
-  text-align: center;
-  margin: auto;
-  font-size: 3vw;
-  position: fixed;
-  text-shadow: 0 0 1vw var(--highlight);
-  z-index: 11;
-}
-#loaderText {
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.exitButton {
-  position: absolute;
-  background-color: red;
-  width: 30%;
-  height: 15%;
-  left: 35%;
-  bottom: 40%;
-  margin: auto;
-  text-align: center;
-  padding-top: 5vh;
-  font-size: 9vh;
-  border-radius: 3vh;
-  opacity: 0;
-  z-index: 100;
-}
-
-#eb {
-  transition: opacity 0.4s;
 }
 
 .leaderboardHeader {
@@ -200,6 +146,7 @@ select {
   height: 4vw;
   position: relative;
   border: none;
+  border-radius: 1vw;
   top: -0.5vh;
   padding-left: 1vw;
   font-size: 3vw;

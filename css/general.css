@@ -54,14 +54,18 @@ body {
 
 .navIcon {
   max-width: 4vw;
-  display: block;
   margin: auto;
   filter: drop-shadow(2px 2px 5px white) invert(1);
-  padding-top: 3vh;
   font-size: 5.5vw;
   text-align: center;
 }
-
+.iconDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
 .iconDiv:hover {
   background-color: var(--color2Dimmed);
   cursor: pointer;
@@ -73,7 +77,9 @@ body {
 }
 
 .navText {
-  transform: scale(1.2, 1);
+  font-family: "Helvetica";
+  margin-top: 1.7vh;
+  transform: scale(1, 0.95);
 }
 
 .logo {
@@ -91,12 +97,93 @@ body {
 .logoDiv {
   flex: 3;
 }
-.iconDiv {
-  flex: 1;
-  transition: all 0.2s ease-in-out;
-}
 
 .mainContent {
   width: 92.857143%;
   margin-left: 7.142857%;
+}
+
+#console {
+  background-color: var(--color3Dimmed);
+  border: 5px solid var(--color1);
+  width: 25vw;
+  height: 80vh;
+  z-index: 9;
+  position: fixed;
+  border-radius: 1vw;
+  right: -30vw;
+  transition: right 0.25s ease-in-out;
+  top: 10vh;
+}
+
+input {
+  box-sizing: border-box;
+  font-family: "Bahnschrift";
+}
+
+.consoleTitle {
+  font-size: 4vw;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+}
+
+#fetchTime {
+  font-size: 1.8vw;
+  display: flex;
+  justify-content: center;
+}
+
+.consoleItem {
+  font-size: 2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.exitButton {
+  position: absolute;
+  background-color: red;
+  width: 30%;
+  height: 15%;
+  left: 35%;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  padding-top: 5vh;
+  font-size: 9vh;
+  border-radius: 3vh;
+  opacity: 0;
+  z-index: 100;
+  transition: opacity 0.2s;
+}
+
+.loadingText {
+  position: absolute;
+  width: 100%;
+  top: 63%;
+  text-align: center;
+  margin: auto;
+  font-size: 3vw;
+  position: fixed;
+  z-index: 11;
+}
+
+#loaderText {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.loadingDiv {
+  position: absolute;
+  left: calc(50% - 6vw - 1vw);
+  top: calc(43% - 6vw - 1vw);
+  border: 1vw solid white;
+  border-top: 1vw solid var(--color1);
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  opacity: 0;
+  animation: spin 1s linear infinite;
+  z-index: 11;
+  transition: opacity 0.2s;
 }

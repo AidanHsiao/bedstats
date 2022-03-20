@@ -41,18 +41,6 @@ window.onload = async function loadFriends() {
   });
 };
 
-document.getElementById("homeIcon").addEventListener("click", async () => {
-  document.getElementById("cover").style.height = "100%";
-  await sleep(505);
-  window.location.href = "../html/index.html";
-});
-
-document.getElementById("settingsIcon").addEventListener("click", async () => {
-  document.getElementById("cover").style.height = "100%";
-  await sleep(505);
-  window.location.href = "../html/settings.html";
-});
-
 async function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }

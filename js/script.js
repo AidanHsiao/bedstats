@@ -42,20 +42,6 @@ window.onload = async function uncover() {
   }
   document.getElementById("welcomeParent").style.backgroundSize = 0;
   document.getElementById("welcomeParent").style.paddingTop = 0;
-  document
-    .getElementById("settingsIcon")
-    .addEventListener("click", async () => {
-      document.getElementById("cover").style.height = "100vh";
-      setTimeout(() => {
-        window.location.href = "../html/settings.html";
-      }, 505);
-    });
-  document.getElementById("friendsIcon").addEventListener("click", async () => {
-    document.getElementById("cover").style.height = "100vh";
-    setTimeout(() => {
-      window.location.href = "../html/friends.html";
-    }, 505);
-  });
   sessionStorage.setItem("opened", true);
 };
 
@@ -80,7 +66,6 @@ document
 
 document.getElementById("trackerButton").addEventListener("click", async () => {
   document.getElementById("cover").style.height = "100vh";
-  setTimeout(() => {
-    window.location.href = "../html/tracker.html";
-  }, 505);
+  await sleep(505)
+  window.location.href = "../html/tracker.html";
 });
