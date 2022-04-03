@@ -1,6 +1,6 @@
 {
   "name": "bedstats",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An multi-purpose electron-based app designed for Bedwars players.",
   "main": "js/main.js",
   "scripts": {

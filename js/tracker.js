@@ -94,6 +94,7 @@ document.getElementById("confirmButton").addEventListener("click", () => {
 document.getElementById("resetButton").addEventListener("click", () => {
   document.getElementById("pendingDiv").innerHTML = ``;
     document.getElementById("collectedDiv").innerHTML = ``;
+    window.electronAPI.clearCollectedData();
 })
 
 function apiKeyError(msg) {

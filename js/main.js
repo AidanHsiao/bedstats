@@ -19,7 +19,7 @@ const createWindow = () => {
     resizable: true,
     autoHideMenuBar: true,
   });
-  //   win.setMenu(null)
+    win.setMenu(null)
   win.setAspectRatio(16 / 9);
   win.loadFile("html/index.html");
 };
@@ -228,6 +228,12 @@ async function watchLogs(ev) {
 ipcMain.handle("manualInput", (event, username) => {
   if (playerNames.includes(username)) return;
   addData(username, event);
+});
+
+ipcMain.handle("clearCollectedData", (event) => {
+  playerInfo = [];
+          playerNames = [];
+          playerScores = [];
 });
 
 async function addData(u, ev) {
